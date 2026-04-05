@@ -1,0 +1,41 @@
+[
+  {
+    "id": "b63c74e6-e2fc-46df-83fa-eb6fe0280526",
+    "name": "Priya Sharma",
+    "city": "Mumbai",
+    "packageKey": "chardham",
+    "packageName": "Char Dham Yatra",
+    "rating": 5,
+    "text": "Char Dham trip was beyond spiritual — every detail was perfect. Our guide Ramesh knew every story.",
+    "initials": "PS",
+    "approved": true,
+    "helpful": 0,
+    "createdAt": "2025-03-01T00:00:00.000Z"
+  },
+  {
+    "id": "fbb87f85-343b-44d1-a0aa-cc30b5ff0eb6",
+    "name": "Arjun Mehta",
+    "city": "Bangalore",
+    "packageKey": "rishikesh",
+    "packageName": "Rishikesh Adventure Rush",
+    "rating": 5,
+    "text": "Rishikesh Adventure Rush was the best 5 days of my life. Grade-4 rafting was both safe and absolutely thrilling!",
+    "initials": "AM",
+    "approved": true,
+    "helpful": 0,
+    "createdAt": "2025-02-15T00:00:00.000Z"
+  },
+  {
+    "id": "5e403469-03a5-495d-99cf-d0daca9b0004",
+    "name": "Sneha Gupta",
+    "city": "Delhi",
+    "packageKey": "vof",
+    "packageName": "Valley of Flowers Trek",
+    "rating": 5,
+    "text": "Valley of Flowers in August — I did not know India had something this magical. Zero hassle, flawless planning.",
+    "initials": "SG",
+    "approved": true,
+    "helpful": 0,
+    "createdAt": "2025-02-10T00:00:00.000Z"
+  }
+]
