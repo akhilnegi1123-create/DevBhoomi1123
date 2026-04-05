@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBhoomi Travels — Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<div id="sp"></div>
+
+<div id="ldr">
+  <div class="l-logo">Dev<span>Bhoomi</span> ✨</div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-txt">Loading Your Himalayan Journey…</div>
+</div>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">
+    <span class="logo-icon">🏔️</span>
+    <div class="logo-wrap">
+      <div class="logo-text">Dev<span>Bhoomi</span> Travels</div>
+      <div class="logo-sub">Uttarakhand's Soul</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html" class="active">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html" class="active">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="drawer-btns">
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+</div>
+
+  <div class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="ov-l"></div><div class="ov-b"></div>
+    <div class="contact-hero-inner">
+      <div class="badge-hero" style="margin-bottom:.8rem">📞 We're Here For You</div>
+      <h1>Get in <em>Touch</em></h1>
+      <p>Plan your dream Uttarakhand journey — our travel experts are ready to help</p>
+    </div>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="contact-grid">
+      <!-- Info cards -->
+      <div>
+        <span class="sec-eye">📍 Contact Info</span>
+        <div class="sec-title" style="margin-bottom:1.5rem">Let's Plan Your <em>Trip</em></div>
+        <div class="ci-cards">
+          <div class="ci-card"><div class="ci-ico">📞</div><div><div class="ci-title">Phone / WhatsApp</div><div class="ci-val">+91 94105 82310<br/>+91 98370 12456</div></div></div>
+          <div class="ci-card"><div class="ci-ico">✉️</div><div><div class="ci-title">Email Us</div><div class="ci-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b12151d143b1f1e0d1913141416120f091a0d1e1708551215">[email&#160;protected]</a><br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="31585f575e7155544753595e5e5c5845435047545d421f585f">[email&#160;protected]</a></div></div></div>
+          <div class="ci-card"><div class="ci-ico">📍</div><div><div class="ci-title">Our Office</div><div class="ci-val">Tapovan, Rishikesh — 249192<br/>Uttarakhand, India</div></div></div>
+          <div class="ci-card"><div class="ci-ico">🕐</div><div><div class="ci-title">Working Hours</div><div class="ci-val">Mon–Sat: 9:00 AM – 7:00 PM<br/>Sunday: 10:00 AM – 4:00 PM</div></div></div>
+          <div class="ci-card"><div class="ci-ico">⚡</div><div><div class="ci-title">Quick Response</div><div class="ci-val">We respond within 2 hours on WhatsApp. Emergency line available 24/7.</div></div></div>
+        </div>
+        <div class="map-box">
+          <span style="font-size:2.5rem">🗺️</span>
+          <span>Rishikesh, Uttarakhand</span>
+          <span style="font-size:.72rem">Open in Google Maps ↗</span>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <div class="cf-title">Send Us a Message</div>
+        <div class="cf-sub">Tell us about your dream trip and we'll get back to you within 24 hours</div>
+
+        <div class="cf-row">
+          <div class="cf-field"><label>First Name</label><input type="text" placeholder="Rahul" id="cf-fname"/></div>
+          <div class="cf-field"><label>Last Name</label><input type="text" placeholder="Sharma" id="cf-lname"/></div>
+        </div>
+        <div class="cf-field"><label>Email Address</label><input type="email" placeholder="you@example.com" id="cf-email"/></div>
+        <div class="cf-field"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 94105 82310" id="cf-phone"/></div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Travel Date</label><input type="date" id="cf-date"/></div>
+          <div class="cf-field"><label>No. of Travelers</label><input type="number" placeholder="2" min="1" id="cf-travelers"/></div>
+        </div>
+        <div class="cf-field">
+          <label>Interested Package</label>
+          <select id="cf-pkg">
+            <option value="">Select a package…</option>
+            <option>Char Dham Yatra — ₹28,999</option>
+            <option>Rishikesh Adventure Rush — ₹9,499</option>
+            <option>Auli Ski Getaway — ₹14,999</option>
+            <option>Jim Corbett Safari — ₹12,999</option>
+            <option>Valley of Flowers Trek — ₹9,499</option>
+            <option>Nainital Family Package — ₹7,999</option>
+            <option>Mussoorie Honeymoon — ₹11,999</option>
+            <option>Chopta Tungnath Trek — ₹5,999</option>
+            <option>Custom Package</option>
+          </select>
+        </div>
+        <div class="cf-field"><label>Your Message</label><textarea placeholder="Tell us about your travel plans, special requirements, budget, preferred dates…" id="cf-msg"></textarea></div>
+        <button class="cf-submit" id="cfBtn" onclick="submitContact()">Send Message 🏔️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="padding:3rem 5rem;background:var(--mist);">
+    <div class="sec-head-row"><div><span class="sec-eye">❓ Common Questions</span><div class="sec-title">Frequently Asked <em>Questions</em></div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem;margin-top:.5rem;">
+      <div style="background:#fff;border-radius:16px;padding:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.05);">
+        <div style="font-weight:700;color:var(--forest);margin-bottom:.4rem;font-size:.9rem;">🗓️ How far in advance should I book?</div>
+        <div style="font-size:.81rem;color:var(--stone);line-height:1.6;">We recommend booking at least 2–4 weeks in advance. For Char Dham season (May–June), book 2–3 months ahead.</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.05);">
+        <div style="font-weight:700;color:var(--forest);margin-bottom:.4rem;font-size:.9rem;">💳 What payment methods do you accept?</div>
+        <div style="font-size:.81rem;color:var(--stone);line-height:1.6;">UPI, bank transfer, credit/debit cards and EMI options available. 30% advance secures your booking.</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.05);">
+        <div style="font-weight:700;color:var(--forest);margin-bottom:.4rem;font-size:.9rem;">❌ What is the cancellation policy?</div>
+        <div style="font-size:.81rem;color:var(--stone);line-height:1.6;">Free cancellation up to 15 days before departure. 50% refund within 7–15 days. Full payment within 7 days.</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:1.3rem;box-shadow:0 2px 10px rgba(0,0,0,.05);">
+        <div style="font-weight:700;color:var(--forest);margin-bottom:.4rem;font-size:.9rem;">🏥 Is travel insurance included?</div>
+        <div style="font-size:.81rem;color:var(--stone);line-height:1.6;">All adventure packages include basic travel insurance. We recommend additional medical coverage for high-altitude treks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nl-sec"><span class="nl-eye">💬 Stay Connected</span><h2>Join Our <em>Travel Community</em></h2><p>Get travel tips, seasonal discounts and Uttarakhand updates</p><div class="nl-form"><input type="email" id="nlEmail_home" placeholder="Enter your email…"/><button onclick="subscribeNewsletter('nlEmail_home','contact')">Join Now 🎁</button></div></div>
+  <footer><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-txt">Dev<span>Bhoomi</span> Travels</div><p>Uttarakhand's trusted travel partner. We craft journeys that connect you with the soul of the Himalayas.</p><div class="ft-soc" style="margin-top:1rem"><a class="sl" href="https://facebook.com/devbhoomitravels" target="_blank" title="Facebook">📘</a><a class="sl" href="https://instagram.com/devbhoomitravels" target="_blank" title="Instagram">📸</a><a class="sl" href="https://twitter.com/devbhoomitravels" target="_blank" title="Twitter/X">🐦</a><a class="sl" href="https://youtube.com/@devbhoomitravels" target="_blank" title="YouTube">▶️</a></div></div><div class="ft-col"><h4>Packages</h4><ul><li><a onclick="window.location.href='packages.html'">Char Dham Yatra</a></li><li><a onclick="window.location.href='packages.html'">Rishikesh Adventure</a></li><li><a onclick="window.location.href='packages.html'">Auli Ski Getaway</a></li><li><a onclick="window.location.href='packages.html'">Honeymoon Special</a></li></ul></div><div class="ft-col"><h4>Destinations</h4><ul><li><a onclick="window.location.href='Destination.html'">Rishikesh</a></li><li><a onclick="window.location.href='Destination.html'">Kedarnath</a></li><li><a onclick="window.location.href='Destination.html'">Valley of Flowers</a></li><li><a onclick="window.location.href='Destination.html'">Jim Corbett</a></li></ul></div><div class="ft-col"><h4>Contact</h4><ul><li><a><a href="tel:+919410582310" style="color:inherit;text-decoration:none">📞 +91 94105 82310</a></a></li><li><a><a href="/cdn-cgi/l/email-protection#c4adaaa2ab84a0a1b2a6acababa9adb0b6a5b2a1a8b7eaadaa" style="color:inherit;text-decoration:none">✉️ <span class="__cf_email__" data-cfemail="4b22252d240b2f2e3d2923242426223f392a3d2e2738652225">[email&#160;protected]</span></a></a></li><li><a><a href="https://maps.google.com?q=Rishikesh+Uttarakhand" target="_blank" style="color:inherit;text-decoration:none">📍 Tapovan, Rishikesh, Uttarakhand – 249192</a></a></li></ul></div></div><div class="ft-bot"><span>© 2025 DevBhoomi Travels · Made with ❤️ for Uttarakhand · 🌿 Responsible Tourism</span><span>IATO Registered</span></div></footer>
+</div>
+
+<!-- ═══════════ DETAIL MODAL ═══════════ -->
+<div class="d-ov" id="detailOv" onclick="if(event.target===this)closeDetail()">
+  <div class="d-box">
+    <button class="dh-close" onclick="closeDetail()">✕</button>
+    <div class="dh"><img id="dImg" src="" alt=""/><div class="dh-grad"></div>
+      <div class="dh-txt"><h2 id="dTitle"></h2><p id="dReg"></p></div></div>
+    <div class="d-body">
+      <div class="d-stats" id="dStats"></div>
+      <p class="d-desc" id="dDesc"></p>
+      <div class="d-ht">✨ Package Highlights</div>
+      <div class="d-hg" id="dHl"></div>
+      <div class="d-brow">
+        <div><div class="d-bp" id="dPrice"></div><div style="font-size:.73rem;color:var(--stone)">per person · All inclusive</div></div>
+        <button class="btn-primary" onclick="closeDetail();openAuth('signup')">Book This Package →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb-ov" id="lbOv" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+
+
+<!-- ═══════════ SIGNUP MODAL ═══════════ -->
+
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════
+   DATA + JAVASCRIPT
+═══════════════════════════════════════ -->
+
+
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-ov" id="searchOv">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-wrap">
+    <div class="search-title">Find Your <em>Dream Trip</em></div>
+    <div class="search-input-wrap">
+      <span class="search-ico-wrap">🔍</span>
+      <input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure, Wildlife…" oninput="renderSearchResults(this.value)"/>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="book-ov" id="bookOv">
+  <div class="book-box">
+    <div class="book-head">
+      <h2 id="bookTitle">Book Your Trip</h2>
+      <p id="bookPkgName">Secure your spot today</p>
+      <button class="book-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="book-body">
+      <input type="hidden" id="bookPkgKey" value=""/>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:.85rem;font-weight:700;color:var(--forest)" id="bookPkgName2">Selected Package</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--pine);font-weight:700" id="bookPkgPrice"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Your Full Name *</label><input type="text" id="bookName" placeholder="Rahul Sharma"/></div>
+        <div class="bfield"><label>Mobile Number *</label><input type="tel" id="bookPhone" placeholder="+91 94105 82310"/></div>
+      </div>
+      <div class="bfield" style="margin-bottom:.8rem"><label>Email (optional)</label><input type="email" id="bookEmail" placeholder="you@example.com"/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Travel Date *</label><input type="date" id="bookDate" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),document.getElementById('bookPersons').value)"/></div>
+        <div class="bfield"><label>Number of Persons</label><select id="bookPersons" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),this.value)"><option value="1">1 Person</option><option value="2" selected>2 Persons</option><option value="3">3 Persons</option><option value="4">4 Persons</option><option value="5">5+ Persons</option></select></div>
+      </div>
+      <div class="bfield"><label>Special Requests (optional)</label><input type="text" id="bookMsg" placeholder="Vegetarian food, wheelchair access, anniversary…"/></div>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.7rem">Booking Summary</div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>Package Price × Persons</span><span id="bsSubtotal">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>GST (5%)</span><span id="bsTax">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--forest);font-size:.95rem;border-top:1px solid rgba(82,169,122,.15);padding-top:.5rem;margin-top:.4rem"><span>Total Amount</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--pine)" id="bsTotal">—</span></div>
+      </div>
+      <button class="btn-book-final" id="bookConfirmBtn" onclick="confirmBooking()">✅ Confirm Booking →</button>
+      <p style="text-align:center;font-size:.73rem;color:var(--stone);margin-top:.7rem">🔒 Secure booking · Free cancellation within 15 days · Pay 30% advance only</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMPARE BAR ══ -->
+<div class="cmp-bar" id="cmpBar">
+  <div class="cmp-bar-items" id="cmpBarItems"></div>
+  <div class="cmp-bar-btns">
+    <button class="btn-do-cmp" id="btnDoCmp" onclick="openCmp()">⚖️ Compare Now</button>
+    <button class="btn-clr-cmp" onclick="clearCompare()">✕ Clear</button>
+  </div>
+</div>
+
+<!-- ══ COMPARE MODAL ══ -->
+<div class="cmp-ov" id="cmpOv">
+  <div class="cmp-box">
+    <div class="cmp-h"><h2>⚖️ Package Comparison</h2><button class="cmp-close" onclick="closeCmp()">✕</button></div>
+    <div class="cmp-table" id="cmpTable"></div>
+  </div>
+</div>
+
+<!-- ══ WHATSAPP FAB ══ -->
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp
+
+
+<!-- ════════════════════════════════
+   PAGE: HOTELS
+════════════════════════════════ -->
+
+<div class="d-ov" id="detailOv" onclick="if(event.target===this)closeDetail()">
+  <div class="d-box">
+    <button class="dh-close" onclick="closeDetail()">✕</button>
+    <div class="dh"><img id="dImg" src="" alt=""/><div class="dh-grad"></div>
+      <div class="dh-txt"><h2 id="dTitle"></h2><p id="dReg"></p></div></div>
+    <div class="d-body">
+      <div class="d-stats" id="dStats"></div>
+      <p class="d-desc" id="dDesc"></p>
+      <div class="d-ht">✨ Package Highlights</div>
+      <div class="d-hg" id="dHl"></div>
+      <div class="d-brow">
+        <div><div class="d-bp" id="dPrice"></div><div style="font-size:.73rem;color:var(--stone)">per person · All inclusive</div></div>
+        <button class="btn-primary" onclick="closeDetail();openAuth('signup')">Book This Package →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb-ov" id="lbOv" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="m-ov" id="loginMod" onclick="if(event.target===this)closeAuth('loginMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('loginMod')">✕</button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Welcome Back!</h2><p>Log in to manage your bookings</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf"><label>Email</label><input type="email" id="lEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="fgt"><a href="#">Forgot password?</a></div>
+    <button class="m-sub" id="lSubmitBtn" onclick="doLogin()">Log In →</button>
+    <p class="m-sw">New here? <a onclick="switchAuth('loginMod','signupMod')">Create account</a></p>
+  </div>
+</div>
+
+<!-- ═══════════ SIGNUP MODAL ═══════════ -->
+<div class="m-ov" id="signupMod" onclick="if(event.target===this)closeAuth('signupMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('signupMod')">✕</button>
+    <button class="m-back" onclick="switchAuth('signupMod','loginMod')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Join Us Today</h2><p>Create your free account</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf-row">
+      <div class="mf"><label>First Name</label><input type="text" id="sName" placeholder="Rahul"/></div>
+      <div class="mf"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+    </div>
+    <div class="mf"><label>Email</label><input type="email" id="sEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Mobile</label><input type="tel" id="sPhone" placeholder="+91 94105 82310"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="sPass" placeholder="Min. 8 characters"/></div>
+    <button class="m-sub" id="sSubmitBtn" onclick="doSignup()">Create Account →</button>
+    <p class="m-sw">Already have an account? <a onclick="switchAuth('signupMod','loginMod')">Log In</a></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-ov" id="searchOv">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-wrap">
+    <div class="search-title">Find Your <em>Dream Trip</em></div>
+    <div class="search-input-wrap">
+      <span class="search-ico-wrap">🔍</span>
+      <input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure, Wildlife…" oninput="renderSearchResults(this.value)"/>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ══ COMPARE BAR ══ -->
+<div class="cmp-bar" id="cmpBar">
+  <div class="cmp-bar-items" id="cmpBarItems"></div>
+  <div class="cmp-bar-btns">
+    <button class="btn-do-cmp" id="btnDoCmp" onclick="openCmp()">⚖️ Compare Now</button>
+    <button class="btn-clr-cmp" onclick="clearCompare()">✕ Clear</button>
+  </div>
+</div>
+
+<!-- ══ COMPARE MODAL ══ -->
+<div class="cmp-ov" id="cmpOv">
+  <div class="cmp-box">
+    <div class="cmp-h"><h2>⚖️ Package Comparison</h2><button class="cmp-close" onclick="closeCmp()">✕</button></div>
+    <div class="cmp-table" id="cmpTable"></div>
+  </div>
+</div>
+
+<!-- ══ WHATSAPP FAB ══ -->
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

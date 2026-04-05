@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBhoomi Travels — Tour Packages</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── BOOKING MODAL ── */
+#bookOv{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+#bookOv.active{opacity:1}
+.bk-box{background:#fff;border-radius:16px;width:min(540px,95vw);max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.bk-head{background:linear-gradient(135deg,#7a1a1a,#c0392b);color:#fff;padding:22px 28px;border-radius:16px 16px 0 0;position:relative}
+.bk-head h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin:0 0 4px}
+.bk-head p{margin:0;font-size:.85rem;opacity:.85}
+.bk-close{position:absolute;right:20px;top:18px;background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.bk-close:hover{background:rgba(255,255,255,.35)}
+.bk-body{padding:24px 28px}
+.bk-summary{background:#fef9f0;border:1px solid #f0d9a0;border-radius:10px;padding:14px 18px;margin-bottom:20px}
+.bk-summary .pkg-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#7a1a1a;font-weight:700}
+.bk-summary .pkg-price{font-size:1.2rem;color:#c0392b;font-weight:700;margin-top:4px}
+.bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bk-grid .full{grid-column:1/-1}
+.bk-field label{display:block;font-size:.78rem;font-weight:700;color:#555;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.bk-field input,.bk-field select,.bk-field textarea{width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:8px;font-family:'Nunito',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;box-sizing:border-box}
+.bk-field input:focus,.bk-field select:focus,.bk-field textarea:focus{border-color:#c0392b}
+.bk-field textarea{height:80px;resize:none}
+.bk-total{background:#f8f8f8;border-radius:10px;padding:14px 18px;margin:16px 0}
+.bk-total-row{display:flex;justify-content:space-between;font-size:.88rem;color:#555;margin-bottom:6px}
+.bk-total-row.final{font-weight:800;font-size:1rem;color:#7a1a1a;border-top:1px solid #ddd;padding-top:8px;margin-top:4px}
+.bk-submit{width:100%;padding:15px;background:linear-gradient(135deg,#e07b1a,#c0392b);color:#fff;border:none;border-radius:10px;font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .15s;margin-top:6px}
+.bk-submit:hover{opacity:.9;transform:translateY(-1px)}
+.bk-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+/* ── PACKAGE CARDS ── */
+.pkg-hero{background:linear-gradient(135deg,#1a0a0a 0%,#3d1515 50%,#1a0a0a 100%);padding:80px 20px 60px;text-align:center;color:#fff}
+.pkg-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);margin:0 0 12px}
+.pkg-hero h1 em{color:#e07b1a;font-style:italic}
+.pkg-hero p{font-family:'Nunito',sans-serif;font-size:1rem;opacity:.8;max-width:500px;margin:0 auto}
+.pkg-filter{background:#fff;border-bottom:1px solid #eee;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.ftab{background:none;border:1.5px solid #ddd;border-radius:20px;padding:7px 16px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:#666}
+.ftab:hover,.ftab.active{background:#7a1a1a;border-color:#7a1a1a;color:#fff}
+.f-right{display:flex;align-items:center;gap:12px}
+.r-count{font-size:.82rem;color:#888;font-family:'Nunito',sans-serif}
+.sort-sel{border:1.5px solid #ddd;border-radius:8px;padding:7px 12px;font-family:'Nunito',sans-serif;font-size:.82rem;cursor:pointer;outline:none;color:#555}
+.pkg-wrap{max-width:1260px;margin:0 auto;padding:32px 20px}
+/* Featured */
+.feat-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;cursor:pointer;border:1px solid #f0e0c0;transition:transform .2s,box-shadow .2s}
+.feat-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.15)}
+.feat-card img{width:100%;height:340px;object-fit:cover;display:block}
+.feat-body{padding:36px;display:flex;flex-direction:column;justify-content:center}
+.feat-badge{display:inline-block;background:#fef9f0;border:1px solid #e07b1a;color:#e07b1a;border-radius:20px;padding:5px 14px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#3d1515;margin:0 0 10px;line-height:1.2}
+.feat-title em{color:#c0392b;font-style:italic}
+.feat-desc{font-family:'Nunito',sans-serif;color:#666;font-size:.9rem;line-height:1.6;margin-bottom:20px}
+.feat-meta{display:flex;gap:16px;margin-bottom:20px}
+.feat-meta span{font-size:.82rem;color:#888;font-family:'Nunito',sans-serif}
+.feat-incls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.feat-incl{background:#f8f0f0;color:#7a1a1a;border-radius:20px;padding:5px 12px;font-size:.78rem;font-weight:600}
+.feat-foot{display:flex;align-items:center;justify-content:space-between}
+.feat-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#7a1a1a;font-weight:700}
+.feat-price small{font-size:.7rem;color:#888;font-family:'Nunito',sans-serif;font-weight:400}
+/* Package Grid */
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.p-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);cursor:pointer;border:1px solid #f0e0c0;transition:transform .2s,box-shadow .2s}
+.p-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.14)}
+.p-card.hidden{display:none}
+.pi-wrap{position:relative;overflow:hidden}
+.pi-wrap img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .3s}
+.p-card:hover .pi-wrap img{transform:scale(1.04)}
+.pi-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 60%)}
+.c-badge{position:absolute;top:12px;left:12px;border-radius:12px;padding:4px 10px;font-size:.72rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.c-badge.adv{background:#e67e22}
+.c-badge.spr,.c-badge.spi{background:#8e44ad}
+.c-badge.nat{background:#27ae60}
+.c-badge.wld{background:#16a085}
+.c-badge.ski{background:#2980b9}
+.c-badge.hon{background:#c0392b}
+.c-badge.fam{background:#d35400}
+.c-badge.her{background:#7f8c8d}
+.c-rating{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);color:#ffd700;border-radius:10px;padding:4px 8px;font-size:.75rem;font-weight:700}
+.wish-btn{position:absolute;bottom:12px;right:12px;background:rgba(255,255,255,.9);border:none;border-radius:50%;width:32px;height:32px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.wish-btn:hover{transform:scale(1.2)}
+.p-body{padding:18px}
+.p-region{font-size:.72rem;color:#999;font-family:'Nunito',sans-serif;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#3d1515;font-weight:700;margin-bottom:6px}
+.p-desc{font-family:'Nunito',sans-serif;font-size:.82rem;color:#666;line-height:1.5;margin-bottom:10px}
+.p-meta{display:flex;gap:12px;margin-bottom:10px}
+.p-meta span{font-size:.78rem;color:#888}
+.p-incls{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.p-incl{background:#f8f0f0;color:#7a1a1a;border-radius:12px;padding:3px 10px;font-size:.72rem;font-weight:600}
+.p-foot{display:flex;align-items:center;justify-content:space-between}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#7a1a1a;font-weight:700}
+.p-price small{font-size:.65rem;color:#888;font-family:'Nunito',sans-serif;font-weight:400}
+.btn-bk{background:linear-gradient(135deg,#e07b1a,#c0392b);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-family:'Cormorant Garamond',serif;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+.btn-bk:hover{opacity:.85}
+.no-results{text-align:center;padding:60px 20px;color:#aaa;font-family:'Nunito',sans-serif}
+/* Toast */
+.toast{position:fixed;bottom:28px;right:28px;background:#333;color:#fff;padding:14px 22px;border-radius:12px;font-family:'Nunito',sans-serif;font-size:.88rem;z-index:10000;opacity:0;transform:translateY(20px);transition:all .3s;max-width:340px;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+  .feat-card{grid-template-columns:1fr}
+  .feat-card img{height:220px}
+  .pkg-filter{flex-direction:column;align-items:flex-start}
+  .bk-grid{grid-template-columns:1fr}
+  .bk-grid .full{grid-column:1}
+}
+</style>
+</head>
+<body>
+
+<div id="sp"></div>
+<div id="ldr"><div class="l-logo">Dev<span>Bhoomi</span> ✨</div><div class="l-bar"><div class="l-fill"></div></div><div class="l-txt">Loading Your Himalayan Journey…</div></div>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">
+    <span class="logo-icon">🏔️</span>
+    <div class="logo-wrap">
+      <div class="logo-text">Dev<span>Bhoomi</span> Travels</div>
+      <div class="logo-sub">Uttarakhand's Soul</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="Destination.html">📍 Destinations</a></li>
+    <li><a href="packages.html" class="active">📦 Packages</a></li>
+    <li><a href="activities.html">🧗 Activities</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="contact.html">📞 Contact</a></li>
+    <li><a href="Hotel.html">🏨 Hotels</a></li>
+    <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+    <li><a href="About.html">ℹ️ About</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="Destination.html">📍 Destinations</a></li>
+    <li><a href="packages.html" class="active">📦 Packages</a></li>
+    <li><a href="activities.html">🧗 Activities</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="contact.html">📞 Contact</a></li>
+    <li><a href="Hotel.html">🏨 Hotels</a></li>
+    <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+    <li><a href="About.html">ℹ️ About</a></li>
+  </ul>
+  <div class="drawer-btns">
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="pkg-hero">
+  <div class="badge-hero" style="margin-bottom:.8rem">📦 Handpicked Packages</div>
+  <h1>Himalayan Tour <em>Packages</em></h1>
+  <p>Curated experiences for every kind of traveler — spiritual, adventurous, or romantic</p>
+</div>
+
+<!-- Filter Bar -->
+<div class="pkg-filter">
+  <div class="filter-tabs" id="pkgTabs">
+    <button class="ftab active" onclick="filterPkgs(this,'All')">All</button>
+    <button class="ftab" onclick="filterPkgs(this,'Adventure')">🧗 Adventure</button>
+    <button class="ftab" onclick="filterPkgs(this,'Spiritual')">🕉️ Spiritual</button>
+    <button class="ftab" onclick="filterPkgs(this,'Nature')">🌿 Nature</button>
+    <button class="ftab" onclick="filterPkgs(this,'Wildlife')">🐯 Wildlife</button>
+    <button class="ftab" onclick="filterPkgs(this,'Ski')">⛷️ Ski</button>
+    <button class="ftab" onclick="filterPkgs(this,'Honeymoon')">💑 Honeymoon</button>
+    <button class="ftab" onclick="filterPkgs(this,'Family')">👨‍👩‍👧 Family</button>
+  </div>
+  <div class="f-right">
+    <span class="r-count" id="pkgCount">20 packages</span>
+    <select class="sort-sel" onchange="sortPkgs(this.value)">
+      <option value="popular">Popular</option>
+      <option value="price-low">Price ↑</option>
+      <option value="price-high">Price ↓</option>
+      <option value="days">By Duration</option>
+    </select>
+  </div>
+</div>
+
+<!-- Packages -->
+<div class="pkg-wrap">
+
+  <!-- Featured -->
+  <div class="feat-card" data-cat="Spiritual" onclick="openBooking('chardham-tour.html','Complete Char Dham Yatra','28999','Yamunotri, Gangotri, Kedarnath & Badrinath','10 Days','2-50','Spiritual')">
+    <img src="https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=800&q=80" alt="Char Dham"/>
+    <div class="feat-body">
+      <div class="feat-badge">🕉️ Spiritual · Featured Package</div>
+      <div class="feat-title">Complete <em>Char Dham</em> Yatra</div>
+      <div class="feat-desc">The holiest pilgrimage — Yamunotri, Gangotri, Kedarnath & Badrinath with expert spiritual guides, helicopter option and end-to-end logistics.</div>
+      <div class="feat-meta"><span>📅 10 Days</span><span>👤 2–50 People</span><span>⭐ 5.0</span></div>
+      <div class="feat-incls">
+        <span class="feat-incl">🛕 All 4 Dhams</span>
+        <span class="feat-incl">🚁 Heli Option</span>
+        <span class="feat-incl">🏨 Premium Stay</span>
+        <span class="feat-incl">🚌 Transport</span>
+      </div>
+      <div class="feat-foot">
+        <div class="feat-price">₹28,999 <small>/person</small></div>
+        <button class="btn-bk" onclick="event.stopPropagation();openBooking('chardham-tour.html','Complete Char Dham Yatra','28999','Yamunotri, Gangotri, Kedarnath & Badrinath','10 Days','2-50','Spiritual')">Book Now →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Package Grid -->
+  <div class="pkg-grid" id="pkgGrid">
+    PACKAGECARDS
+  </div>
+  <div class="no-results hidden" id="noResults">No packages found for this category.</div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div id="bookOv" onclick="closeBookingIfOutside(event)">
+  <div class="bk-box">
+    <div class="bk-head">
+      <h3 id="bkTitle">Book Your Tour</h3>
+      <p id="bkSubtitle">Fill the form — our team will call within 24 hours</p>
+      <button class="bk-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="bk-body">
+      <div class="bk-summary">
+        <div class="pkg-name" id="bkPkgName">Package Name</div>
+        <div class="pkg-price" id="bkPkgPrice">₹0 /person</div>
+      </div>
+      <div class="bk-grid">
+        <div class="bk-field full">
+          <label>Your Name *</label>
+          <input type="text" id="bkName" placeholder="Rahul Sharma"/>
+        </div>
+        <div class="bk-field">
+          <label>Mobile / WhatsApp *</label>
+          <input type="tel" id="bkPhone" placeholder="+91 9876543210"/>
+        </div>
+        <div class="bk-field">
+          <label>Email Address</label>
+          <input type="email" id="bkEmail" placeholder="you@example.com"/>
+        </div>
+        <div class="bk-field">
+          <label>Travel Date *</label>
+          <input type="date" id="bkDate"/>
+        </div>
+        <div class="bk-field">
+          <label>No. of Persons</label>
+          <input type="number" id="bkPersons" value="2" min="1" max="50" oninput="calcTotal()"/>
+        </div>
+        <div class="bk-field full">
+          <label>Special Requests</label>
+          <textarea id="bkRequests" placeholder="Vegetarian meals, wheelchair access, kids, etc."></textarea>
+        </div>
+      </div>
+      <div class="bk-total">
+        <div class="bk-total-row"><span>Package Price</span><span id="bkPricePerPerson">₹0</span></div>
+        <div class="bk-total-row"><span>Persons</span><span id="bkPersonsDisplay">2</span></div>
+        <div class="bk-total-row"><span>Subtotal</span><span id="bkSubtotal">₹0</span></div>
+        <div class="bk-total-row"><span>GST (5%)</span><span id="bkGst">₹0</span></div>
+        <div class="bk-total-row final"><span>Total</span><span id="bkTotal">₹0</span></div>
+      </div>
+      <button class="bk-submit" id="bkBtn" onclick="submitBooking()">🏔️ Confirm Booking →</button>
+      <p style="text-align:center;font-size:.72rem;color:#aaa;margin-top:10px">30% advance · Free cancellation within 15 days · Secure booking</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Footer -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-brand-txt">Dev<span>Bhoomi</span> Travels</div>
+      <p>Uttarakhand's trusted travel partner since 2018.</p>
+    </div>
+    <div class="ft-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="Destination.html">Destinations</a></li><li><a href="activities.html">Activities</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="tel:+919410582310">📞 +91 94105 82310</a></li><li>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d54535b527d59584b5f5552525054135453">[email&#160;protected]</a></li></ul></div>
+    <div class="ft-col"><h4>Follow Us</h4><ul><li>📘 Facebook</li><li>📸 Instagram</li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2025 DevBhoomi Travels · All Rights Reserved</span></div>
+</footer>
+
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   PACKAGES PAGE — BOOKING SYSTEM
+═══════════════════════════════════════════════ */
+
+var API = (function(){
+  var h = window.location.hostname;
+  return (!h || h==='localhost' || h==='127.0.0.1')
+    ? 'http://localhost:5000/api'
+    : 'https://devbhoomi-travels.onrender.com/api';
+})();
+
+var _currentPkg = {};
+
+/* All 20 packages data */
+var PACKAGES = [
+  {id:'rishikesh',   cat:'Adventure', price:9499,  days:5,  rating:'4.9', region:'Rishikesh · Dehradun',        name:'Rishikesh Adventure Rush',          desc:'Grade 4–5 rafting, 83m bungee, camping and sunrise yoga.',            meta:'2–12', incls:['🛶 Rafting','🪂 Bungee','⛺ Camping','🧘 Yoga'],          img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&q=80',           page:'rishikesh-adventure.html'},
+  {id:'auli',        cat:'Ski',       price:14999, days:6,  rating:'4.8', region:'Auli · Chamoli',               name:'Auli Ski & Snow Getaway',           desc:'Asia\'s longest gondola, certified ski instructors, Nanda Devi views.',meta:'2–8', incls:['⛷️ Ski Lessons','🚡 Gondola','🏨 Resort'],             img:'https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600&q=80',          page:'auli-ski-snow.html'},
+  {id:'corbett',     cat:'Wildlife',  price:12999, days:4,  rating:'4.9', region:'Jim Corbett · Nainital',       name:'Jim Corbett Tiger Safari',          desc:'Bengal tigers, elephants & 600+ birds in India\'s oldest national park.', meta:'2–10', incls:['🐯 Safari','🏨 Resort','🦅 Bird Walk'],               img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&q=80',            page:'jim-corbett-safari.html'},
+  {id:'vof',         cat:'Nature',    price:9499,  days:7,  rating:'5.0', region:'Valley of Flowers · Chamoli',  name:'Valley of Flowers Trek',            desc:'UNESCO Heritage — 500+ wildflower species bloom across alpine meadows.', meta:'4–14', incls:['🌸 Trek','🛕 Hemkund','⛺ Camping'],                 img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',          page:'valley-of-flowers.html'},
+  {id:'nainital',    cat:'Family',    price:7999,  days:4,  rating:'4.8', region:'Nainital · Kumaon',            name:'Nainital Family Fun',               desc:'Naini Lake boating, Snow View cable car and Mall Road evenings.',     meta:'2–20', incls:['⛵ Boating','🚡 Cable Car','🏨 Hotel'],               img:'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80',          page:'nainital-family.html'},
+  {id:'mussoorie',   cat:'Honeymoon', price:11999, days:5,  rating:'4.9', region:'Mussoorie · Dehradun',         name:'Mussoorie Honeymoon Special',       desc:'Candlelight dinners, heritage hotel, Kempty Falls and couples spa.',  meta:'Couples', incls:['🌹 Decor','💆 Spa','🏨 Heritage'],              img:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',          page:'mussoorie-honeymoon.html'},
+  {id:'chopta',      cat:'Nature',    price:5999,  days:4,  rating:'4.9', region:'Chopta · Rudraprayag',         name:'Chopta Tungnath Trek',              desc:'Mini Switzerland — highest Shiva temple and 360° Himalayan panorama.',meta:'2–16', incls:['⛪ Tungnath','⛺ Glamping','🔭 Stargazing'],          img:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80',          page:'chopta-tungnath.html'},
+  {id:'bungee',      cat:'Adventure', price:3499,  days:2,  rating:'4.8', region:'Rishikesh · Highest in India', name:'Bungee & Zipline Thrill',           desc:'India\'s highest bungee 83m, giant swing and Ganges zipline.',        meta:'1–8',  incls:['🪂 Bungee 83m','🎢 Giant Swing','🏞️ Zipline'],      img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',              page:'bungee-zipline.html'},
+  {id:'kedarnath',   cat:'Spiritual', price:8499,  days:6,  rating:'5.0', region:'Kedarnath · Rudraprayag',      name:'Kedarnath Yatra & Trek',            desc:'Trek to Lord Shiva\'s abode at 3,583m — one of the 12 Jyotirlingas.',meta:'2–20', incls:['🛕 Darshan','🚁 Heli Option','🏨 Stay'],             img:'https://images.unsplash.com/photo-1649147313351-c86537fda0eb?w=600&q=80',          page:'kedarnath-yatra.html'},
+  {id:'paragliding', cat:'Adventure', price:4999,  days:3,  rating:'4.7', region:'Bir Billing',                  name:'Paragliding Adventure Camp',        desc:'Asia\'s top paragliding destination — tandem flights with certified pilots.', meta:'1–10', incls:['🪂 Tandem Flight','🎥 GoPro','⛺ Camping'],        img:'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&q=80',          page:'paragliding-bir-billing.html'},
+  {id:'haridwar',    cat:'Spiritual', price:4499,  days:3,  rating:'4.9', region:'Haridwar · Ganga Ghats',       name:'Haridwar Ganga Aarti',              desc:'Legendary Ganga Aarti, temple walks and spiritual dawn yoga on the ghats.',meta:'2–30', incls:['🙏 Ganga Aarti','🛕 Temples','🧘 Yoga'],           img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&q=80',            page:'haridwar-ganga-aarti.html'},
+  {id:'biking',      cat:'Adventure', price:6999,  days:5,  rating:'4.8', region:'Rishikesh to Devprayag',       name:'Himalayan Mountain Biking',         desc:'Epic 5-day downhill trail through forest paths to Devprayag confluence.',meta:'2–10', incls:['🚵 Premium Bikes','⛺ Camping','🏔️ Himalayan Trail'],img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',          page:'himalayan-mountain-biking.html'},
+  {id:'tehri',       cat:'Adventure', price:6999,  days:4,  rating:'4.7', region:'Tehri · Tehri Garhwal',        name:'Tehri Lake & Dhanaulti Escape',     desc:'Asia\'s largest reservoir, water sports, bungee over the lake.',     meta:'2–20', incls:['🚣 Water Sports','🪂 Bungee','🌲 Dhanaulti'],        img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',          page:'tehri-dhanaulti.html'},
+  {id:'lansdowne',   cat:'Nature',    price:5499,  days:3,  rating:'4.6', region:'Lansdowne · Pauri Garhwal',    name:'Lansdowne & Khirsu Retreat',        desc:'British-era cantonment, oak forests and 180° Himalayan views.',      meta:'2–15', incls:['🌲 Oak Forest','🏛️ Heritage','🏔️ Panorama'],        img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80',          page:'lansdowne-khirsu.html'},
+  {id:'gangotri',    cat:'Spiritual', price:10999, days:6,  rating:'4.9', region:'Gangotri · Uttarkashi',        name:'Gangotri Glacier & Dayara Bugyal',  desc:'Source of holy Ganga, Gaumukh glacier trek and alpine meadow.',      meta:'4–18', incls:['📍 Gangotri','🏔️ Gaumukh','🌸 Dayara'],             img:'https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=600&q=80',          page:'gangotri-dayara.html'},
+  {id:'munsiyari',   cat:'Adventure', price:11999, days:7,  rating:'4.8', region:'Munsiyari · Pithoragarh',      name:'Munsiyari & Milam Glacier Trek',    desc:'Little Kashmir of Uttarakhand, Panchchuli peaks and Milam Glacier.', meta:'4–14', incls:['🏔️ Panchchuli','🧊 Glacier','🌿 Kumaon'],             img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',          page:'munsiyari-milam.html'},
+  {id:'kausani',     cat:'Nature',    price:8999,  days:6,  rating:'4.7', region:'Kausani · Bageshwar',          name:'Kausani & Pindari Glacier Trek',    desc:'Switzerland of India, tea estates and Pindari Glacier at 3,660m.',   meta:'4–16', incls:['🍵 Tea Estate','🏔️ Pindari','🌸 Alpine'],            img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80',          page:'kausani-pindari.html'},
+  {id:'binsar',      cat:'Wildlife',  price:7499,  days:4,  rating:'4.8', region:'Binsar · Almora',              name:'Binsar Wildlife & Jageshwar Temple',desc:'2,500-year-old temple complex, leopard sanctuary and panoramic views.',meta:'2–18', incls:['🐾 Wildlife','📍 Jageshwar','🦅 Birdwatch'],          img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',          page:'binsar-jageshwar.html'},
+  {id:'abbott',      cat:'Nature',    price:5999,  days:3,  rating:'4.6', region:'Abbott Mount · Champawat',     name:'Abbott Mount & Mayawati Ashram',    desc:'Untouched British-era hill station and Swami Vivekananda\'s Ashram.', meta:'2–12', incls:['🏛️ Heritage','🧘 Ashram','🏔️ Nepal Views'],         img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80',          page:'abbott-mount.html'},
+  {id:'bikeadv',     cat:'Adventure', price:8999,  days:5,  rating:'4.7', region:'Rishikesh · Devprayag',        name:'Rishikesh Offroad Biking Expedition',desc:'Thrilling offroad mountain biking through jungle trails and river crossings.',meta:'2–8', incls:['🚵 MTB Bikes','🛡️ Safety Gear','🍽️ All Meals'], img:'https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=600&q=80',          page:'himalayan-mountain-biking.html'}
+];
+
+/* Render cards */
+(function renderCards(){
+  var grid = document.getElementById('pkgGrid');
+  var html = PACKAGES.map(function(p){
+    var badgeCls = {Adventure:'adv',Spiritual:'spr',Nature:'nat',Wildlife:'wld',Ski:'ski',Honeymoon:'hon',Family:'fam'}[p.cat]||'nat';
+    return '<div class="p-card" data-cat="'+p.cat+'" data-price="'+p.price+'" data-days="'+p.days+'"'+
+      ' onclick="openBooking(\''+p.page+'\',\''+p.name.replace(/'/g,"\\'")+'\',' +
+      '\''+p.price+'\',\''+p.region.replace(/'/g,"\\'")+'\',' +
+      '\''+p.days+' Days\',\''+p.meta+'\',\''+p.cat+'\')">'+
+      '<div class="pi-wrap">'+
+      '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy"/>'+
+      '<div class="pi-grad"></div>'+
+      '<span class="c-badge '+badgeCls+'">'+p.cat+'</span>'+
+      '<span class="c-rating">⭐ '+p.rating+'</span>'+
+      '<button class="wish-btn" onclick="wishToggle(event,this)">🤍</button>'+
+      '</div>'+
+      '<div class="p-body">'+
+      '<div class="p-region">'+p.region+'</div>'+
+      '<div class="p-name">'+p.name+'</div>'+
+      '<div class="p-desc">'+p.desc+'</div>'+
+      '<div class="p-meta"><span>📅 '+p.days+' Days</span><span>👤 '+p.meta+'</span></div>'+
+      '<div class="p-incls">'+p.incls.map(function(i){return '<span class="p-incl">'+i+'</span>';}).join('')+'</div>'+
+      '<div class="p-foot"><div class="p-price">₹'+p.price.toLocaleString('en-IN')+'<small>/person</small></div>'+
+      '<button class="btn-bk" onclick="event.stopPropagation();openBooking(\''+p.page+'\',\''+p.name.replace(/'/g,"\\'")+'\',' +
+      '\''+p.price+'\',\''+p.region.replace(/'/g,"\\'")+'\',' +
+      '\''+p.days+' Days\',\''+p.meta+'\',\''+p.cat+'\')">Book →</button>'+
+      '</div></div></div>';
+  }).join('');
+  grid.innerHTML = html;
+  updateCount(PACKAGES.length);
+})();
+
+/* Filter */
+function filterPkgs(btn, cat){
+  document.querySelectorAll('.ftab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var cards = document.querySelectorAll('#pkgGrid .p-card');
+  var count = 0;
+  cards.forEach(function(c){
+    var show = (cat==='All' || c.dataset.cat===cat);
+    c.classList.toggle('hidden', !show);
+    if(show) count++;
+  });
+  var feat = document.querySelector('.feat-card');
+  if(feat){ feat.style.display = (cat==='All'||cat==='Spiritual')?'grid':'none'; if(cat==='All'||cat==='Spiritual') count++; }
+  updateCount(count);
+  document.getElementById('noResults').classList.toggle('hidden', count>0);
+}
+
+/* Sort */
+function sortPkgs(v){
+  var grid = document.getElementById('pkgGrid');
+  var cards = Array.from(grid.querySelectorAll('.p-card:not(.hidden)'));
+  cards.sort(function(a,b){
+    if(v==='price-low') return +a.dataset.price - +b.dataset.price;
+    if(v==='price-high') return +b.dataset.price - +a.dataset.price;
+    if(v==='days') return +a.dataset.days - +b.dataset.days;
+    return 0;
+  });
+  cards.forEach(function(c){ grid.appendChild(c); });
+}
+
+function updateCount(n){ document.getElementById('pkgCount').textContent = n + ' package'+(n!==1?'s':''); }
+
+/* ── BOOKING MODAL ── */
+window.openBooking = function(page, name, price, region, duration, meta, cat){
+  _currentPkg = {page:page, name:name, price:+price, region:region, duration:duration, meta:meta, cat:cat};
+
+  document.getElementById('bkTitle').textContent = '🏔️ Book: ' + name;
+  document.getElementById('bkSubtitle').textContent = region + ' · ' + duration;
+  document.getElementById('bkPkgName').textContent = name;
+  document.getElementById('bkPkgPrice').textContent = '₹' + (+price).toLocaleString('en-IN') + ' /person';
+  document.getElementById('bkPricePerPerson').textContent = '₹' + (+price).toLocaleString('en-IN');
+
+  // Pre-fill if logged in
+  try{
+    var u = JSON.parse(localStorage.getItem('user')||'{}');
+    if(u.name) document.getElementById('bkName').value = u.name;
+    if(u.phone) document.getElementById('bkPhone').value = u.phone;
+    if(u.email) document.getElementById('bkEmail').value = u.email;
+  }catch(e){}
+
+  // Set min date to tomorrow
+  var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+  document.getElementById('bkDate').min = tomorrow.toISOString().split('T')[0];
+
+  calcTotal();
+
+  var ov = document.getElementById('bookOv');
+  ov.style.display = 'flex';
+  requestAnimationFrame(function(){ ov.classList.add('active'); });
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeBooking = function(){
+  var ov = document.getElementById('bookOv');
+  ov.classList.remove('active');
+  setTimeout(function(){ ov.style.display='none'; }, 280);
+  document.body.style.overflow = '';
+};
+
+window.closeBookingIfOutside = function(e){
+  if(e.target.id==='bookOv') closeBooking();
+};
+
+window.calcTotal = function(){
+  var persons = parseInt(document.getElementById('bkPersons').value)||1;
+  var price = _currentPkg.price||0;
+  var sub = price * persons;
+  var gst = Math.round(sub * 0.05);
+  var total = sub + gst;
+  document.getElementById('bkPersonsDisplay').textContent = persons;
+  document.getElementById('bkSubtotal').textContent = '₹' + sub.toLocaleString('en-IN');
+  document.getElementById('bkGst').textContent = '₹' + gst.toLocaleString('en-IN');
+  document.getElementById('bkTotal').textContent = '₹' + total.toLocaleString('en-IN');
+};
+
+window.submitBooking = async function(){
+  var name    = (document.getElementById('bkName').value||'').trim();
+  var phone   = (document.getElementById('bkPhone').value||'').trim();
+  var email   = (document.getElementById('bkEmail').value||'').trim();
+  var date    = document.getElementById('bkDate').value||'';
+  var persons = parseInt(document.getElementById('bkPersons').value)||1;
+  var notes   = (document.getElementById('bkRequests').value||'').trim();
+
+  if(!name)  { showT('👤 Apna naam likhein'); return; }
+  if(!phone) { showT('📞 Mobile number likhein'); return; }
+  if(!date)  { showT('📅 Travel date select karein'); return; }
+
+  var sub   = _currentPkg.price * persons;
+  var gst   = Math.round(sub * 0.05);
+  var total = sub + gst;
+
+  var btn = document.getElementById('bkBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Booking ho rahi hai…';
+
+  try{
+    var token = localStorage.getItem('token');
+    var hdrs  = {'Content-Type':'application/json'};
+    if(token) hdrs['Authorization'] = 'Bearer '+token;
+
+    var res  = await fetch(API+'/bookings',{
+      method:'POST', headers:hdrs,
+      body: JSON.stringify({
+        packageKey:      _currentPkg.id||'package',
+        packageName:     _currentPkg.name,
+        packagePrice:    '₹'+_currentPkg.price+'/person',
+        name:            name,
+        phone:           phone,
+        email:           email,
+        travelDate:      date,
+        persons:         persons,
+        totalAmount:     sub,
+        gstAmount:       gst,
+        finalAmount:     total,
+        specialRequests: notes,
+        source:          'packages_page',
+        bookingType:     'Package'
+      })
+    });
+    var data = await res.json();
+    closeBooking();
+    if(data.success){
+      showT('✅ Booking ho gayi! ID: '+(data.bookingId||'')+' — Team 24hr mein call karegi!');
+      // Clear form
+      ['bkName','bkPhone','bkEmail','bkDate','bkRequests'].forEach(function(id){ document.getElementById(id).value=''; });
+      document.getElementById('bkPersons').value = '2';
+    } else {
+      showT('❌ '+(data.message||'Kuch error aaya. Dobara try karein.'));
+    }
+  }catch(err){
+    console.error(err);
+    showT('❌ Server se connect nahi hua. WhatsApp: +91 94105 82310');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🏔️ Confirm Booking →';
+  }
+};
+
+/* ── Wishlist toggle ── */
+window.wishToggle = function(e, btn){
+  e.stopPropagation();
+  btn.textContent = (btn.textContent === '🤍') ? '❤️' : '🤍';
+  showT(btn.textContent === '❤️' ? '❤️ Wishlist mein add kiya!' : '💔 Wishlist se remove kiya');
+};
+
+/* ── Toast helper ── */
+function showT(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3200);
+}
+</script>
+</body>
+</html>

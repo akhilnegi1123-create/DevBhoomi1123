@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haridwar Ganga Aarti – Devbhoomi Travels</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--saffron:#E07B1A;--deep-saffron:#C0601A;--gold:#C89B2A;--crimson:#7A1A1A;--maroon:#5A1010;--parchment:#F9F0DC;--cream:#FDF6E3;--stone:#E8D9B8;--dark:#2A1A08;--text:#3D2408}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--parchment);font-family:'Lora',Georgia,serif;color:var(--text);overflow-x:hidden}
+
+
+
+
+
+.logo h1 span{display:block;font-family:'Cinzel',serif;font-size:clamp(8px,1.5vw,10px);color:var(--gold);font-weight:400;letter-spacing:3px;text-transform:uppercase}
+
+
+
+
+
+
+
+
+.hero{position:relative;height:clamp(260px,55vw,520px);overflow:hidden}
+.hero-slides{position:relative;width:100%;height:100%}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.slide.active{opacity:1}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(90,16,16,.2) 0%,rgba(42,26,8,.65) 100%);pointer-events:none}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--maroon),var(--gold),var(--saffron),var(--gold),var(--maroon));z-index:10}
+.hero-caption{position:absolute;bottom:clamp(20px,5vw,48px);left:clamp(16px,5vw,48px);right:clamp(16px,5vw,48px);z-index:20;color:#fff}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:clamp(9px,2vw,11px);letter-spacing:clamp(2px,1vw,5px);color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.hero-caption h2{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,5vw,38px);font-weight:700;line-height:1.25;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-meta{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.stars{font-size:clamp(12px,2.5vw,14px);color:#FFD700;letter-spacing:2px}
+.price-badge{background:linear-gradient(135deg,var(--crimson),var(--maroon));border:1px solid var(--gold);border-radius:4px;padding:5px 12px}
+.price-badge s{color:rgba(255,255,255,.5);font-size:clamp(11px,2vw,13px)}
+.price-badge strong{font-family:'Cinzel',serif;font-size:clamp(15px,3vw,20px);color:var(--gold);margin-left:6px}
+.slide-dots{position:absolute;bottom:14px;right:clamp(16px,4vw,40px);z-index:20;display:flex;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;border:1px solid var(--gold);transition:background .3s}
+.dot.active{background:var(--gold)}
+.prayer-flags{display:flex;justify-content:center;overflow:hidden;flex-wrap:nowrap}
+.flag{width:clamp(22px,4vw,32px);height:clamp(18px,3.5vw,26px);clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);flex-shrink:0}
+.quick-info{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(90deg,var(--maroon) 0%,var(--crimson) 50%,var(--maroon) 100%)}
+.qi-item{padding:clamp(12px,3vw,20px) clamp(8px,2vw,16px);text-align:center;border-right:1px solid rgba(200,155,42,.3)}
+.qi-item:last-child{border-right:none}
+.qi-item .qi-icon{font-size:clamp(16px,3vw,20px);margin-bottom:4px}
+.qi-item b{display:block;font-family:'Cinzel',serif;font-size:clamp(9px,1.5vw,11px);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+.qi-item p{font-size:clamp(11px,2vw,14px);color:#F9F0DC}
+.mandala-divider{text-align:center;padding:clamp(20px,4vw,28px) 0 10px;position:relative}
+.mandala-divider::before,.mandala-divider::after{content:'';position:absolute;top:50%;width:calc(50% - 50px);height:1px}
+.mandala-divider::before{left:0;background:linear-gradient(90deg,transparent,var(--gold))}
+.mandala-divider::after{right:0;background:linear-gradient(270deg,transparent,var(--gold))}
+.mandala-divider svg{width:54px;height:54px}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,42px);color:var(--crimson);text-align:center;letter-spacing:3px;margin-bottom:24px;padding:0 16px}
+.tabs-wrap{max-width:1060px;margin:0 auto 60px;padding:0 32px}
+.tab-bar{display:flex;border-bottom:3px solid var(--gold);margin-bottom:36px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;white-space:nowrap;padding:clamp(14px,2.5vw,20px) clamp(20px,4vw,48px);font-family:'Cinzel',serif;font-size:clamp(13px,2.2vw,17px);letter-spacing:2px;text-transform:uppercase;color:var(--text);cursor:pointer;border-bottom:4px solid transparent;margin-bottom:-3px;transition:color .2s;flex-shrink:0}
+.tab-btn:hover{color:var(--saffron)}
+.tab-btn.active{color:var(--crimson);border-bottom-color:var(--saffron)}
+.tab-panel{display:none;animation:fadeIn .35s ease}
+.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tab-panel p{line-height:2.1;font-size:clamp(15px,2.2vw,19px);color:#5A3A1A}
+.tab-panel ul{list-style:none;padding:0}
+.tab-panel ul li{padding:clamp(14px,2vw,20px) clamp(16px,2.5vw,24px);border-left:5px solid var(--saffron);background:rgba(224,123,26,.04);margin-bottom:14px;font-size:clamp(15px,2.2vw,18px);color:#5A3A1A;border-radius:0 8px 8px 0;display:flex;align-items:center;gap:14px}
+.tab-panel ul li::before{content:'꩜';color:var(--gold);font-size:18px;flex-shrink:0}
+.gallery{padding:0 32px 60px;max-width:1300px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gallery-grid img{width:100%;height:clamp(140px,22vw,320px);object-fit:cover;border-radius:6px;border:3px solid var(--stone);cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s;filter:sepia(10%) saturate(110%);display:block}
+.gallery-grid img:hover{transform:scale(1.03);border-color:var(--gold);box-shadow:0 8px 32px rgba(122,26,26,.25);filter:none}
+.booking-wrap{max-width:860px;margin:0 auto 40px;padding:0 32px}
+.booking-card{background:var(--cream);border:1px solid var(--stone);border-top:6px solid var(--saffron);border-radius:12px;padding:clamp(28px,5vw,56px);box-shadow:0 8px 48px rgba(122,26,26,.1)}
+.booking-card h3{font-family:'Cinzel',serif;font-size:clamp(20px,4vw,32px);color:var(--crimson);letter-spacing:3px;margin-bottom:32px;text-align:center}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid textarea{width:100%;background:var(--parchment);border:1px solid var(--stone);border-radius:6px;padding:clamp(13px,2vw,17px) clamp(14px,2vw,18px);font-family:'Lora',serif;font-size:clamp(14px,1.8vw,17px);color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+.form-grid input:focus,.form-grid textarea:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(224,123,26,.1)}
+.form-grid textarea{height:120px;resize:none}
+.btn-send{width:100%;margin-top:8px;padding:clamp(16px,2.5vw,20px);background:linear-gradient(135deg,var(--saffron),var(--deep-saffron));color:#fff;border:none;border-radius:6px;font-family:'Cinzel',serif;font-size:clamp(13px,2vw,16px);letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .15s}
+.btn-send:hover{opacity:.9;transform:translateY(-1px)}
+.download-wrap{text-align:center;padding:8px 16px 40px}
+.btn-download{display:inline-flex;align-items:center;gap:10px;background:var(--parchment);border:2px solid var(--gold);color:var(--crimson);padding:13px clamp(20px,4vw,32px);border-radius:4px;font-family:'Cinzel',serif;font-size:clamp(11px,2vw,13px);letter-spacing:2px;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;transition:color .25s,transform .15s,box-shadow .2s}
+.btn-download::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--saffron),var(--gold));opacity:0;transition:opacity .25s}
+.btn-download:hover::before{opacity:1}
+.btn-download:hover{color:#fff;transform:translateY(-2px);box-shadow:0 6px 24px rgba(122,26,26,.2)}
+.btn-download span,.btn-download svg{position:relative;z-index:1}
+footer{background:linear-gradient(135deg,var(--maroon) 0%,#3A0C0C 100%);color:var(--stone);padding:clamp(32px,5vw,56px) clamp(16px,4vw,40px) clamp(20px,3vw,32px);border-top:3px solid var(--gold);margin-bottom:60px}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(200,155,42,.25)}
+.footer-brand .logo-text{font-family:'Cinzel Decorative',serif;font-size:clamp(14px,2.5vw,18px);color:var(--gold);margin-bottom:4px}
+.footer-brand .logo-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(200,155,42,.6);text-transform:uppercase;margin-bottom:14px}
+.footer-brand p{font-size:13px;line-height:1.8;color:rgba(233,215,184,.7)}
+.footer-social{margin-top:16px;display:flex;gap:14px}
+.footer-social a{color:rgba(200,155,42,.6);font-size:20px;text-decoration:none;transition:color .2s}
+.footer-social a:hover{color:var(--gold)}
+.footer-col h4{font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(200,155,42,.25)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul li a{color:rgba(233,215,184,.7);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-col ul li a::before{content:'› ';color:var(--saffron)}
+.footer-col ul li a:hover{color:var(--gold)}
+.contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:13px;color:rgba(233,215,184,.7);line-height:1.5}
+.ci-icon{font-size:14px;flex-shrink:0;margin-top:2px}
+.footer-bottom{max-width:1100px;margin:22px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(200,155,42,.5);font-family:'Cinzel',serif;letter-spacing:1px}
+.footer-om{text-align:center;font-size:20px;color:rgba(200,155,42,.35);margin-top:6px;letter-spacing:12px}
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,var(--maroon) 0%,var(--crimson) 100%);border-top:2px solid var(--gold);padding:clamp(10px,2vw,14px) clamp(16px,4vw,40px);display:flex;justify-content:space-between;align-items:center;z-index:300;box-shadow:0 -4px 24px rgba(90,16,16,.3);gap:12px}
+.sticky-price{font-family:'Cinzel',serif;color:var(--gold);font-size:clamp(16px,3vw,20px);font-weight:700;white-space:nowrap}
+.sticky-price span{font-size:clamp(10px,1.5vw,12px);letter-spacing:2px;color:rgba(255,255,255,.6);display:block;font-family:'Lora',serif;font-weight:400}
+.sticky-btns{display:flex;gap:10px;flex-shrink:0}
+.btn-wa{background:#25D366;color:#fff;padding:clamp(8px,1.5vw,10px) clamp(12px,2vw,20px);border-radius:4px;font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:opacity .2s;white-space:nowrap}
+.btn-wa:hover{opacity:.85}
+.btn-query{background:transparent;border:1.5px solid var(--gold);color:var(--gold);padding:clamp(8px,1.5vw,10px) clamp(12px,2vw,20px);border-radius:4px;font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.btn-query:hover{background:var(--gold);color:var(--maroon)}
+@media(max-width:480px){.hero{height:300px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:1}.gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-brand{grid-column:1}.sticky-price span{display:none}.wa-label{display:none}footer{margin-bottom:56px}.tabs-wrap{padding:0 16px}.booking-wrap{padding:0 16px}.gallery{padding:0 16px 40px}}
+@media(max-width:360px){.hero{height:260px}.sticky-bar{padding:10px 12px}}
+
+header{background:var(--cream);border-bottom:3px solid var(--gold);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(122,26,26,.08)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;flex-shrink:0}
+.logo h1{font-family:'Cinzel Decorative',serif;font-size:clamp(13px,3vw,18px);color:var(--crimson);line-height:1.1}
+.desktop-nav{display:flex;align-items:center;gap:28px}
+.desktop-nav a{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--text);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.desktop-nav a:hover{color:var(--saffron)}
+
+
+  .back-bar{background:var(--cream);border-bottom:1px solid rgba(200,155,42,.25);padding:8px 24px;}
+  .back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--maroon);border:none;border-radius:6px;padding:8px 20px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-weight:700;transition:opacity .2s,transform .15s;text-decoration:none;}
+  .back-btn:hover{opacity:.85;transform:translateX(-2px);}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,8 72,60 8,60" fill="none" stroke="#7A1A1A" stroke-width="2.5"/>
+      <polygon points="40,8 60,42 20,42" fill="rgba(122,26,26,0.12)"/>
+      <rect x="33" y="42" width="14" height="18" fill="none" stroke="#C89B2A" stroke-width="2"/>
+      <polygon points="40,34 48,42 32,42" fill="#E07B1A" opacity=".8"/>
+      <line x1="40" y1="8" x2="40" y2="34" stroke="#C89B2A" stroke-width="1.5"/>
+      <polygon points="40,8 52,13 40,18" fill="#E07B1A"/>
+    </svg>
+    <h1>Devbhoomi Travels<span>Land of the Gods</span></h1>
+  </div>
+ <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Tours</a>
+    <a href="Destination.html">Destinations</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<div class="back-bar">
+  <a class="back-btn" href="javascript:void(0)" onclick="history.length > 1 ? history.back() : window.location.href='packages.html'">&#8592; Back</a>
+</div>
+
+<section class="hero">
+  <div class="hero-slides">
+    <img class="slide active" src="https://images.unsplash.com/photo-1591018533582-33b2993ee27d?w=1200&auto=format&fit=crop&q=80" alt="slide">
+<img class="slide" src="https://media.istockphoto.com/id/1402636014/photo/a-wide-angle-shot-of-hanging-bells-with-holy-red-cloths-with-a-snow-covered-mountains-in-the.jpg?s=612x612&w=0&k=20&c=E3xJiLZe6p3byyfW2odyqj_WBt43Rbv0RJ-oemq1mLk=" alt="slide">
+<img class="slide" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80" alt="slide">
+  </div>
+  <div class="hero-caption">
+    <p class="hero-eyebrow">✦ Legendary Ganga Aarti · Temple Walks · Dawn Yoga ✦</p>
+    <h2>Haridwar Ganga Aarti</h2>
+    <div class="hero-meta">
+      <span class="stars">★★★★★ <span style="color:rgba(255,255,255,.7);font-size:12px;font-family:'Lora',serif;"> 4.8</span></span>
+      <div class="price-badge"><s>₹6,500</s><strong>₹4,499</strong></div>
+    </div>
+  </div>
+  <div class="slide-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+<div class="dot" onclick="goSlide(1)"></div>
+<div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+<div class="prayer-flags"><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div></div>
+
+<div class="quick-info">
+  <div class="qi-item"><div class="qi-icon">⏱</div><b>Duration</b><p>3 Days</p></div>
+  <div class="qi-item"><div class="qi-icon">📍</div><b>Location</b><p>Haridwar · Ganga Ghats</p></div>
+  <div class="qi-item"><div class="qi-icon">👥</div><b>Group Size</b><p>2–30 Persons</p></div>
+  <div class="qi-item"><div class="qi-icon">🏷️</div><b>Category</b><p>Spiritual</p></div>
+</div>
+
+<div class="mandala-divider" style="margin-top:36px"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/>
+    <g stroke="#C89B2A" stroke-width="1" fill="none">
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(270 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/>
+    </g>
+  </svg></div>
+
+<div class="tabs-wrap">
+  <p class="section-title">Tour Details</p>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="openTab('overview',this)">Overview</button>
+    <button class="tab-btn" onclick="openTab('itinerary',this)">Itinerary</button>
+    <button class="tab-btn" onclick="openTab('inclusion',this)">Inclusions</button>
+  </div>
+  <div id="overview" class="tab-panel active"><p>Haridwar — literally the Gateway to God — is one of the seven holy cities of Hinduism where the Ganga descends from the Himalayas to the plains. The iconic evening Ganga Aarti at Har Ki Pauri, where thousands of oil lamps float on the sacred river, is among the most soul-stirring spectacles in all of India. This 3-day spiritual immersion includes temple walks, dawn yoga on the ghats, Ayurvedic experiences, and a Rishikesh day trip.</p></div>
+  <div id="itinerary" class="tab-panel"><ul><li>Day 1 — Arrive Haridwar, check-in, evening Ganga Aarti at Har Ki Pauri with floating diyas</li>
+<li>Day 2 — Dawn yoga session on the ghats, Mansa Devi temple by aerial ropeway, Chandi Devi darshan</li>
+<li>Day 3 — Day trip to Rishikesh — Laxman Jhula, Ram Jhula, Beatles Ashram, return & departure</li></ul></div>
+  <div id="inclusion" class="tab-panel"><ul><li>2 nights stay at ghat-side heritage dharamshala or hotel</li>
+<li>All meals — sattvic vegetarian food throughout</li>
+<li>Evening Ganga Aarti participation with puja kit & floating diya</li>
+<li>Morning yoga session on the Ganga ghats (1 hr)</li>
+<li>Mansa Devi & Chandi Devi ropeway tickets & guide</li></ul></div>
+</div>
+
+<div class="mandala-divider"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/>
+    <g stroke="#C89B2A" stroke-width="1" fill="none">
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(270 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/>
+    </g>
+  </svg></div>
+<section class="gallery">
+  <p class="section-title">Sacred Vistas</p>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1591018533582-33b2993ee27d?w=600&auto=format&fit=crop&q=80" alt="gallery"><img src="https://media.istockphoto.com/id/1402636014/photo/a-wide-angle-shot-of-hanging-bells-with-holy-red-cloths-with-a-snow-covered-mountains-in-the.jpg?s=612x612&w=0&k=20&c=E3xJiLZe6p3byyfW2odyqj_WBt43Rbv0RJ-oemq1mLk=" alt="gallery"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80" alt="gallery"><img src="https://images.unsplash.com/photo-1649147313351-c86537fda0eb?w=600&auto=format&fit=crop&q=80" alt="gallery">
+  </div>
+</section>
+
+<div class="mandala-divider"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/>
+    <circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/>
+    <g stroke="#C89B2A" stroke-width="1" fill="none">
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(270 40 40)"/>
+      <ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/>
+    </g>
+  </svg></div>
+<div class="booking-wrap">
+  <div class="booking-card">
+    <h3>✦ &nbsp; Book Your Tour &nbsp; ✦</h3>
+    <div class="form-grid">
+      <input type="text"   id="bk-name"    placeholder="Your Name *">
+      <input type="email"  id="bk-email"   placeholder="Email Address">
+      <input type="tel"    id="bk-phone"   placeholder="Contact Number *">
+      <input type="number" id="bk-persons" placeholder="Total Persons" min="1" value="1">
+      <input type="date"   id="bk-date"    class="full">
+      <textarea            id="bk-msg"     class="full" placeholder="Special requests or message…"></textarea>
+      <button class="btn-send full" id="bk-btn" onclick="submitQuery()">Send Query</button>
+    </div>
+  </div>
+</div>
+
+<div class="download-wrap">
+  <button class="btn-download" onclick="downloadItinerary()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Download Itinerary</span>
+  </button>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text">Devbhoomi Travels</div>
+      <div class="logo-sub">Land of the Gods</div>
+      <p>We curate sacred yatras and Himalayan adventures across Uttarakhand — from Char Dham to adventure sports, wildlife safaris to honeymoon getaways.</p>
+      <div class="footer-social"><a href="#">📘</a><a href="#">📸</a><a href="#">▶️</a></div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul><li><a href="#">Home</a></li><li><a href="#">All Tours</a></li><li><a href="#">Destinations</a></li><li><a href="#">Gallery</a></li><li><a href="#">Blog</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Popular Tours</h4>
+      <ul><li><a href="#">Char Dham</a></li><li><a href="#">Kedarnath</a></li><li><a href="#">Valley of Flowers</a></li><li><a href="#">Auli Ski</a></li><li><a href="#">Jim Corbett</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="contact-item"><span class="ci-icon">📍</span><span>Rishikesh, Uttarakhand – 249201</span></div>
+      <div class="contact-item"><span class="ci-icon">📞</span><span>+91 94105 82310</span></div>
+      <div class="contact-item"><span class="ci-icon">✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa949b979b898e9fba9e9f8c9892959597938e889b8c9f9689d49394">[email&#160;protected]</a></span></div>
+      <div class="contact-item"><span class="ci-icon">🕐</span><span>Mon – Sat, 9 AM to 7 PM</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Devbhoomi Travels. All Rights Reserved.</span>
+    <span>Crafted with 🙏 for the Himalayas</span>
+    <span>Privacy &nbsp;|&nbsp; Terms</span>
+  </div>
+  <div class="footer-om">ॐ &nbsp; ॐ &nbsp; ॐ</div>
+</footer>
+
+<div class="sticky-bar">
+  <div class="sticky-price">₹4,499<span>Per Person &nbsp;•&nbsp; 3 Days</span></div>
+  <div class="sticky-btns">
+    <a href="#" class="btn-wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="wa-label">WhatsApp</span></a>
+    <button class="btn-query">Send Query</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.addEventListener('DOMContentLoaded', function() {
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+  if (!slides.length) return;
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current] && dots[current].classList.add('active');
+  }
+  window.goSlide = goSlide;
+  setInterval(function() { goSlide((current + 1) % slides.length); }, 4000);
+});
+  function openTab(id, btn) { document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.getElementById(id).classList.add('active'); if (btn) btn.classList.add('active'); }
+  function downloadItinerary() {
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Haridwar Ganga Aarti Itinerary</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:wght@400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F9F0DC;font-family:'Lora',Georgia,serif;color:#3D2408;width:210mm;padding:0}
+.top-band{background:linear-gradient(90deg,#5A1010,#7A1A1A,#5A1010);padding:10px 0;text-align:center;color:#C89B2A;font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px}
+.gold-line{height:3px;background:linear-gradient(90deg,#5A1010,#C89B2A,#E07B1A,#C89B2A,#5A1010)}
+.header{text-align:center;padding:22px 40px 12px}
+.brand{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:#7A1A1A;letter-spacing:3px}
+.brand-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:6px;color:#C89B2A;margin-top:3px}
+hr{width:60%;margin:10px auto;border:none;border-top:1px solid #C89B2A}
+.tour-title{font-family:'Cinzel',serif;font-size:16px;color:#5A1010;font-weight:700;margin-bottom:4px}
+.meta{font-size:11px;color:#8B5E3C}.price{font-family:'Cinzel',serif;font-size:14px;color:#E07B1A;font-weight:700;margin-top:4px}
+.info-row{display:flex;justify-content:center;gap:10px;margin:12px 40px}
+.ib{background:#7A1A1A;color:#fff;border-radius:5px;padding:6px 14px;text-align:center;flex:1;max-width:88px}
+.ib-l{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:2px;color:#C89B2A;display:block;margin-bottom:2px}
+.ib-v{font-size:10px;font-weight:bold}
+.sec{margin:12px 36px 0}
+.sec-h{background:linear-gradient(90deg,#7A1A1A,#5A1010);color:#C89B2A;font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;padding:5px 10px;border-radius:3px;margin-bottom:8px}
+.ov{font-size:11px;line-height:1.8;color:#5A3A1A}
+.day{margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid rgba(200,155,42,.3)}
+.day:last-child{border-bottom:none}
+.drow{display:flex;align-items:flex-start;gap:8px}
+.dp{background:#E07B1A;color:#fff;font-family:'Cinzel',serif;font-size:7.5px;font-weight:700;padding:3px 7px;border-radius:3px;white-space:nowrap;margin-top:2px;flex-shrink:0}
+.dt{font-family:'Cinzel',serif;font-size:10px;color:#7A1A1A;font-weight:700;margin-bottom:2px}
+.dd{font-size:9.5px;color:#7A5030;line-height:1.6}
+.il{list-style:none}
+.il li{display:flex;align-items:flex-start;gap:7px;font-size:10.5px;color:#5A3A1A;margin-bottom:6px;line-height:1.5}
+.il li::before{content:'✦';color:#E07B1A;font-size:8px;margin-top:2px;flex-shrink:0}
+.cb{margin:14px 36px 0;border:1.5px solid #C89B2A;border-radius:5px;padding:10px 14px;text-align:center;background:rgba(200,155,42,.06)}
+.cbt{font-family:'Cinzel',serif;font-size:10px;color:#7A1A1A;font-weight:700;margin-bottom:4px;letter-spacing:1.5px}
+.cbd{font-size:10px;color:#8B5E3C;line-height:1.7}
+.bot{background:linear-gradient(90deg,#5A1010,#7A1A1A,#5A1010);padding:8px 0;text-align:center;color:rgba(200,155,42,.7);font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;margin-top:18px}
+@media print{body,*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<div class="top-band">OM &nbsp; DEVBHOOMI TRAVELS &nbsp; OM</div>
+<div class="gold-line"></div>
+<div class="header">
+  <div class="brand">DEVBHOOMI TRAVELS</div>
+  <div class="brand-sub">LAND OF THE GODS</div>
+  <hr>
+  <div class="tour-title">Haridwar Ganga Aarti</div>
+  <div class="meta">★★★★★ &nbsp; Rating: 4.8 / 5</div>
+  <div class="price">Package Price: Rs. 4,499 per person</div>
+</div>
+<div class="info-row">
+  <div class="ib"><span class="ib-l">Duration</span><span class="ib-v">3 Days</span></div>
+  <div class="ib"><span class="ib-l">Location</span><span class="ib-v">Haridwar</span></div>
+  <div class="ib"><span class="ib-l">Group</span><span class="ib-v">2–30 Persons</span></div>
+  <div class="ib"><span class="ib-l">Departs</span><span class="ib-v">Haridwar</span></div>
+</div>
+<div class="sec"><div class="sec-h">✦ OVERVIEW</div>
+<p class="ov">Haridwar — literally the Gateway to God — is one of the seven holy cities of Hinduism where the Ganga descends from the Himalayas to the plains. The iconic evening Ganga Aarti at Har Ki Pauri, where thousands of oil lamps float on the sacred river, is among the most soul-stirring spectacles in all of India. This 3-day spiritual immersion includes temple walks, dawn yoga on the ghats, Ayurvedic experiences, and a Rishikesh day trip.</p></div>
+<div class="sec"><div class="sec-h">✦ DAY-BY-DAY ITINERARY</div>
+<div class="day"><div class="drow"><span class="dp">Day 1</span><div><div class="dt">Arrive Haridwar, check-in, evening Ganga Aarti at Har Ki Pauri with floating diyas</div><div class="dd">Day 1 — Arrive Haridwar, check-in, evening Ganga Aarti at Har Ki Pauri with floating diyas</div></div></div></div><div class="day"><div class="drow"><span class="dp">Day 2</span><div><div class="dt">Dawn yoga session on the ghats, Mansa Devi temple by aerial ropeway, Chandi Devi darshan</div><div class="dd">Day 2 — Dawn yoga session on the ghats, Mansa Devi temple by aerial ropeway, Chandi Devi darshan</div></div></div></div><div class="day"><div class="drow"><span class="dp">Day 3</span><div><div class="dt">Day trip to Rishikesh</div><div class="dd">Day 3 — Day trip to Rishikesh — Laxman Jhula, Ram Jhula, Beatles Ashram, return & departure</div></div></div></div>
+</div>
+<div class="sec"><div class="sec-h">✦ WHAT IS INCLUDED</div>
+  <ul class="il"><li>2 nights stay at ghat-side heritage dharamshala or hotel</li><li>All meals — sattvic vegetarian food throughout</li><li>Evening Ganga Aarti participation with puja kit & floating diya</li><li>Morning yoga session on the Ganga ghats (1 hr)</li><li>Mansa Devi & Chandi Devi ropeway tickets & guide</li></ul>
+</div>
+<div class="cb">
+  <div class="cbt">BOOK YOUR TOUR — DEVBHOOMI TRAVELS</div>
+  <div class="cbd">+91 94105 82310 &nbsp;|&nbsp; namaste@devbhoomitravels.in<br>Rishikesh, Uttarakhand – 249201 &nbsp;|&nbsp; Mon–Sat, 9 AM to 7 PM</div>
+</div>
+<div class="bot">OM &nbsp; This itinerary is subject to change &nbsp; OM</div>
+<script>window.onload=function(){window.print()}<\/script>
+</body></html>`;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.downl
+
+<script>
+/* ═══ BOOKING FORM — Query Submit ═══ */
+(function() {
+  var API = (function(){
+    var h = window.location.hostname;
+    return (!h || h === 'localhost' || h === '127.0.0.1')
+      ? 'http://localhost:5000/api'
+      : 'https://devbhoomi-travels.onrender.com/api';
+  })();
+
+  var pkgName = document.title.replace(/\s*[–-].*/, '').trim() || document.querySelector('h1')?.textContent?.trim() || 'Package Query';
+
+  window.submitQuery = async function() {
+    var name    = (document.getElementById('bk-name')?.value    || '').trim();
+    var email   = (document.getElementById('bk-email')?.value   || '').trim();
+    var phone   = (document.getElementById('bk-phone')?.value   || '').trim();
+    var persons = (document.getElementById('bk-persons')?.value || '1');
+    var date    = (document.getElementById('bk-date')?.value    || '');
+    var msg     = (document.getElementById('bk-msg')?.value     || '').trim();
+    var btn     = document.getElementById('bk-btn');
+
+    if (!name)  { alert('Apna naam likhein'); return; }
+    if (!phone && !email) { alert('Phone ya email zaroori hai'); return; }
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    try {
+      var res = await fetch(API + '/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          packageKey:   '',
+          packageName:  pkgName,
+          packagePrice: '',
+          name:         name,
+          phone:        phone,
+          email:        email,
+          travelDate:   date,
+          persons:      parseInt(persons) || 1,
+          totalAmount:  0,
+          gstAmount:    0,
+          finalAmount:  0,
+          specialRequests: msg,
+          source:       'package_detail_page',
+          bookingType:  'Package'
+        })
+      });
+      var data = await res.json();
+      if (data.success) {
+        if (btn) { btn.textContent = '✅ Query Sent!'; btn.style.background = '#166534'; }
+        alert('✅ Query submit ho gayi! Booking ID: ' + (data.bookingId || '') + '\nHum 24 ghante mein call/WhatsApp karenge.');
+        ['bk-name','bk-email','bk-phone','bk-persons','bk-date','bk-msg'].forEach(function(id){
+          var el = document.getElementById(id); if(el) el.value='';
+        });
+      } else {
+        alert('❌ ' + (data.message || 'Kuch error aaya. Dobara try karein.'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Query'; }
+      }
+    } catch(e) {
+      alert('❌ Server se connect nahi ho pa raha. WhatsApp pe contact karein: +91 94105 82310');
+      if (btn) { btn.disabled = false; btn.textContent = 'Send Query'; }
+    }
+  };
+})();
+</script>
+

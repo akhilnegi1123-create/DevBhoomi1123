@@ -1,0 +1,40 @@
+══════════════════════════════════════════════════
+  DevBhoomi Travels — Complete Guide
+══════════════════════════════════════════════════
+
+✅ ALL BOOKING FORMS CONNECTED TO SERVER
+   - Tour Pages, Hotel, Vehicle, Contact — sab kaam karte hain
+   - Admin Panel mein saara data dikhta hai
+
+ADMIN PANEL:
+  URL:      /admin.html
+  Email:    admin@devbhoomi.in
+  Password: admin@123
+
+BACKEND SERVER LOCALLY CHALAYEIN:
+  Step 1: Terminal kholo
+  Step 2: cd backend
+  Step 3: npm install    (pehli baar hi karein)
+  Step 4: node server.js
+  Server chalega: http://localhost:5000
+
+RENDER PE DEPLOY (see DEPLOY_README.md):
+  1. Code GitHub pe push karo
+  2. render.com pe Web Service banao
+  3. Root Directory: backend
+  4. Build: npm install | Start: node server.js
+  5. Environment variables add karo (.env file se)
+  Live URL: https://devbhoomi-travels.onrender.com
+
+BOOKING DATA DEKHNA:
+  Admin Panel:  /admin.html → Bookings section
+  Direct API:   /api/bookings/all (admin login required)
+
+FORMS JO KAAM KARTE HAIN:
+  ✅ Sabhi 16 Tour Pages (Package Query)
+  ✅ Hotel.html (Hotel Booking)
+  ✅ Vehicle.html (Vehicle Booking)
+  ✅ Contact.html (Enquiry)
+  ✅ Login / Signup (Index & all pages)
+  ✅ Newsletter Subscribe
+══════════════════════════════════════════════════

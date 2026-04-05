@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lansdowne & Khirsu Hill Retreat – Devbhoomi Travels</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--saffron:#E07B1A;--deep-saffron:#C0601A;--gold:#C89B2A;--crimson:#7A1A1A;--maroon:#5A1010;--parchment:#F9F0DC;--cream:#FDF6E3;--stone:#E8D9B8;--dark:#2A1A08;--text:#3D2408}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--parchment);font-family:'Lora',Georgia,serif;color:var(--text);overflow-x:hidden}
+.om-strip{background:linear-gradient(90deg,var(--maroon),var(--crimson),var(--maroon));text-align:center;padding:6px 12px;font-size:clamp(9px,2vw,13px);letter-spacing:clamp(2px,1vw,6px);color:var(--gold);overflow:hidden;white-space:nowrap}
+header{background:var(--cream);border-bottom:3px solid var(--gold);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(122,26,26,.08)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;flex-shrink:0}
+.logo h1{font-family:'Cinzel Decorative',serif;font-size:clamp(13px,3vw,18px);color:var(--crimson);line-height:1.1}
+.logo h1 span{display:block;font-family:'Cinzel',serif;font-size:clamp(8px,1.5vw,10px);color:var(--gold);font-weight:400;letter-spacing:3px;text-transform:uppercase}
+.desktop-nav{display:flex;align-items:center;gap:28px}
+.desktop-nav a{font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;color:var(--text);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.desktop-nav a:hover{color:var(--saffron)}
+.back-bar{background:var(--cream);border-bottom:1px solid rgba(200,155,42,.25);padding:8px 24px}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--maroon);border:none;border-radius:6px;padding:8px 20px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-weight:700;transition:opacity .2s,transform .15s;text-decoration:none}
+.back-btn:hover{opacity:.85;transform:translateX(-2px)}
+.hero{position:relative;height:clamp(260px,55vw,520px);overflow:hidden}
+.hero-slides{position:relative;width:100%;height:100%}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+.slide.active{opacity:1}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(90,16,16,.2) 0%,rgba(42,26,8,.65) 100%);pointer-events:none}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--maroon),var(--gold),var(--saffron),var(--gold),var(--maroon));z-index:10}
+.hero-caption{position:absolute;bottom:clamp(20px,5vw,48px);left:clamp(16px,5vw,48px);right:clamp(16px,5vw,48px);z-index:20;color:#fff}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:clamp(9px,2vw,11px);letter-spacing:clamp(2px,1vw,5px);color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.hero-caption h2{font-family:'Cinzel Decorative',serif;font-size:clamp(18px,5vw,38px);font-weight:700;line-height:1.25;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-meta{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.stars{font-size:clamp(12px,2.5vw,14px);color:#FFD700;letter-spacing:2px}
+.price-badge{background:linear-gradient(135deg,var(--crimson),var(--maroon));border:1px solid var(--gold);border-radius:4px;padding:5px 12px}
+.price-badge s{color:rgba(255,255,255,.5);font-size:clamp(11px,2vw,13px)}
+.price-badge strong{font-family:'Cinzel',serif;font-size:clamp(15px,3vw,20px);color:var(--gold);margin-left:6px}
+.slide-dots{position:absolute;bottom:14px;right:clamp(16px,4vw,40px);z-index:20;display:flex;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;border:1px solid var(--gold);transition:background .3s}
+.dot.active{background:var(--gold)}
+.prayer-flags{display:flex;justify-content:center;overflow:hidden;flex-wrap:nowrap}
+.flag{width:clamp(22px,4vw,32px);height:clamp(18px,3.5vw,26px);clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);flex-shrink:0}
+.quick-info{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(90deg,var(--maroon) 0%,var(--crimson) 50%,var(--maroon) 100%)}
+.qi-item{padding:clamp(12px,3vw,20px);text-align:center;color:#fff;border-right:1px solid rgba(200,155,42,.3)}
+.qi-item:last-child{border-right:none}
+.qi-icon{font-size:clamp(18px,4vw,24px);margin-bottom:4px}
+.qi-item b{display:block;font-family:'Cinzel',serif;font-size:clamp(9px,1.5vw,11px);letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+.qi-item p{font-size:clamp(11px,2vw,14px);opacity:.9}
+.mandala-divider{text-align:center;padding:clamp(20px,4vw,36px) 0;position:relative}
+.mandala-divider::before,.mandala-divider::after{content:'';position:absolute;top:50%;width:35%;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.mandala-divider::before{left:0}
+.mandala-divider::after{right:0;background:linear-gradient(270deg,transparent,var(--gold))}
+.mandala-divider svg{width:clamp(50px,8vw,80px);height:clamp(50px,8vw,80px)}
+.tabs-wrap{padding:0 clamp(16px,5vw,80px)}
+.section-title{font-family:'Cinzel',serif;font-size:clamp(16px,3vw,22px);text-align:center;color:var(--crimson);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
+.tab-bar{display:flex;border-bottom:3px solid var(--stone);overflow-x:auto;margin-bottom:24px}
+.tab-btn{background:none;border:none;white-space:nowrap;padding:clamp(14px,2.5vw,20px) clamp(20px,4vw,48px);font-family:'Cinzel',serif;font-size:clamp(13px,2.2vw,17px);letter-spacing:2px;text-transform:uppercase;color:var(--text);cursor:pointer;border-bottom:4px solid transparent;margin-bottom:-3px;transition:color .2s;flex-shrink:0}
+.tab-btn.active{color:var(--crimson);border-bottom-color:var(--saffron)}
+.tab-panel{display:none;animation:fadeIn .4s ease}
+.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tab-panel p{font-size:clamp(15px,2.2vw,18px);line-height:1.9;color:#5A3A1A}
+.tab-panel ul{list-style:none}
+.tab-panel ul li{padding:clamp(14px,2vw,20px) clamp(16px,2.5vw,24px);border-left:5px solid var(--saffron);background:rgba(224,123,26,.04);margin-bottom:14px;font-size:clamp(15px,2.2vw,18px);color:#5A3A1A;border-radius:0 8px 8px 0;display:flex;align-items:flex-start;gap:14px}
+.gallery{padding:0 clamp(16px,5vw,80px) clamp(30px,5vw,60px)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,1.5vw,14px)}
+.gallery-grid img{width:100%;height:clamp(140px,22vw,320px);object-fit:cover;border-radius:6px;border:3px solid var(--stone);cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s;filter:sepia(10%) saturate(110%);display:block}
+.gallery-grid img:hover{transform:scale(1.03);border-color:var(--gold);box-shadow:0 8px 32px rgba(122,26,26,.25);filter:none}
+.booking-wrap{padding:0 clamp(16px,5vw,80px) clamp(30px,5vw,60px)}
+.booking-card{background:var(--cream);border:1px solid var(--stone);border-top:6px solid var(--saffron);border-radius:12px;padding:clamp(28px,5vw,56px);box-shadow:0 8px 48px rgba(122,26,26,.1)}
+.booking-card h3{font-family:'Cinzel',serif;font-size:clamp(16px,3vw,22px);letter-spacing:3px;color:var(--crimson);text-align:center;margin-bottom:clamp(20px,4vw,36px)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid textarea{width:100%;background:var(--parchment);border:1px solid var(--stone);border-radius:6px;padding:clamp(13px,2vw,17px) clamp(14px,2vw,18px);font-family:'Lora',serif;font-size:clamp(14px,1.8vw,17px);color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+.form-grid input:focus,.form-grid textarea:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(224,123,26,.1)}
+.form-grid textarea{height:120px;resize:none}
+.btn-send{width:100%;margin-top:8px;padding:clamp(16px,2.5vw,20px);background:linear-gradient(135deg,var(--saffron),var(--deep-saffron));color:#fff;border:none;border-radius:6px;font-family:'Cinzel',serif;font-size:clamp(13px,2vw,16px);letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .15s}
+.btn-send:hover{opacity:.9;transform:translateY(-1px)}
+.download-wrap{text-align:center;padding:0 0 clamp(30px,5vw,60px)}
+.btn-download{display:inline-flex;align-items:center;gap:10px;background:var(--parchment);border:2px solid var(--gold);color:var(--crimson);padding:13px clamp(20px,4vw,32px);border-radius:4px;font-family:'Cinzel',serif;font-size:clamp(11px,2vw,13px);letter-spacing:2px;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;transition:color .25s,transform .15s,box-shadow .2s}
+.btn-download::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),var(--saffron));opacity:0;transition:opacity .25s}
+.btn-download:hover{color:#fff;transform:translateY(-2px);box-shadow:0 6px 24px rgba(122,26,26,.2)}
+.btn-download:hover::before{opacity:1}
+.btn-download svg,.btn-download span{position:relative;z-index:1}
+footer{background:linear-gradient(180deg,var(--maroon) 0%,var(--dark) 100%);color:rgba(253,246,227,.85);padding:clamp(40px,8vw,80px) clamp(16px,5vw,80px) clamp(20px,4vw,40px)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(24px,5vw,60px);margin-bottom:clamp(30px,5vw,50px)}
+.logo-text{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,3vw,22px);color:var(--gold);margin-bottom:4px}
+.logo-sub{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(200,155,42,.6);text-transform:uppercase;margin-bottom:14px}
+footer p{font-size:clamp(13px,1.8vw,16px);line-height:1.8;color:rgba(253,246,227,.65)}
+.footer-col h4{font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(200,155,42,.25)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:rgba(253,246,227,.65);text-decoration:none;font-size:clamp(13px,1.8vw,15px);transition:color .2s}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(200,155,42,.2);padding-top:clamp(16px,3vw,24px);text-align:center;font-size:clamp(10px,1.5vw,12px);color:rgba(253,246,227,.4);font-family:'Cinzel',serif;letter-spacing:2px}
+.sticky-price{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,var(--maroon),var(--crimson));border-top:2px solid var(--gold);padding:12px clamp(16px,5vw,48px);display:flex;align-items:center;justify-content:space-between;z-index:150;box-shadow:0 -4px 24px rgba(0,0,0,.3)}
+.sticky-amount{font-family:'Cinzel',serif;font-size:clamp(16px,3vw,22px);color:var(--gold);font-weight:700}
+.sticky-amount span{display:inline;font-size:clamp(11px,1.8vw,14px);color:rgba(255,255,255,.6);font-family:'Lora',serif}
+.btn-query{background:transparent;border:1.5px solid var(--gold);color:var(--gold);padding:clamp(8px,1.5vw,10px) clamp(12px,2vw,20px);border-radius:4px;font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,12px);letter-spacing:1px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.btn-query:hover{background:var(--gold);color:var(--maroon)}
+@media(max-width:480px){.hero{height:300px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:1}.gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-brand{grid-column:1}.sticky-price span{display:none}.wa-label{display:none}footer{margin-bottom:56px}.tabs-wrap{padding:0 16px}.booking-wrap{padding:0 16px}.gallery{padding:0 16px 40px}}
+</style>
+</head>
+<body>
+<div class="om-strip">ॐ &nbsp; देवभूमि उत्तराखण्ड &nbsp; ॐ &nbsp;•&nbsp; Pauri Garhwal &nbsp;•&nbsp; ॐ &nbsp; Devbhoomi Travels &nbsp; ॐ</div>
+
+<header>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,8 72,60 8,60" fill="none" stroke="#7A1A1A" stroke-width="2.5"/>
+      <polygon points="40,8 60,42 20,42" fill="rgba(122,26,26,0.12)"/>
+      <rect x="33" y="42" width="14" height="18" fill="none" stroke="#C89B2A" stroke-width="2"/>
+      <polygon points="40,34 48,42 32,42" fill="#E07B1A" opacity=".8"/>
+      <line x1="40" y1="8" x2="40" y2="34" stroke="#C89B2A" stroke-width="1.5"/>
+      <polygon points="40,8 52,13 40,18" fill="#E07B1A"/>
+    </svg>
+    <h1>Devbhoomi Travels<span>Land of the Gods</span></h1>
+  </div>
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="packages.html">Tours</a>
+    <a href="Destination.html">Destinations</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="back-bar">
+  <a class="back-btn" href="javascript:void(0)" onclick="history.length > 1 ? history.back() : window.location.href='packages.html'">&#8592; Back</a>
+</div>
+
+<section class="hero">
+  <div class="hero-slides">
+    <img class="slide active" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&auto=format&fit=crop&q=80" alt="slide">
+    <img class="slide" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80" alt="slide">
+    <img class="slide" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80" alt="slide">
+  </div>
+  <div class="hero-caption">
+    <p class="hero-eyebrow">✦ British-Era Cantonment · Apple Orchards · Oak Forests ✦</p>
+    <h2>Lansdowne & Khirsu Hill Retreat</h2>
+    <div class="hero-meta">
+      <span class="stars">★★★★★ <span style="color:rgba(255,255,255,.7);font-size:12px;font-family:'Lora',serif;"> 4.6</span></span>
+      <div class="price-badge"><s>₹7,000</s><strong>₹5,499</strong></div>
+    </div>
+  </div>
+  <div class="slide-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+<div class="prayer-flags"><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div><div class="flag" style="background:#1C6DD0"></div><div class="flag" style="background:#fff;border:1px solid #ddd"></div><div class="flag" style="background:#E63946"></div><div class="flag" style="background:#4CAF50"></div><div class="flag" style="background:#FFD700"></div></div>
+
+<div class="quick-info">
+  <div class="qi-item"><div class="qi-icon">⏱</div><b>Duration</b><p>3 Days</p></div>
+  <div class="qi-item"><div class="qi-icon">📍</div><b>Location</b><p>Lansdowne · Pauri</p></div>
+  <div class="qi-item"><div class="qi-icon">👥</div><b>Group Size</b><p>2–15 Persons</p></div>
+  <div class="qi-item"><div class="qi-icon">🏷️</div><b>Category</b><p>Nature</p></div>
+</div>
+
+<div class="mandala-divider" style="margin-top:36px"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/><circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/><circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/><g stroke="#C89B2A" stroke-width="1" fill="none"><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(270 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/></g></svg></div>
+
+<div class="tabs-wrap">
+  <p class="section-title">Tour Details</p>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="openTab('overview',this)">Overview</button>
+    <button class="tab-btn" onclick="openTab('itinerary',this)">Itinerary</button>
+    <button class="tab-btn" onclick="openTab('inclusion',this)">Inclusions</button>
+  </div>
+  <div id="overview" class="tab-panel active"><p>Lansdowne is one of Uttarakhand's best-kept secrets — a charming British-era hill station at 1,706m, home to the Garhwal Rifles regiment. Walk through pristine oak and rhododendron forests, visit the Bhullatal Lake, and explore colonial-era churches. Khirsu, just 19 km away, offers stunning 180° views of over 20 Himalayan peaks including Nanda Devi, Trishul and Chaukhamba.</p></div>
+  <div id="itinerary" class="tab-panel"><ul><li>Day 1 — Drive from Delhi/Haridwar to Lansdowne (250/120 km), Bhullatal Lake walk</li>
+<li>Day 2 — St. Mary's Church, War Memorial, Garhwal Rifles Regimental Museum, forest trail</li>
+<li>Day 3 — Drive to Khirsu for 180° Himalayan panorama, apple orchards, return</li>
+</ul></div>
+  <div id="inclusion" class="tab-panel"><ul><li>2 nights hotel stay in Lansdowne</li>
+<li>All breakfasts and dinners</li>
+<li>Guided heritage walk through British-era Lansdowne</li>
+<li>Khirsu visit with local guide</li>
+<li>Private cab transfers</li>
+</ul></div>
+</div>
+
+<div class="mandala-divider"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/><circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/><circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/><g stroke="#C89B2A" stroke-width="1" fill="none"><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(270 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/></g></svg></div>
+<section class="gallery">
+  <p class="section-title">Gallery</p>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&auto=format&fit=crop&q=80" alt="gallery">
+    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80" alt="gallery">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80" alt="gallery">
+    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&auto=format&fit=crop&q=80" alt="gallery">
+  </div>
+</section>
+
+<div class="mandala-divider"><svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="28" fill="none" stroke="#C89B2A" stroke-width="1"/><circle cx="40" cy="40" r="18" fill="none" stroke="#E07B1A" stroke-width="1"/><circle cx="40" cy="40" r="6" fill="#C89B2A" opacity=".6"/><g stroke="#C89B2A" stroke-width="1" fill="none"><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(0 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(45 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(90 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(135 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(180 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(225 40 40)"/><ellipse cx="40" cy="22" rx="4" ry="8" transform="rotate(315 40 40)"/></g></svg></div>
+<div class="booking-wrap">
+  <div class="booking-card">
+    <h3>✦ &nbsp; Book Your Tour &nbsp; ✦</h3>
+    <div class="form-grid">
+      <input type="text"   id="bk-name"    placeholder="Your Name *">
+      <input type="email"  id="bk-email"   placeholder="Email Address">
+      <input type="tel"    id="bk-phone"   placeholder="Contact Number *">
+      <input type="number" id="bk-persons" placeholder="Total Persons" min="1" value="1">
+      <input type="date"   id="bk-date"    class="full">
+      <textarea            id="bk-msg"     class="full" placeholder="Special requests or message…"></textarea>
+      <button class="btn-send full" id="bk-btn" onclick="submitQuery()">Send Query</button>
+    </div>
+  </div>
+</div>
+
+<div class="download-wrap">
+  <button class="btn-download" onclick="downloadItinerary()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Download Itinerary</span>
+  </button>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text">Devbhoomi Travels</div>
+      <div class="logo-sub">Land of the Gods</div>
+      <p>We curate Himalayan journeys across all 13 districts of Uttarakhand — from spiritual yatras to adventure treks, wildlife safaris to heritage stays.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="packages.html">All Tours</a></li>
+        <li><a href="Destination.html">Destinations</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a><a href="https://maps.google.com?q=Rishikesh+Uttarakhand" target="_blank" style="color:inherit;text-decoration:none">📍 Tapovan, Rishikesh, Uttarakhand – 249192</a></a></li>
+        <li><a><a href="tel:+919410582310" style="color:inherit;text-decoration:none">📞 +91 94105 82310</a></a></li>
+        <li><a>✉️ <span class="__cf_email__" data-cfemail="335d525e5240475673575645515b5c5c5e5a47415245565f401d5a5d">[email&#160;protected]</span></a></li>
+        <li><a>🕐 Mon – Sat, 9 AM to 7 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Devbhoomi Travels · All Rights Reserved · Crafted with 🏔️ for the Himalayas</div>
+</footer>
+
+<div class="sticky-price">
+  <div class="sticky-amount">₹5,499 <span>Per Person · 3 Days</span></div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <a href="https://wa.me/919876543210" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:10px 18px;border-radius:4px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;text-decoration:none">💬 WhatsApp</a>
+    <button class="btn-query">Send Query</button>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  if (!slides.length) return;
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current] && dots[current].classList.add('active');
+  }
+  window.goSlide = goSlide;
+  setInterval(function() { goSlide((current + 1) % slides.length); }, 4000);
+});
+
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+function downloadItinerary() {
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Lansdowne & Khirsu Hill Retreat Itinerary</title>
+  <style>*{margin:0;padding:0;box-sizing:border-box}body{background:#F9F0DC;font-family:'Georgia',serif;color:#3D2408;width:210mm;padding:0}.top-band{background:#7A1A1A;padding:10px 0;text-align:center;color:#C89B2A;font-size:11px;letter-spacing:5px}.header{text-align:center;padding:22px 40px 12px}.brand{font-size:22px;font-weight:700;color:#7A1A1A;letter-spacing:3px}.tour-title{font-size:16px;color:#5A1010;font-weight:700;margin:8px 0 4px}.price{font-size:14px;color:#E07B1A;font-weight:700}.sec{margin:12px 36px 0}.sec-h{background:#7A1A1A;color:#C89B2A;font-size:9px;letter-spacing:3px;padding:5px 10px;border-radius:3px;margin-bottom:8px}.day{margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid rgba(200,155,42,.3)}.il{list-style:none}.il li{display:flex;align-items:flex-start;gap:7px;font-size:10.5px;color:#5A3A1A;margin-bottom:6px;line-height:1.5}.il li::before{content:'✦';color:#E07B1A;font-size:8px;margin-top:2px;flex-shrink:0}.cb{margin:14px 36px 0;border:1.5px solid #C89B2A;border-radius:5px;padding:10px 14px;text-align:center}.cbt{font-size:10px;color:#7A1A1A;font-weight:700;letter-spacing:1.5px}.cbd{font-size:10px;color:#8B5E3C;line-height:1.7}.bot{background:#7A1A1A;padding:8px 0;text-align:center;color:rgba(200,155,42,.7);font-size:8px;letter-spacing:3px;margin-top:18px}</style></head><body>
+  <div class="top-band">OM &nbsp; DEVBHOOMI TRAVELS &nbsp; OM</div>
+  <div class="header"><div class="brand">DEVBHOOMI TRAVELS</div><div class="tour-title">Lansdowne & Khirsu Hill Retreat</div><div class="price">Package Price: ₹5,499 per person</div></div>
+  <div class="sec"><div class="sec-h">✦ ITINERARY</div><ul class="il"><li>Day 1 — Drive from Delhi/Haridwar to Lansdowne (250/120 km), Bhullatal Lake walk</li>
+<li>Day 2 — St. Mary's Church, War Memorial, Garhwal Rifles Regimental Museum, forest trail</li>
+<li>Day 3 — Drive to Khirsu for 180° Himalayan panorama, apple orchards, return</li>
+</ul></div>
+  <div class="sec"><div class="sec-h">✦ INCLUSIONS</div><ul class="il"><li>2 nights hotel stay in Lansdowne</li>
+<li>All breakfasts and dinners</li>
+<li>Guided heritage walk through British-era Lansdowne</li>
+<li>Khirsu visit with local guide</li>
+<li>Private cab transfers</li>
+</ul></div>
+  <div class="cb"><div class="cbt">BOOK YOUR TOUR — DEVBHOOMI TRAVELS</div><div class="cbd">+91 94105 82310 &nbsp;|&nbsp; namaste@devbhoomitravels.in<br>Rishikesh, Uttarakhand – 249201 &nbsp;|&nbsp; Mon–Sat, 9 AM to 7 PM</div></div>
+  <div class="bot">OM &nbsp; This itinerary is subject to change &nbsp; OM</div>
+  <script>window.onload=function(){window.print()}<\/script></body></html>`;
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'lansdowne-
+
+<script>
+/* ═══ BOOKING FORM — Query Submit ═══ */
+(function() {
+  var API = (function(){
+    var h = window.location.hostname;
+    return (!h || h === 'localhost' || h === '127.0.0.1')
+      ? 'http://localhost:5000/api'
+      : 'https://devbhoomi-travels.onrender.com/api';
+  })();
+
+  var pkgName = document.title.replace(/\s*[–-].*/, '').trim() || document.querySelector('h1')?.textContent?.trim() || 'Package Query';
+
+  window.submitQuery = async function() {
+    var name    = (document.getElementById('bk-name')?.value    || '').trim();
+    var email   = (document.getElementById('bk-email')?.value   || '').trim();
+    var phone   = (document.getElementById('bk-phone')?.value   || '').trim();
+    var persons = (document.getElementById('bk-persons')?.value || '1');
+    var date    = (document.getElementById('bk-date')?.value    || '');
+    var msg     = (document.getElementById('bk-msg')?.value     || '').trim();
+    var btn     = document.getElementById('bk-btn');
+
+    if (!name)  { alert('Apna naam likhein'); return; }
+    if (!phone && !email) { alert('Phone ya email zaroori hai'); return; }
+
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    try {
+      var res = await fetch(API + '/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          packageKey:   '',
+          packageName:  pkgName,
+          packagePrice: '',
+          name:         name,
+          phone:        phone,
+          email:        email,
+          travelDate:   date,
+          persons:      parseInt(persons) || 1,
+          totalAmount:  0,
+          gstAmount:    0,
+          finalAmount:  0,
+          specialRequests: msg,
+          source:       'package_detail_page',
+          bookingType:  'Package'
+        })
+      });
+      var data = await res.json();
+      if (data.success) {
+        if (btn) { btn.textContent = '✅ Query Sent!'; btn.style.background = '#166534'; }
+        alert('✅ Query submit ho gayi! Booking ID: ' + (data.bookingId || '') + '\nHum 24 ghante mein call/WhatsApp karenge.');
+        ['bk-name','bk-email','bk-phone','bk-persons','bk-date','bk-msg'].forEach(function(id){
+          var el = document.getElementById(id); if(el) el.value='';
+        });
+      } else {
+        alert('❌ ' + (data.message || 'Kuch error aaya. Dobara try karein.'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Query'; }
+      }
+    } catch(e) {
+      alert('❌ Server se connect nahi ho pa raha. WhatsApp pe contact karein: +91 94105 82310');
+      if (btn) { btn.disabled = false; btn.textContent = 'Send Query'; }
+    }
+  };
+})();
+</script>
+

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBhoomi Travels — Activities</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="sp"></div>
+
+<div id="ldr">
+  <div class="l-logo">Dev<span>Bhoomi</span> ✨</div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-txt">Loading Your Himalayan Journey…</div>
+</div>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">
+    <span class="logo-icon">🏔️</span>
+    <div class="logo-wrap">
+      <div class="logo-text">Dev<span>Bhoomi</span> Travels</div>
+      <div class="logo-sub">Uttarakhand's Soul</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html" class="active">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html" class="active">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="drawer-btns">
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+</div>
+
+  <div class="acts-hero">
+    <div class="acts-hero-bg"></div>
+    <div class="ov-l"></div><div class="ov-b"></div>
+    <div class="acts-hero-inner">
+      <div class="badge-hero" style="margin-bottom:.8rem">🧗 Thrilling Experiences</div>
+      <h1>Exciting <em>Activities</em></h1>
+      <p>From adrenaline-pumping adventures to peaceful spiritual retreats</p>
+    </div>
+  </div>
+
+  <div class="acts-wrap">
+    <div class="sec-head-row"><div><span class="sec-eye">🎯 What To Do</span><div class="sec-title">Choose Your <em>Adventure</em></div></div></div>
+    <div class="acts-big-grid">
+      <div class="act-big-card" onclick="openDetail('rishikesh')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600&q=80" alt="Rafting"/><div class="act-bi-grad"></div><span class="act-bi-badge">Water</span><span class="act-bi-diff diff-hard">Difficult</span></div><div class="act-bi-body"><div class="act-bi-name">🛶 River Rafting</div><div class="act-bi-desc">Grade 3–5 rapids on the sacred Ganga through Rishikesh gorge. Electrifying and unforgettable.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Rishikesh</span><span class="act-bi-tag">⏱️ Half Day</span><span class="act-bi-tag">👥 Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹800/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('rishikesh')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('bungee')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=600&q=80" alt="Bungee"/><div class="act-bi-grad"></div><span class="act-bi-badge">Extreme</span><span class="act-bi-diff diff-hard">Extreme</span></div><div class="act-bi-body"><div class="act-bi-name">🪂 Bungee Jump</div><div class="act-bi-desc">India's highest bungee at 83m over the Ganga gorge. Pure adrenaline in Rishikesh.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Rishikesh</span><span class="act-bi-tag">⏱️ 2 Hours</span><span class="act-bi-tag">👤 Solo</span></div><div class="act-bi-foot"><div class="act-bi-price">₹3,500/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('bungee')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('auli')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600&q=80" alt="Skiing"/><div class="act-bi-grad"></div><span class="act-bi-badge">Winter</span><span class="act-bi-diff diff-med">Moderate</span></div><div class="act-bi-body"><div class="act-bi-name">⛷️ Snow Skiing</div><div class="act-bi-desc">Certified instructors, all-level slopes and Asia's longest gondola at Auli ski resort.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Auli</span><span class="act-bi-tag">⏱️ Full Day</span><span class="act-bi-tag">👥 All Levels</span></div><div class="act-bi-foot"><div class="act-bi-price">₹2,500/day</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('auli')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('para')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=600&q=80" alt="Paragliding"/><div class="act-bi-grad"></div><span class="act-bi-badge">Air</span><span class="act-bi-diff diff-med">Moderate</span></div><div class="act-bi-body"><div class="act-bi-name">🪂 Paragliding</div><div class="act-bi-desc">Tandem flights over Himalayan valleys with APPI-certified pilots at Asia's top spot.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Bir Billing</span><span class="act-bi-tag">⏱️ 20–30 Min</span><span class="act-bi-tag">👥 Tandem</span></div><div class="act-bi-foot"><div class="act-bi-price">₹2,200/flight</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('para')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('corbett')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&q=80" alt="Safari"/><div class="act-bi-grad"></div><span class="act-bi-badge">Wildlife</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">🐯 Jungle Safari</div><div class="act-bi-desc">Spot Bengal tigers, elephants and leopards with naturalist guides in Jim Corbett.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Jim Corbett</span><span class="act-bi-tag">⏱️ Half Day</span><span class="act-bi-tag">👥 Jeep</span></div><div class="act-bi-foot"><div class="act-bi-price">₹1,800/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('corbett')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('vof')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600&q=80" alt="Trek"/><div class="act-bi-grad"></div><span class="act-bi-badge">Trek</span><span class="act-bi-diff diff-med">Moderate</span></div><div class="act-bi-body"><div class="act-bi-name">🥾 Himalayan Trekking</div><div class="act-bi-desc">Trek through UNESCO-protected Valley of Flowers to Hemkund Sahib at 4,329m.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Valley of Flowers</span><span class="act-bi-tag">⏱️ Multi-Day</span><span class="act-bi-tag">👥 Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹9,499/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('vof')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('biking')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Biking"/><div class="act-bi-grad"></div><span class="act-bi-badge">Cycling</span><span class="act-bi-diff diff-hard">Difficult</span></div><div class="act-bi-body"><div class="act-bi-name">🚵 Mountain Biking</div><div class="act-bi-desc">Epic downhill trail from Himalayan foothills to Devprayag on premium mountain bikes.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Rishikesh</span><span class="act-bi-tag">⏱️ 5 Days</span><span class="act-bi-tag">👥 Small Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹6,999/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('biking')">Book →</button></div></div></div>
+
+      <div class="act-big-card"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Yoga"/><div class="act-bi-grad"></div><span class="act-bi-badge">Wellness</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">🧘 Yoga Retreat</div><div class="act-bi-desc">Sunrise yoga on the Ganges bank, pranayama and Ayurvedic sessions with master yogi.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Rishikesh</span><span class="act-bi-tag">⏱️ 7 Days</span><span class="act-bi-tag">👥 All Levels</span></div><div class="act-bi-foot"><div class="act-bi-price">₹5,500/person</div><button class="btn-bk" onclick="openAuth('signup')">Book →</button></div></div></div>
+
+      <div class="act-big-card"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Camping"/><div class="act-bi-grad"></div><span class="act-bi-badge">Camping</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">⛺ Himalayan Camping</div><div class="act-bi-desc">Stargazing under the Milky Way, bonfire evenings and forest hikes at Chopta meadows.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Chopta</span><span class="act-bi-tag">⏱️ 2–3 Days</span><span class="act-bi-tag">👥 Family/Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹2,500/night</div><button class="btn-bk" onclick="openAuth('signup')">Book →</button></div></div></div>
+
+      <div class="act-big-card" onclick="openDetail('chardham')"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80" alt="Pilgrimage"/><div class="act-bi-grad"></div><span class="act-bi-badge">Spiritual</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">🕉️ Char Dham Pilgrimage</div><div class="act-bi-desc">Complete the sacred circuit — Yamunotri, Gangotri, Kedarnath & Badrinath with expert guides.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Uttarakhand</span><span class="act-bi-tag">⏱️ 12 Days</span><span class="act-bi-tag">👥 All Ages</span></div><div class="act-bi-foot"><div class="act-bi-price">₹28,999/person</div><button class="btn-bk" onclick="event.stopPropagation();openDetail('chardham')">Book →</button></div></div></div>
+
+      <div class="act-big-card"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Bird Watching"/><div class="act-bi-grad"></div><span class="act-bi-badge">Nature</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">🦅 Bird Watching</div><div class="act-bi-desc">600+ bird species spotted at Jim Corbett and Binsar Wildlife Sanctuary with expert ornithologists.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 Corbett/Binsar</span><span class="act-bi-tag">⏱️ Full Day</span><span class="act-bi-tag">👥 Small Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹1,500/person</div><button class="btn-bk" onclick="openAuth('signup')">Book →</button></div></div></div>
+
+      <div class="act-big-card"><div class="act-bi-img"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&q=80" alt="Photography"/><div class="act-bi-grad"></div><span class="act-bi-badge">Creative</span><span class="act-bi-diff diff-easy">Easy</span></div><div class="act-bi-body"><div class="act-bi-name">📸 Photography Tour</div><div class="act-bi-desc">Golden hour Himalayan shoots, temple photography and landscape tours with professional guide.</div><div class="act-bi-tags"><span class="act-bi-tag">📍 All Regions</span><span class="act-bi-tag">⏱️ 3–5 Days</span><span class="act-bi-tag">👥 Small Group</span></div><div class="act-bi-foot"><div class="act-bi-price">₹4,500/person</div><button class="btn-bk" onclick="openAuth('signup')">Book →</button></div></div></div>
+    </div>
+  </div>
+  <div class="nl-sec"><span class="nl-eye">📩 Book Your Adventure</span><h2>Ready to <em>Experience</em> Uttarakhand?</h2><p>Get personalized activity packages tailored to your interests</p><div class="nl-form"><input type="email" id="nlEmail_home" placeholder="Enter your email…"/><button onclick="window.location.href='contact.html'">Get Custom Quote →</button></div></div>
+  <footer><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-txt">Dev<span>Bhoomi</span> Travels</div><p>Uttarakhand's trusted travel partner.</p></div><div class="ft-col"><h4>Quick Links</h4><ul><li><a onclick="window.location.href='index.html'">Home</a></li><li><a onclick="window.location.href='packages.html'">Packages</a></li><li><a onclick="window.location.href='Destination.html'">Destinations</a></li><li><a onclick="window.location.href='contact.html'">Contact</a></li></ul></div><div class="ft-col"><h4>Contact</h4><ul><li><a><a href="tel:+919410582310" style="color:inherit;text-decoration:none">📞 +91 94105 82310</a></a></li><li><a>✉️ <span class="__cf_email__" data-cfemail="aac3c4ccc5eacecfdcc8c2c5c5c7c3ded8cbdccfc6d984c3c4">[email&#160;protected]</span></a></li></ul></div><div class="ft-col"><h4>Follow Us</h4><ul><li><a>📘 Facebook</a></li><li><a>📸 Instagram</a></li></ul></div></div><div class="ft-bot"><span>© 2025 DevBhoomi Travels</span></div></footer>
+
+
+<!-- ═══════════════════════════════════════
+   PAGE: GALLERY
+═══════════════════════════════════════ -->
+
+<div class="d-ov" id="detailOv" onclick="if(event.target===this)closeDetail()">
+  <div class="d-box">
+    <button class="dh-close" onclick="closeDetail()">✕</button>
+    <div class="dh"><img id="dImg" src="" alt=""/><div class="dh-grad"></div>
+      <div class="dh-txt"><h2 id="dTitle"></h2><p id="dReg"></p></div></div>
+    <div class="d-body">
+      <div class="d-stats" id="dStats"></div>
+      <p class="d-desc" id="dDesc"></p>
+      <div class="d-ht">✨ Package Highlights</div>
+      <div class="d-hg" id="dHl"></div>
+      <div class="d-brow">
+        <div><div class="d-bp" id="dPrice"></div><div style="font-size:.73rem;color:var(--stone)">per person · All inclusive</div></div>
+        <button class="btn-primary" onclick="closeDetail();openAuth('signup')">Book This Package →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb-ov" id="lbOv" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="m-ov" id="loginMod" onclick="if(event.target===this)closeAuth('loginMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('loginMod')">✕</button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Welcome Back!</h2><p>Log in to manage your bookings</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf"><label>Email</label><input type="email" id="lEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="fgt"><a href="#">Forgot password?</a></div>
+    <button class="m-sub" id="lSubmitBtn" onclick="doLogin()">Log In →</button>
+    <p class="m-sw">New here? <a onclick="switchAuth('loginMod','signupMod')">Create account</a></p>
+  </div>
+</div>
+
+<!-- ═══════════ SIGNUP MODAL ═══════════ -->
+<div class="m-ov" id="signupMod" onclick="if(event.target===this)closeAuth('signupMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('signupMod')">✕</button>
+    <button class="m-back" onclick="switchAuth('signupMod','loginMod')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Join Us Today</h2><p>Create your free account</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf-row">
+      <div class="mf"><label>First Name</label><input type="text" id="sName" placeholder="Rahul"/></div>
+      <div class="mf"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+    </div>
+    <div class="mf"><label>Email</label><input type="email" id="sEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Mobile</label><input type="tel" id="sPhone" placeholder="+91 94105 82310"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="sPass" placeholder="Min. 8 characters"/></div>
+    <button class="m-sub" id="sSubmitBtn" onclick="doSignup()">Create Account →</button>
+    <p class="m-sw">Already have an account? <a onclick="switchAuth('signupMod','loginMod')">Log In</a></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════
+   DATA + JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+/* ─── Package data ─── */
+const PKG = {
+  chardham:{title:'Complete Char Dham Yatra',reg:'Uttarakhand — 4 Dhams',img:'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=900&q=85',price:'₹28,999',nights:'11',rating:'5.0',rev:'2,100',desc:'The holiest pilgrimage of Hinduism — Yamunotri, Gangotri, Kedarnath & Badrinath. Expert spiritual guides, 3★ stays, helicopter option for Kedarnath, 24/7 medical support.',hl:['✈️ Flight Tickets','🚁 Helicopter Option','🏨 3★ Hotel Stays','🍽️ All Meals','🧭 Spiritual Guide','🚌 Full AC Transport','🆘 Medical Support','🙏 All Darshan']},
+  rishikesh:{title:'Rishikesh Adventure Rush',reg:'Rishikesh, Dehradun District',img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=900&q=85',price:'₹9,499',nights:'4',rating:'4.9',rev:'1,100',desc:'Grade 4–5 Ganges rapids, 83m bungee jump, river beach camping under stars and sunrise yoga sessions by the holy Ganga — adrenaline meets serenity.',hl:['🛶 Grade 4–5 Rafting','🪂 Bungee Jump 83m','⛺ River Camping','🧘 Sunrise Yoga','🏨 Camp + Hotel','🍽️ All Meals','🎯 Zipline & Swing','🚌 AC Transport']},
+  auli:{title:'Auli Ski & Snow Getaway',reg:'Auli, Chamoli District',img:'https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=900&q=85',price:'₹14,999',nights:'5',rating:'4.8',rev:'640',desc:'India\'s premier ski resort at 2,519–3,049m altitude. Asia\'s longest 4km gondola, Nanda Devi views, certified instructors for all levels and cozy mountain resort evenings.',hl:['⛷️ Ski All Levels','🚡 Longest Gondola','🏔️ Nanda Devi View','🏨 Mountain Resort','❄️ Snow Gear Included','🍽️ All Meals','🔥 Bonfire Evenings','🎿 Certified Instructors']},
+  corbett:{title:'Jim Corbett Tiger Safari',reg:'Jim Corbett National Park',img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=900&q=85',price:'₹12,999',nights:'3',rating:'4.9',rev:'870',desc:'India\'s oldest national park — Bengal tigers, leopards, elephants and 600+ bird species. Expert naturalist guides lead dawn safaris through Dhikala zone.',hl:['🐯 Jeep Safari Dhikala','🐘 Elephant Safari','🦅 Bird Walk 600+','🏨 Jungle Resort','🍽️ All Meals','📸 Photography Guide','🌅 Sunrise Safari','🧭 Naturalist Guide']},
+  vof:{title:'Valley of Flowers Trek',reg:'Valley of Flowers, Chamoli',img:'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=900&q=85',price:'₹9,499',nights:'6',rating:'5.0',rev:'530',desc:'UNESCO World Heritage — 500+ wildflower species bloom July–September. Combined with Hemkund Sahib Gurudwara at 4,329m — a once in a lifetime alpine experience.',hl:['🌸 500+ Wildflowers','🛕 Hemkund Sahib','🥾 Alpine Trek 8km','⛺ Camp Ghangaria','🏔️ Snow Peak Views','📸 Photo Guide','🍽️ All Meals','🧭 Trek Guide']},
+  nainital:{title:'Nainital Family Fun',reg:'Nainital, Kumaon Division',img:'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=900&q=85',price:'₹7,999',nights:'3',rating:'4.8',rev:'1,500',desc:'The Lake District of India — Naini Lake boating, Snow View cable car panoramas, Mall Road evenings and Naina Devi temple. Perfect for families of all ages.',hl:['⛵ Naini Lake Boating','🚡 Snow View Cable Car','🏔️ Himalayan Sunrise','🐦 Bird Watching','🛍️ Mall Road Walk','🏨 Lake-View Hotel','🍽️ All Meals','🌳 Forest Walk']},
+  mussoorie:{title:'Mussoorie Honeymoon Special',reg:'Mussoorie, Dehradun',img:'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=900&q=85',price:'₹11,999',nights:'4',rating:'4.9',rev:'820',desc:'Queen of the Hills — candlelight dinners with Himalayan panoramas, heritage hotel with flower decoration, Kempty Falls and private couples ayurvedic spa.',hl:['🌹 Floral Room Decor','🍷 Candlelight Dinner','💆 Couples Spa','🏨 Heritage Hotel','💧 Kempty Falls','🚡 Gunhill Cable Car','📸 Photoshoot','🎁 Honeymoon Hamper']},
+  chopta:{title:'Chopta Tungnath Trek',reg:'Chopta–Tungnath, Rudraprayag',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85',price:'₹5,999',nights:'3',rating:'4.9',rev:'410',desc:'Mini Switzerland at 2,680m — world\'s highest Shiva temple, then Chandrashila peak at 4,130m for 360° panorama of Nanda Devi, Trishul, Kedarnath, Chaukhamba.',hl:['⛪ Tungnath Temple','🏔️ Chandrashila 4130m','🌿 Rhododendron Forest','⛺ Glamping','🔭 Stargazing','🦅 Himalayan Birds','🍽️ All Meals','🧭 Expert Guide']},
+  bungee:{title:'Bungee & Zipline Thrill',reg:'Rishikesh — Highest in India',img:'https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=900&q=85',price:'₹3,499',nights:'1',rating:'4.8',rev:'920',desc:'India\'s highest bungee at 83m over the Ganges gorge, giant swing, zipline across the river and cliff jumping. Pure adrenaline in Rishikesh.',hl:['🪂 Bungee Jump 83m','🎢 Giant Swing','🏞️ River Zipline','🌊 Cliff Jumping','🎥 GoPro Video','🏨 Hotel Stay','🍽️ Meals','📜 Certificate']},
+  kedar:{title:'Kedarnath Yatra & Trek',reg:'Kedarnath, Rudraprayag',img:'https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=900&q=85',price:'₹8,499',nights:'5',rating:'5.0',rev:'1,200',desc:'Trek to Lord Shiva\'s abode at 3,583m — one of the 12 Jyotirlingas surrounded by eternal snow peaks. Spiritual guide narrates ancient stories throughout.',hl:['🛕 Kedarnath Darshan','🏔️ Snow Peaks','🚁 Helicopter Option','🏨 Comfortable Stays','🧭 Spiritual Guide','🍽️ Sattvic Meals','🚌 AC Transport','🆘 Medical Support']},
+  para:{title:'Paragliding Adventure Camp',reg:'Bir Billing, Kangra Valley',img:'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=900&q=85',price:'₹4,999',nights:'2',rating:'4.7',rev:'560',desc:'Asia\'s top paragliding destination — tandem flights from 2,430m with APPI-certified pilots over stunning Himalayan valleys. Includes GoPro video.',hl:['🪂 Tandem Paragliding','🎥 GoPro Video','⛺ Valley Camping','🏔️ Mountain Views','🧗 Pre-Flight Training','🍽️ All Meals','📜 Certificate','🚌 Transport']},
+  haridwar:{title:'Haridwar Ganga Aarti',reg:'Haridwar, Haridwar District',img:'https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=900&q=85',price:'₹4,499',nights:'2',rating:'4.9',rev:'1,800',desc:'Legendary Ganga Aarti at Har Ki Pauri, ancient temple walks, holy dip at Brahm Kund and dawn yoga on the river ghats with a spiritual guide.',hl:['🙏 Ganga Aarti','🛕 Temple Walk','🧘 Dawn Yoga','🌊 Holy Dip','🏨 Ganga-View Hotel','🍽️ Sattvic Meals','🧭 Priest Guide','🚌 AC Transport']},
+  biking:{title:'Himalayan Mountain Biking',reg:'Rishikesh to Devprayag',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85',price:'₹6,999',nights:'4',rating:'4.8',rev:'320',desc:'Epic 5-day downhill trail from Himalayan foothills through forests, riverside paths and ancient villages to the sacred Devprayag confluence.',hl:['🚵 Premium Bikes','🏔️ Himalayan Trail','🌲 Forest Paths','🙏 Devprayag Confluence','⛺ Camp Stays','🍽️ All Meals','🧰 Repair Kit & Helmet','🧭 Local Guide']}
+};
+
+/* ─── Gallery images ─── */
+const GALIMGS = [
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=90',
+  'https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=900&q=85',
+  'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=900&q=85',
+  'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=900&q=85',
+  'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=900&q=85',
+  'https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=900&q=85',
+  'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=1200&q=85',
+  'https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=900&q=85',
+  'https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=900&q=85',
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85',
+  'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900&q=85',
+  'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=900&q=85'
+];
+let lbIdx = 0;
+
+/* ─── PAGE NAVIGATION ─── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+
+  // update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+
+  // scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── Detail Modal ─── */
+function openDetail(key) {
+  const d = PKG[key]; if (!d) return;
+  document.getElementById('dImg').src = d.img;
+  document.getElementById('dTitle').textContent = d.title;
+  document.getElementById('dReg').textContent = d.reg;
+  document.getElementById('dPrice').innerHTML = d.price + ' <small>/person</small>';
+  document.getElementById('dDesc').textContent = d.desc;
+  document.getElementById('dStats').innerHTML =
+    `<div><div class="d-sv">${d.nights}</div><div class="d-sl">Nights</div></div>
+     <div><div class="d-sv">⭐ ${d.rating}</div><div class="d-sl">Rating</div></div>
+     <div><div class="d-sv">${d.rev}</div><div class="d-sl">Reviews</div></div>
+     <div><div class="d-sv">✅</div><div class="d-sl">Free Cancel</div></div>`;
+  document.getElementById('dHl').innerHTML = d.hl.map(h => `<div class="d-hi">${h}</div>`).join('');
+  document.getElementById('detailOv').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail() {
+  document.getElementById('detailOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+/* ─── Filter Destinations ─── */
+function filterDest(btn, cat) {
+  document.querySelectorAll('#destTabs .ftab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('#destGrid .d-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const match = cat === 'All' || c.dataset.cat === cat;
+    c.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  document.getElementById('destCount').textContent = visible + ' destination' + (visible !== 1 ? 's' : '');
+}
+
+/* ─── Filter Packages ─── */
+function filterPkgs(btn, cat) {
+  document.querySelectorAll('#pkgTabs .ftab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const feat = document.getElementById('featPkg');
+  const cards = document.querySelectorAll('#pkgGrid .p-card');
+  let visible = 0;
+  if (cat === 'All' || cat === 'Spiritual') { feat.style.display = ''; visible++; }
+  else feat.style.display = 'none';
+  cards.forEach(c => {
+    const match = cat === 'All' || c.dataset.cat === cat;
+    c.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  const noRes = document.getElementById('pkgNoRes');
+  if (noRes) noRes.classList.toggle('show', visible === 0);
+  document.getElementById('pkgCount').textContent = visible + ' package' + (visible !== 1 ? 's' : '');
+}
+
+/* ─── Sort Packages ─── */
+function sortPkgs(v) {
+  const g = document.getElementById('pkgGrid');
+  const cards = [...g.querySelectorAll('.p-card:not(.no-res)')];
+  cards.sort((a, b) => {
+    if (v === 'price-low') return +a.dataset.price - +b.dataset.price;
+    if (v === 'price-high') return +b.dataset.price - +a.dataset.price;
+    if (v === 'days') return +a.dataset.days - +b.dataset.days;
+    return 0;
+  });
+  cards.forEach(c => g.appendChild(c));
+}
+
+/* ─── Filter Gallery ─── */
+function filterGal(btn, cat) {
+  document.querySelectorAll('#galTabs .ftab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#galGrid .g-item').forEach(item => {
+    const match = cat === 'All' || item.dataset.cat === cat;
+    item.style.display = match ? '' : 'none';
+  });
+}
+
+/* ─── Lightbox ─── */
+function openLb(idx) {
+  lbIdx = idx;
+  document.getElementById('lbImg').src = GALIMGS[lbIdx];
+  document.getElementById('lbOv').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lbOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + GALIMGS.length) % GALIMGS.length;
+  document.getElementById('lbImg').src = GALIMGS[lbIdx];
+}
+
+/* ─── Contact Form ─── */
+function submitContact() {
+  const btn = document.getElementById('cfBtn');
+  const email = document.getElementById('cf-email').value;
+  const name = document.getElementById('cf-fname').value;
+  if (!email || !name) { showToast('⚠️ Please fill required fields'); return; }
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✅ Message Sent!';
+    btn.classList.add('sent');
+    showToast('✅ Thank you! We\'ll contact you within 24 hours.');
+    setTimeout(() => {
+      btn.textContent = 'Send Message 🏔️';
+      btn.disabled = false;
+      btn.classList.remove('sent');
+    }, 3000);
+  }, 1500);
+}
+
+/* ─── Wishlist ─── */
+function wishToggle(e, btn) {
+  e.stopPropagation();
+  btn.classList.toggle('liked');
+  btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
+}
+
+/* ─── Auth ─── */
+function openAuth(t) {
+  document.getElementById(t === 'login' ? 'loginMod' : 'signupMod').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth(id) {
+  document.getElementById(id).classList.remove('show');
+  document.body.style.overflow = '';
+}
+function switchAuth(c, o) {
+  closeAuth(c);
+  setTimeout(() => document.getElementById(o).classList.add('show'), 180);
+}
+function socialAuth(btn, prov, mode) {
+  const orig = btn.innerHTML;
+  btn.classList.add('loading');
+  btn.innerHTML = '<span>Connecting…</span>';
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.innerHTML = orig;
+    closeAuth(mode === 'login' ? 'loginMod' : 'signupMod');
+    showToast(`✅ ${mode === 'login' ? 'Logged in' : 'Signed up'} with ${prov === 'google' ? 'Google' : 'Facebook'}!`);
+  }, 1800);
+}
+
+/* ─── Toast ─── */
+let toastT;
+function showToast(m) {
+  const t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+/* ─── Nav scroll & progress ─── */
+window.addEventListener('scroll', () => {
+  const p = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('sp').style.width = p +'%';
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ─── Loader ─── */
+// Force loader off immediately
+(function() {
+  function hideLdr() {
+    var l = document.getElementById('ldr');
+    if (!l) return;
+    l.style.opacity = '0';
+    l.style.pointerEvents = 'none';
+    l.style.visibility = 'hidden';
+    setTimeout(function(){ l.style.display = 'none'; }, 600);
+  }
+  // Run at 800ms max — no waiting
+  setTimeout(hideLdr, 800);
+  document.addEventListener('DOMContentLoaded', function() { setTimeout(hideLdr, 500); });
+})();
+
+/* ─── Hamburger / Drawer ─── */
+function toggleDrawer() {
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('hamBtn').classList.toggle('open');
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('hamBtn').classList.remove('open');
+}
+
+/* ─── ESC key closes everything ─── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeDetail();
+    closeLb();
+    closeAuth('loginMod');
+    closeAuth('signupMod');
+    closeBooking();
+    closeCmp();
+    closeSearch();
+  }
+});
+
+/* ══════════════════════════════════════
+   FEATURE 1: VIDEO BACKGROUND
+══════════════════════════════════════ */
+let videoOn = false;
+function toggleHeroVideo() {
+  const bg = document.getElementById('heroBg');
+  const vid = document.getElementById('heroVid');
+  const btn = document.getElementById('vidToggleBtn');
+  videoOn = !videoOn;
+  if (videoOn) {
+    bg.style.opacity = '0';
+    vid.classList.remove('hidden');
+    btn.innerHTML = '🖼️ Switch to Photo';
+  } else {
+    bg.style.opacity = '1';
+    vid.classList.add('hidden');
+    btn.innerHTML = '🎥 Switch to Video';
+  }
+}
+
+/* ══════════════════════════════════════
+   FEATURE 2: SEARCH
+══════════════════════════════════════ */
+const ALL_ITEMS = [
+  {key:'chardham',name:'Char Dham Yatra',sub:'Spiritual · 12 days',price:'₹28,999',img:'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=120&q=70',type:'package',cat:'Spiritual'},
+  {key:'rishikesh',name:'Rishikesh Adventure Rush',sub:'Adventure · 5 days',price:'₹9,499',img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=120&q=70',type:'package',cat:'Adventure'},
+  {key:'auli',name:'Auli Ski & Snow Getaway',sub:'Ski · 6 days',price:'₹14,999',img:'https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=120&q=70',type:'package',cat:'Ski'},
+  {key:'corbett',name:'Jim Corbett Tiger Safari',sub:'Wildlife · 4 days',price:'₹12,999',img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=120&q=70',type:'package',cat:'Wildlife'},
+  {key:'vof',name:'Valley of Flowers Trek',sub:'Nature · 7 days',price:'₹9,499',img:'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=120&q=70',type:'package',cat:'Nature'},
+  {key:'nainital',name:'Nainital Family Fun',sub:'Family · 4 days',price:'₹7,999',img:'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=120&q=70',type:'package',cat:'Family'},
+  {key:'mussoorie',name:'Mussoorie Honeymoon Special',sub:'Honeymoon · 5 days',price:'₹11,999',img:'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=120&q=70',type:'package',cat:'Honeymoon'},
+  {key:'chopta',name:'Chopta Tungnath Trek',sub:'Nature · 4 days',price:'₹5,999',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&q=70',type:'package',cat:'Nature'},
+  {key:'kedar',name:'Kedarnath Yatra & Trek',sub:'Spiritual · 6 days',price:'₹8,499',img:'https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=120&q=70',type:'package',cat:'Spiritual'},
+  {key:'haridwar',name:'Haridwar Ganga Aarti',sub:'Spiritual · 3 days',price:'₹4,499',img:'https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=120&q=70',type:'package',cat:'Spiritual'},
+  {key:'para',name:'Paragliding Adventure Camp',sub:'Adventure · 3 days',price:'₹4,999',img:'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=120&q=70',type:'package',cat:'Adventure'},
+  {key:'biking',name:'Himalayan Mountain Biking',sub:'Adventure · 5 days',price:'₹6,999',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&q=70',type:'package',cat:'Adventure'},
+];
+
+function openSearch() {
+  document.getElementById('searchOv').classList.add('show');
+  document.getElementById('searchInput').focus();
+  document.body.style.overflow = 'hidden';
+  renderSearchResults('');
+}
+function closeSearch() {
+  document.getElementById('searchOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function renderSearchResults(q) {
+  const container = document.getElementById('searchResults');
+  const filtered = q.length < 1
+    ? ALL_ITEMS
+    : ALL_ITEMS.filter(i =>
+        i.name.toLowerCase().includes(q.toLowerCase()) ||
+        i.cat.toLowerCase().includes(q.toLowerCase()) ||
+        i.sub.toLowerCase().includes(q.toLowerCase())
+      );
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="s-empty">🔍 No results found for "<strong>' + q + '</strong>"</div>';
+    return;
+  }
+  container.innerHTML = filtered.map(i => `
+    <div class="s-res-item" onclick="closeSearch();openDetail('${i.key}')">
+      <img class="s-res-img" src="${i.img}" alt=""/>
+      <div><div class="s-res-name">${i.name}</div><div class="s-res-sub">${i.sub}</div></div>
+      <div class="s-res-price">${i.price}</div>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════
+   FEATURE 3: BOOKING CALENDAR
+══════════════════════════════════════ */
+let bookingTenure = 6;
+function openBooking(key) {
+  const pkg = key ? PKG[key] : null;
+  document.getElementById('bookTitle').textContent = pkg ? pkg.title : 'Book Your Trip';
+  document.getElementById('bookPkgName').textContent = pkg ? pkg.title : 'Select Package Below';
+  document.getElementById('bookPkgPrice').textContent = pkg ? pkg.price + '/person' : '';
+  if (pkg) updateBookSummary(pkg.price.replace(/[₹,]/g,''), 2);
+  document.getElementById('bookOv').classList.add('show');
+  document.body.style.overflow = 'hidden';
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('bookDate').min = today;
+  document.getElementById('bookDate').value = today;
+}
+function closeBooking() {
+  document.getElementById('bookOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function updateBookSummary(priceStr, persons) {
+  const price = parseInt(priceStr) || 0;
+  const pax = parseInt(persons) || 1;
+  const subtotal = price * pax;
+  const tax = Math.round(subtotal * 0.05);
+  const total = subtotal + tax;
+  document.getElementById('bsSubtotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+  document.getElementById('bsTax').textContent = '₹' + tax.toLocaleString('en-IN');
+  document.getElementById('bsTotal').textContent = '₹' + total.toLocaleString('en-IN');
+}
+async function confirmBooking() {
+  const name    = (document.getElementById('bookName')?.value    || '').trim();
+  const phone   = (document.getElementById('bookPhone')?.value   || '').trim();
+  const date    = document.getElementById('bookDate')?.value     || '';
+  const email   = (document.getElementById('bookEmail')?.value   || '').trim();
+  const persons = parseInt(document.getElementById('bookPersons')?.value) || 1;
+  const notes   = (document.getElementById('bookMsg')?.value     || '').trim();
+  const pkgName = document.getElementById('bookPkgName')?.textContent || document.getElementById('bookPkgName2')?.textContent || '';
+  const pkgPrice= document.getElementById('bookPkgPrice')?.textContent || '';
+  const totalEl = document.getElementById('bsTotal');
+  const totalAmt= totalEl ? parseFloat((totalEl.textContent||'').replace(/[₹,]/g,'')) || 0 : 0;
+
+  if (!name)  { showToast('👤 Apna naam likhein'); return; }
+  if (!phone) { showToast('📞 Mobile number likhein'); return; }
+  if (!date)  { showToast('📅 Travel date select karein'); return; }
+
+  const btn = document.getElementById('bookConfirmBtn');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Booking ho rahi hai…'; }
+
+  const _API = (function(){
+    var h = window.location.hostname;
+    return (!h || h === 'localhost' || h === '127.0.0.1')
+      ? 'http://localhost:5000/api'
+      : 'https://devbhoomi-travels.onrender.com/api';
+  })();
+
+  try {
+    const token = localStorage.getItem('token');
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+
+    const res = await fetch(_API + '/bookings', {
+      method: 'POST', headers,
+      body: JSON.stringify({
+        packageKey: '', packageName: pkgName, packagePrice: pkgPrice,
+        name, phone, email, travelDate: date, persons,
+        totalAmount: totalAmt,
+        gstAmount: Math.round(totalAmt * 0.05),
+        finalAmount: Math.round(totalAmt * 1.05),
+        specialRequests: notes,
+        source: 'activities_page',
+        bookingType: 'Activity'
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      closeBooking();
+      showToast('🎉 Booking query submit ho gayi! ID: ' + (data.bookingId || '') + ' — Hum jaldi call karenge!');
+    } else {
+      showToast('❌ ' + (data.message || 'Kuch error aaya'));
+    }
+  } catch(e) {
+    showToast('❌ Server se connect nahi ho pa raha. Dobara try karein.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '✅ Confirm Booking →'; }
+  }
+}
+
+/* ══════════════════════════════════════
+   FEATURE 4: EMI CALCULATOR
+══════════════════════════════════════ */
+let emiTenure = 6;
+function setTenure(months, btn) {
+  emiTenure = months;
+  document.querySelectorAll('.tenure-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calcEMI();
+}
+function calcEMI() {
+  const pkg = document.getElementById('emiPkg');
+  const dpSlider = document.getElementById('emiDP');
+  if (!pkg || !dpSlider) return;
+  const total = parseInt(pkg.value) || 28999;
+  const dpPct = parseInt(dpSlider.value) || 30;
+  const dp = Math.round(total * dpPct / 100);
+  const remaining = total - dp;
+  const rate = 0.015; // 1.5% per month
+  let emi;
+  if (emiTenure <= 3) {
+    emi = Math.round(remaining / emiTenure);
+  } else {
+    emi = Math.round(remaining * rate * Math.pow(1+rate, emiTenure) / (Math.pow(1+rate, emiTenure)-1));
+  }
+  const interest = Math.max(0, emi * emiTenure - remaining);
+  document.getElementById('dpLabel').textContent = dpPct + '% (₹' + dp.toLocaleString('en-IN') + ')';
+  document.getElementById('emiMonthly').textContent = '₹' + emi.toLocaleString('en-IN') + '/mo';
+  document.getElementById('emiDPVal').textContent = '₹' + dp.toLocaleString('en-IN');
+  document.getElementById('emiTotal').textContent = '₹' + total.toLocaleString('en-IN');
+  document.getElementById('emiInterest').textContent = '₹' + Math.round(interest).toLocaleString('en-IN');
+}
+calcEMI();
+
+/* ══════════════════════════════════════
+   FEATURE 5: INTERACTIVE MAP
+══════════════════════════════════════ */
+function highlightMapDest(key) {
+  document.querySelectorAll('.map-dest-item').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById('mdi-' + key);
+  if (el) { el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  showToast('📍 ' + (PKG[key] ? PKG[key].title : key));
+}
+
+/* ══════════════════════════════════════
+   FEATURE 6: REVIEWS
+══════════════════════════════════════ */
+function submitReview() {
+  const name = document.getElementById('revName').value.trim();
+  const rating = document.querySelector('input[name="star"]:checked');
+  const text = document.getElementById('revText').value.trim();
+  const pkg = document.getElementById('revPkg').value;
+  const city = document.getElementById('revCity').value.trim();
+  if (!name || !rating || !text) { showToast('⚠️ Please fill name, rating and review'); return; }
+  const stars = '★'.repeat(parseInt(rating.value)) + '☆'.repeat(5-parseInt(rating.value));
+  const newCard = `
+    <div class="rev-card" style="animation:fadeUp .4s ease both">
+      <div class="rev-top">
+        <div class="rev-person">
+          <div class="rev-av-ph" style="background:var(--gold);color:var(--forest)">${name[0].toUpperCase()}</div>
+          <div><div class="rev-name">${name}${city ? ' · '+city : ''}</div><div class="rev-meta">Just now</div></div>
+        </div>
+        <div class="rev-stars-sm">${stars}</div>
+      </div>
+      <div class="rev-text">"${text}"</div>
+      ${pkg ? `<span class="rev-pkg-tag">${pkg}</span>` : ''}
+    </div>`;
+  const list = document.getElementById('reviewsList');
+  if (list) list.insertAdjacentHTML('afterbegin', newCard);
+  document.getElementById('revName').value = '';
+  document.getElementById('revText').value = '';
+  document.getElementById('revCity').value = '';
+  document.getElementById('revPkg').value = '';
+  document.querySelectorAll('input[name="star"]').forEach(r => r.checked = false);
+  showToast('⭐ Review published! Thank you, ' + name + '!');
+}
+
+/* ══════════════════════════════════════
+   FEATURE 7: TRIP COMPARISON
+══════════════════════════════════════ */
+let compareList = [];
+function addToCompare(key, btn) {
+  if (compareList.includes(key)) {
+    compareList = compareList.filter(k => k !== key);
+    btn.classList.remove('in-cmp');
+    btn.innerHTML = '⚖️';
+    showToast('Removed from comparison');
+  } else if (compareList.length >= 3) {
+    showToast('⚠️ Max 3 packages can be compared');
+    return;
+  } else {
+    compareList.push(key);
+    btn.classList.add('in-cmp');
+    btn.innerHTML = '✓ Added';
+    showToast('✅ Added to comparison!');
+  }
+  updateCmpBar();
+}
+function updateCmpBar() {
+  const bar = document.getElementById('cmpBar');
+  const itemsEl = document.getElementById('cmpBarItems');
+  if (compareList.length === 0) {
+    bar.classList.remove('visible');
+    return;
+  }
+  bar.classList.add('visible');
+  let html = '';
+  compareList.forEach(k => {
+    const p = PKG[k];
+    html += `<div class="cmp-bar-item">📦 ${p.title.split(' ').slice(0,2).join(' ')} · ${p.price}<button class="cmp-x" onclick="removeFromCmp('${k}')">✕</button></div>`;
+  });
+  for (let i = compareList.length; i < 3; i++) {
+    html += `<div class="cmp-bar-slot">+ Add package ${i+1}</div>`;
+  }
+  itemsEl.innerHTML = html;
+  document.getElementById('btnDoCmp').disabled = compareList.length < 2;
+}
+function removeFromCmp(key) {
+  compareList = compareList.filter(k => k !== key);
+  document.querySelectorAll('.cmp-btn').forEach(btn => {
+    if (btn.onclick && btn.onclick.toString().includes(key)) {
+      btn.classList.remove('in-cmp');
+      btn.innerHTML = '⚖️';
+    }
+  });
+  updateCmpBar();
+}
+function clearCompare() {
+  compareList = [];
+  document.querySelectorAll('.cmp-btn').forEach(b => { b.classList.remove('in-cmp'); b.innerHTML = '⚖️'; });
+  updateCmpBar();
+}
+function openCmp() {
+  if (compareList.length < 2) { showToast('⚠️ Select at least 2 packages to compare'); return; }
+  const items = compareList.map(k => PKG[k]);
+  const cols = items.map(p => `<th class="cmp-pkg-head"><img class="cmp-pkg-img" src="${p.img}" alt=""/><div class="cmp-pkg-name">${p.title}</div></th>`).join('');
+  const rows = [
+    ['💰 Price', items.map(p => `<td class="cmp-price-cell">${p.price}<small>/person</small></td>`).join('')],
+    ['🌙 Duration', items.map(p => `<td>${p.nights} nights</td>`).join('')],
+    ['⭐ Rating', items.map(p => `<td>⭐ ${p.rating} (${p.rev} reviews)</td>`).join('')],
+    ['✅ Free Cancel', items.map(() => `<td class="cmp-tick">✔</td>`).join('')],
+    ['🚌 Transport', items.map(() => `<td class="cmp-tick">✔</td>`).join('')],
+    ['🍽️ Meals', items.map(() => `<td class="cmp-tick">✔</td>`).join('')],
+    ['🧭 Guide', items.map(() => `<td class="cmp-tick">✔</td>`).join('')],
+    ['📸 Photography', items.map((p,i) => i===0 ? `<td class="cmp-tick">✔</td>` : `<td class="cmp-cross">–</td>`).join('')],
+    ['🚁 Helicopter', items.map((p) => p.hl.some(h=>h.includes('🚁')) ? `<td class="cmp-tick">✔</td>` : `<td class="cmp-cross">–</td>`).join('')],
+    ['', items.map(p => `<td><button class="btn-bk" onclick="closeCmp();openBooking('${Object.keys(PKG).find(k=>PKG[k]===p)}')">Book Now →</button></td>`).join('')],
+  ].map(([label, cells]) => `<tr><td class="cmp-row-label">${label}</td>${cells}</tr>`).join('');
+  document.getElementById('cmpTable').innerHTML = `<table><thead><tr><th>Feature</th>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
+  document.getElementById('cmpOv').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCmp() {
+  document.getElementById('cmpOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+/* ─── WhatsApp ─── */
+function openWhatsApp() {
+  window.open('https://wa.me/919876543210?text=Namaste! I want to book a trip to Uttarakhand 🏔️', '_blank');
+}
+
+
+/* ══════════ HOTEL PAGE JS ══════════ */
+const HOTELS = {
+  ananda:{name:'Ananda in the Himalayas',loc:'Narendra Nagar, Rishikesh',stars:5,rating:5.0,ratingLbl:'World-class',price:'₹22,000',desc:'One of Asia\'s top luxury spa resorts perched 1,000 metres above the Ganges. Immerse yourself in personalised Ayurvedic programmes, Yoga & Vedanta sessions, and world-class cuisine sourced from the resort\'s own organic farm.',imgs:['https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=85','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80','https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80'],amenities:['♾️ Infinity Pool','🧘 Yoga Pavilion','💆 Ayurvedic Spa','🍽️ Fine Dining','🌅 Himalayan Views','🏋️ Fitness Center','🛎️ Butler Service','🌿 Organic Farm','🎾 Tennis Court','🛁 Private Jacuzzi','📚 Library','🚗 Airport Transfer'],rooms:[{name:'Deluxe Room',price:'₹22,000',feats:['King Bed','Valley View','Free WiFi','Minibar']},{name:'Suite',price:'₹38,000',feats:['Living Room','Balcony','Private Plunge Pool','Butler']},{name:'Palace Suite',price:'₹65,000',feats:['3BHK','Grand Terrace','Private Pool','Personalized Butler']}],reviews:[{name:'Meera Kapoor',date:'Jan 2025',stars:'★★★★★',text:'The most transformative experience of my life. The Ayurvedic doctors are world-class.'},{name:'Rajan Nair',date:'Dec 2024',stars:'★★★★★',text:'Absolute perfection. The infinity pool at sunset with Nanda Devi — worth every rupee.'},{name:'Prerna Sood',date:'Nov 2024',stars:'★★★★★',text:'Perfect anniversary stay. Nothing else comes close in India.'}]},
+  glasshouse:{name:'Glasshouse on the Ganges',loc:'Rishikesh, Uttarakhand',stars:5,rating:4.9,ratingLbl:'Exceptional',price:'₹18,000',desc:'A hidden gem where 200-year-old colonial architecture meets the sacred Ganges. Luxury stone cottages in mango and lychee groves with private balconies overlooking the sacred river.',imgs:['https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=900&q=85','https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80','https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=80'],amenities:['🌊 River View','♾️ Infinity Pool','🧘 Yoga Deck','🍽️ Restaurant','🚁 Helipad','🐘 Elephant Bath','🛶 River Trips','🌿 Nature Walks','🔭 Stargazing','🎣 Fishing','🚗 Transfer','📶 Free WiFi'],rooms:[{name:'Luxury Cottage',price:'₹18,000',feats:['River View','King Bed','Private Balcony','Outdoor Bathtub']},{name:'Garden Room',price:'₹12,000',feats:['Garden View','Queen Bed','Sit-out','Minibar']}],reviews:[{name:'Aryan Shah',date:'Feb 2025',stars:'★★★★★',text:'The most peaceful place in India. Waking to the Ganges and stargazing at night — magical.'},{name:'Ritika Joshi',date:'Jan 2025',stars:'★★★★★',text:'Perfect honeymoon. The outdoor bathtub with river view is unforgettable.'}]},
+  savoy:{name:'The Savoy Mussoorie',loc:'Mussoorie, Uttarakhand',stars:5,rating:4.8,ratingLbl:'Exceptional',price:'₹8,500',desc:'Uttarakhand\'s oldest hotel, established in 1902. Grand Victorian architecture, sprawling manicured lawns, antique-furnished rooms and timeless colonial elegance in the Queen of Hills.',imgs:['https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=85','https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=500&q=80','https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80'],amenities:['🏛️ Heritage Property','🌿 2-Acre Gardens','🍽️ Fine Dining','♟️ Billiards Room','🎭 Live Music','💆 Spa','🏋️ Gym','🎳 Bowling','📚 Library','🎪 Ballroom','🚗 Vintage Car','📶 WiFi'],rooms:[{name:'Superior Room',price:'₹8,500',feats:['Valley View','Victorian Decor','King Bed','Clawfoot Tub']},{name:'Heritage Suite',price:'₹16,000',feats:['2-Room Suite','Antique Furniture','Fireplace','Private Balcony']}],reviews:[{name:'Suresh Menon',date:'Dec 2024',stars:'★★★★★',text:'Staying at The Savoy is like stepping back in time. Simply superb.'},{name:'Nandita Roy',date:'Nov 2024',stars:'★★★★',text:'Beautiful heritage property. The evening live music was a wonderful touch.'}]},
+  corbett_h:{name:'Corbett Jungle Lodge',loc:'Jim Corbett National Park',stars:4,rating:4.9,ratingLbl:'Exceptional',price:'₹12,000',desc:'Award-winning luxury jungle lodge bordering Jim Corbett National Park. Wake up to birdsong and wild elephant sightings from your private deck with expert naturalist guides.',imgs:['https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=85','https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=500&q=80','https://images.unsplash.com/photo-1445308394109-4ec2920981b1?w=500&q=80'],amenities:['🐯 Jeep Safari','🌿 Nature Walk','♾️ Pool','🍽️ Jungle Restaurant','🔭 Observatory','📸 Photography','🐘 Elephant Sightings','🦅 Bird Walks','🔥 Campfire','🧘 Yoga','🚗 Pickup','🎥 Film Screening'],rooms:[{name:'Jungle Chalet',price:'₹12,000',feats:['Forest View','King Bed','Open Deck','Outdoor Shower']},{name:'Tree House Suite',price:'₹20,000',feats:['Canopy Level','360° Forest View','Kitchenette','Plunge Pool']}],reviews:[{name:'Rohit Agarwal',date:'Jan 2025',stars:'★★★★★',text:'Saw 3 tigers in 2 safari days! Best wildlife experience in India.'},{name:'Kavya Iyer',date:'Dec 2024',stars:'★★★★★',text:'The tree house is worth every rupee. Waking in the forest canopy is unforgettable.'}]},
+  corbett:{name:'Corbett Riverside Resort',loc:'Ramnagar, Jim Corbett',stars:4,rating:4.9,ratingLbl:'Exceptional',price:'₹12,000',desc:'Luxury resort on the banks of Kosi river adjoining Jim Corbett National Park. Spacious cottages, naturalist-guided safaris, and serene riverside evenings with bonfires.',imgs:['https://images.unsplash.com/photo-1445308394109-4ec2920981b1?w=900&q=85','https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=80','https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=500&q=80'],amenities:['🐯 Tiger Safari','🌊 Riverside','♾️ Pool','🍽️ Multi-cuisine','🔥 Bonfire','🦅 Bird Walks','🌿 Nature Trails','🧘 Yoga','🚗 Airport Transfer','📶 WiFi','🐘 Elephant Safaris','🌅 Sunrise Walks'],rooms:[{name:'River Cottage',price:'₹12,000',feats:['River View','King Bed','Private Sit-out','Minibar']},{name:'Deluxe Room',price:'₹8,500',feats:['Garden View','Queen Bed','Free WiFi','Breakfast']}],reviews:[{name:'Deepak Sharma',date:'Feb 2025',stars:'★★★★★',text:'Stunning riverside location and superb tiger sightings. Staff is exceptional.'},{name:'Pooja Mehta',date:'Jan 2025',stars:'★★★★★',text:'The bonfire evenings by the river were magical. Will definitely return.'}]},
+  nainital_h:{name:'The Naini Retreat',loc:'Nainital, Kumaon',stars:4,rating:4.8,ratingLbl:'Excellent',price:'₹7,500',desc:'A colonial boutique retreat perched above Naini Lake with panoramic views of the Himalayan ranges. Elegant rooms, heritage architecture and warm Kumaoni hospitality.',imgs:['https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=900&q=85','https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80','https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=500&q=80'],amenities:['⛵ Lake View','🏔️ Mountain Views','🍽️ Restaurant','☕ Cafe','🌿 Garden','🛶 Boating','🚡 Cable Car Access','📶 WiFi','🚗 Transfers','🍳 Breakfast','🎣 Fishing','🌸 Nature Walk'],rooms:[{name:'Lake View Room',price:'₹7,500',feats:['Naini Lake View','King Bed','Balcony','WiFi']},{name:'Mountain Suite',price:'₹12,000',feats:['360° Views','Living Room','Fireplace','Butler']}],reviews:[{name:'Sunita Verma',date:'Mar 2025',stars:'★★★★★',text:'The lake view from the room is breathtaking. Perfect romantic getaway.'},{name:'Rahul Gupta',date:'Feb 2025',stars:'★★★★',text:'Charming boutique hotel with great food and outstanding views of Nainital.'}]},
+  auli_h:{name:'Auli Resort & Ski Lodge',loc:'Auli, Chamoli District',stars:4,rating:4.7,ratingLbl:'Excellent',price:'₹15,000',desc:'India\'s premier ski resort accommodation at 2,519m altitude. Cozy mountain chalets with panoramic views of Nanda Devi, equipped ski rooms, heated interiors and hearty mountain cuisine.',imgs:['https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=900&q=85','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80','https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80'],amenities:['⛷️ Ski-in Ski-out','🏔️ Nanda Devi View','🚡 Gondola Access','🍽️ Mountain Cuisine','🔥 Fireplace','❄️ Ski Equipment','🧘 Yoga Room','♨️ Hot Springs','📶 WiFi','🚗 Transfers','🏂 Snowboarding','🌟 Stargazing'],rooms:[{name:'Mountain Chalet',price:'₹15,000',feats:['Snow View','King Bed','Fireplace','Ski Storage']},{name:'Deluxe Room',price:'₹10,000',feats:['Valley View','Twin/King Bed','Heated Floor','Minibar']}],reviews:[{name:'Vikram Singh',date:'Jan 2025',stars:'★★★★★',text:'Best ski accommodation in India. The Nanda Devi view at sunrise is absolutely stunning.'},{name:'Anjali Khanna',date:'Dec 2024',stars:'★★★★★',text:'Cozy chalets, excellent food and right next to the gondola. Perfect ski holiday.'}]},
+  chopta_h:{name:'Chopta Meadows Camp',loc:'Chopta, Rudraprayag',stars:3,rating:4.9,ratingLbl:'Exceptional',price:'₹3,500',desc:'Award-winning eco-camp in the pristine rhododendron forests of Chopta at 2,680m. Luxury tents with real beds, warm quilts, attached baths and stargazing decks under unpolluted Himalayan skies.',imgs:['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&q=80','https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80'],amenities:['⛺ Luxury Tents','🔭 Stargazing','🌿 Forest Walks','🍽️ Camp Meals','🔥 Bonfire','🦅 Bird Watching','🥾 Trekking','🏔️ Peak Views','♨️ Hot Water','🌸 Rhododendron Forest','📷 Photography','🧭 Guide'],rooms:[{name:'Luxury Tent',price:'₹3,500',feats:['Real Bed','Attached Bath','Hot Water','Forest View']},{name:'Premium Tent',price:'₹5,000',feats:['King Bed','Private Deck','Wood Heater','Panoramic View']}],reviews:[{name:'Aditya Kumar',date:'Apr 2025',stars:'★★★★★',text:'The stars from Chopta are unlike anything I have seen. The camp is cozy and the food is delicious.'},{name:'Shreya Nair',date:'Mar 2025',stars:'★★★★★',text:'Best glamping experience in Uttarakhand. The rhododendron forest is magical in bloom.'}]},
+  vivanta:{name:'Vivanta Rishikesh',loc:'Rishikesh, Uttarakhand',stars:5,rating:4.8,ratingLbl:'Excellent',price:'₹14,000',desc:'Taj\'s flagship luxury property in Rishikesh — contemporary design with Himalayan aesthetics, spa, infinity pool and gourmet dining with panoramic valley views.',imgs:['https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85','https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=80','https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80'],amenities:['♾️ Infinity Pool','💆 Spa','🍽️ Multi-cuisine','🧘 Yoga Studio','🌅 Valley Views','🏋️ Fitness Center','🛎️ Concierge','🎾 Tennis','🚗 Airport Transfer','📶 WiFi','🛁 Jacuzzi','🌿 Garden'],rooms:[{name:'Deluxe Valley View',price:'₹14,000',feats:['Valley View','King Bed','Balcony','Minibar']},{name:'Premium Suite',price:'₹25,000',feats:['Living Room','Private Pool','Butler','Panoramic View']}],reviews:[{name:'Neha Kapoor',date:'Mar 2025',stars:'★★★★★',text:'Impeccable service, stunning views and the best spa in Rishikesh.'},{name:'Sanjay Mishra',date:'Feb 2025',stars:'★★★★★',text:'Luxury at its finest. The infinity pool view of the Ganges valley is unmatched.'}]},
+  zostel:{name:'Zostel Rishikesh',loc:'Tapovan, Rishikesh',stars:2,rating:4.6,ratingLbl:'Very Good',price:'₹1,800',desc:'India\'s favourite backpacker hostel brand in the adventure capital of India. Clean dorms and private rooms, rooftop yoga, cafe, and the best social atmosphere for solo travelers.',imgs:['https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=900&q=85','https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80','https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=500&q=80'],amenities:['🧘 Rooftop Yoga','☕ Cafe','📶 Fast WiFi','🎮 Game Zone','🗺️ Travel Desk','🛶 Rafting Bookings','🔒 Locker','🌿 Eco-Friendly','🎵 Music Room','🤝 Community Events','🏪 Convenience Store','🚿 Hot Showers'],rooms:[{name:'Dormitory Bed',price:'₹1,800',feats:['AC Dorm','Locker','Free WiFi','Breakfast']},{name:'Private Room',price:'₹3,500',feats:['Private Bathroom','Double Bed','AC','Mountain View']}],reviews:[{name:'Riya Pandey',date:'Apr 2025',stars:'★★★★★',text:'Best hostel vibes in India. Met amazing travelers and the staff organized a bonfire night.'},{name:'Kabir Khan',date:'Mar 2025',stars:'★★★★',text:'Super clean, great location for rafting and bungee, and the rooftop yoga is amazing.'}]},
+  manor:{name:'The Manor Bhowali',loc:'Bhowali, Nainital',stars:4,rating:4.7,ratingLbl:'Excellent',price:'₹9,500',desc:'A 1930s colonial manor nestled in Kumaon hills with apple orchards, pine forests and sweeping Himalayan panoramas. Authentic heritage rooms, home-cooked meals and peaceful Kumaoni living.',imgs:['https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=900&q=85','https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=500&q=80','https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80'],amenities:['🍎 Apple Orchards','🌲 Pine Forest','🏔️ Himalayan Views','🍽️ Home Cooking','🔥 Fireplace','📚 Library','🌿 Nature Walks','🎣 Trout Fishing','🚗 Transfers','📶 WiFi','🧘 Meditation Garden','🌸 Flower Garden'],rooms:[{name:'Heritage Room',price:'₹9,500',feats:['Antique Decor','Mountain View','Fireplace','Breakfast']},{name:'Orchard Suite',price:'₹14,000',feats:['Sitting Room','Orchard View','Four-poster Bed','Private Garden']}],reviews:[{name:'Priya Bhatia',date:'Feb 2025',stars:'★★★★★',text:'Like staying in a family home from the 1930s. The food made by the local cook is outstanding.'},{name:'Sameer Joshi',date:'Jan 2025',stars:'★★★★★',text:'The most authentic Kumaon experience. Woke up to birdsong and picked apples from the garden.'}]},
+  bythe:{name:'By The Ganges Camp',loc:'Shivpuri, Rishikesh',stars:3,rating:4.8,ratingLbl:'Excellent',price:'₹4,500',desc:'Premium riverside camping on the banks of the Ganges in Shivpuri — the ultimate adventure base camp. Luxury tents, rafting at your doorstep, bonfires under stars, and fresh mountain air.',imgs:['https://images.unsplash.com/photo-1444492417251-9c84a5fa18e0?w=900&q=85','https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=500&q=80','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80'],amenities:['🌊 Riverside','🛶 Rafting Access','⛺ Luxury Tents','🔥 Bonfire','🍽️ Camp Dining','🧘 Yoga','🤿 Kayaking','🏊 River Swimming','📶 WiFi','🌅 Sunrise Views','🌿 Nature Walks','📷 Photography'],rooms:[{name:'Deluxe Tent',price:'₹4,500',feats:['River View','Real Bed','Attached Bath','Hot Water']},{name:'Premium Cottage',price:'₹7,000',feats:['AC Room','Private Sit-out','River View','Minibar']}],reviews:[{name:'Tanuj Sharma',date:'Mar 2025',stars:'★★★★★',text:'Waking up to the Ganges right outside your tent is an experience you cannot get anywhere else.'},{name:'Divya Malhotra',date:'Feb 2025',stars:'★★★★★',text:'The rafting from the camp was incredible and the bonfire dinner was perfect.'}]},
+  devbhoomi_stay:{name:'DevBhoomi Boutique Stay',loc:'Haridwar, Uttarakhand',stars:3,rating:4.7,ratingLbl:'Excellent',price:'₹6,000',desc:'Our own curated boutique property in the holy city of Haridwar. Spiritual ambiance, Ganga-view rooftop, sattvic meals and guided Aarti experiences at Har Ki Pauri — just 5 minutes walk away.',imgs:['https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=900&q=85','https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80','https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=80'],amenities:['🕉️ Ganga View','🙏 Aarti Access','🧘 Morning Yoga','🍽️ Sattvic Meals','🌿 Rooftop Garden','📶 WiFi','🚗 Transfers','🛕 Temple Walk','♨️ Hot Water','🌅 Sunrise View','📚 Spiritual Library','🤝 Priest Guided Tours'],rooms:[{name:'Ganga View Room',price:'₹6,000',feats:['River View','Double Bed','AC','Breakfast']},{name:'Deluxe Suite',price:'₹9,500',feats:['Rooftop Access','King Bed','Living Area','Sattvic Meals']}],reviews:[{name:'Ramesh Tiwari',date:'Apr 2025',stars:'★★★★★',text:'Staying here was a deeply spiritual experience. The guided Aarti tour was unforgettable.'},{name:'Geeta Sharma',date:'Mar 2025',stars:'★★★★★',text:'Perfect location, sattvic food and the rooftop Ganga view at dawn is pure magic.'}]},
+  ganga_inn:{name:'Ganga Inn Budget Stay',loc:'Rishikesh, Uttarakhand',stars:2,rating:4.5,ratingLbl:'Very Good',price:'₹2,200',desc:'Clean, comfortable and affordable rooms steps from the Ganges ghats. Perfect base for budget travelers who want to explore Rishikesh — rafting, yoga, bungee — without breaking the bank.',imgs:['https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=900&q=85','https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80','https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=500&q=80'],amenities:['🌊 Ganga Steps','☕ Cafe','📶 WiFi','🚿 Hot Showers','🗺️ Travel Desk','🛶 Rafting Bookings','🔒 Safe Lockers','🌿 Rooftop','🕉️ Yoga Classes','🏍️ Bike Rentals','🍽️ Restaurant','🚗 Taxi Service'],rooms:[{name:'Standard Room',price:'₹2,200',feats:['AC','Double Bed','WiFi','Hot Water']},{name:'Deluxe Room',price:'₹3,500',feats:['Ganga View','King Bed','AC','Breakfast Included']}],reviews:[{name:'Amit Patel',date:'Apr 2025',stars:'★★★★★',text:'Best budget option in Rishikesh. Clean rooms, helpful staff and perfect location.'},{name:'Siya Kapoor',date:'Mar 2025',stars:'★★★★',text:'Excellent value for money. Steps from the Ganga and all adventure activities.'}]}
+};
+
+function openHotelDetail(key) {
+  const h = HOTELS[key];
+  if (!h) { showToast('Details coming soon!'); return; }
+  document.getElementById('hdImg1').src = h.imgs[0];
+  document.getElementById('hdImg2').src = h.imgs[1];
+  document.getElementById('hdImg3').src = h.imgs[2];
+  document.getElementById('hdStars').textContent = '★'.repeat(h.stars);
+  document.getElementById('hdName').textContent = h.name;
+  document.getElementById('hdLoc').textContent = '📍 ' + h.loc;
+  document.getElementById('hdPrice').innerHTML = h.price + ' <small>/night</small>';
+  document.getElementById('hdPriceBottom').innerHTML = h.price + ' <small>/night</small>';
+  document.getElementById('hdRatingNum').textContent = h.rating;
+  document.getElementById('hdRatingLbl').textContent = h.ratingLbl;
+  document.getElementById('hdDesc').textContent = h.desc;
+  document.getElementById('hdAmenGrid').innerHTML = h.amenities.slice(0,6).map(a=>`<div class="hd-amen-item">${a}</div>`).join('');
+  document.getElementById('hdFullAmen').innerHTML = h.amenities.map(a=>`<div class="hd-amen-item">${a}</div>`).join('');
+  document.getElementById('hdRoomsList').innerHTML = h.rooms.map(r=>`<div class="hd-room"><div class="hd-room-info"><div class="hd-room-name">${r.name}</div><div class="hd-room-feats">${r.feats.map(f=>`<span class="hd-room-feat">${f}</span>`).join('')}</div></div><div class="hd-room-price">${r.price}<small style="font-family:'Nunito',sans-serif;font-size:.66rem;color:var(--stone);font-weight:400">/night</small></div><button class="btn-hbook" onclick="closeHotelDetail();openBooking(document.getElementById('hdName')?.textContent)">Book</button></div>`).join('');
+  document.getElementById('hdRevList').innerHTML = h.reviews.map(r=>`<div class="hd-rev"><div class="hd-rev-top"><div><div class="hd-rev-name">${r.name}</div><div class="hd-rev-date">${r.date}</div></div><div class="hd-rev-stars">${r.stars}</div></div><div class="hd-rev-text">"${r.text}"</div></div>`).join('');
+  // Reset tabs
+  document.querySelectorAll('.hd-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.hd-tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.hd-tab').classList.add('active');
+  document.getElementById('hdOverview').classList.add('active');
+  document.getElementById('hdOv').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeHotelDetail() {
+  document.getElementById('hdOv').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function switchHotelTab(btn, panelId) {
+  document.querySelectorAll('.hd-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.hd-tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+function filterHotels(btn, cat) {
+  document.querySelectorAll('#hotelTabs .ftab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('#hotelGrid .hotel-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const match = cat === 'All' || c.dataset.cat === cat;
+    c.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  document.getElementById('hotelCount').textContent = visible + ' hotel' + (visible!==1?'s':'');
+}
+function hotelSearchFilter(q) {
+  const cards = document.querySelectorAll('#hotelGrid .hotel-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const match = !q || c.innerText.toLowerCase().includes(q.toLowerCase());
+    c.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  document.getElementById('hotelCount').textContent = visible + ' hotel' + (visible!==1?'s':'');
+}
+function sortHotels(v) {
+  const grid = document.getElementById('hotelGrid');
+  const cards = [...grid.querySelectorAll('.hotel-card')];
+  cards.sort((a,b) => {
+    if (v==='price-low') return +a.dataset.price - +b.dataset.price;
+    if (v==='price-high') return +b.dataset.price - +a.dataset.price;
+    if (v==='rating') return +b.dataset.rating - +a.dataset.rating;
+    return 0;
+  });
+  cards.forEach(c => grid.appendChild(c));
+}
+function hotelSearch() {
+  const checkin = document.getElementById('hbbCheckin').value;
+  const checkout = document.getElementById('hbbCheckout').value;
+  if (checkin && checkout && checkin >= checkout) {
+    showToast('⚠️ Check-out must be after check-in'); return;
+  }
+  showToast('🔍 Searching available rooms…');
+  setTimeout(() => showToast('✅ 12 hotels available for your dates!'), 1200);
+}
+// Set today as min for check-in
+(function() {
+  const today = new Date().toISOString().split('T')[0];
+  const ci = document.getElementById('hbbCheckin');
+  const co = document.getElementById('hbbCheckout');
+  if (ci) { ci.min = today; ci.value = today; }
+  if (co) { co.min = today; }
+})();
+
+</script>
+
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-ov" id="searchOv">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-wrap">
+    <div class="search-title">Find Your <em>Dream Trip</em></div>
+    <div class="search-input-wrap">
+      <span class="search-ico-wrap">🔍</span>
+      <input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure, Wildlife…" oninput="renderSearchResults(this.value)"/>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="book-ov" id="bookOv">
+  <div class="book-box">
+    <div class="book-head">
+      <h2 id="bookTitle">Book Your Trip</h2>
+      <p id="bookPkgName">Secure your spot today</p>
+      <button class="book-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="book-body">
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:.85rem;font-weight:700;color:var(--forest)" id="bookPkgName2">Selected Package</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--pine);font-weight:700" id="bookPkgPrice"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Your Full Name *</label><input type="text" id="bookName" placeholder="Rahul Sharma"/></div>
+        <div class="bfield"><label>Mobile Number *</label><input type="tel" id="bookPhone" placeholder="+91 94105 82310"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Travel Date *</label><input type="date" id="bookDate" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),document.getElementById('bookPersons').value)"/></div>
+        <div class="bfield"><label>Number of Persons</label><select id="bookPersons" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),this.value)"><option value="1">1 Person</option><option value="2" selected>2 Persons</option><option value="3">3 Persons</option><option value="4">4 Persons</option><option value="5">5+ Persons</option></select></div>
+      </div>
+      <div class="bfield"><label>Special Requests (optional)</label><input type="text" id="bookMsg" placeholder="Vegetarian food, wheelchair access, anniversary…"/></div>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.7rem">Booking Summary</div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>Package Price × Persons</span><span id="bsSubtotal">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>GST (5%)</span><span id="bsTax">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--forest);font-size:.95rem;border-top:1px solid rgba(82,169,122,.15);padding-top:.5rem;margin-top:.4rem"><span>Total Amount</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--pine)" id="bsTotal">—</span></div>
+      </div>
+      <button class="btn-book-final" id="bookConfirmBtn" onclick="confirmBooking()">✅ Confirm Booking →</button>
+      <p style="text-align:center;font-size:.73rem;color:var(--stone);margin-top:.7rem">🔒 Secure booking · Free cancellation within 15 days · Pay 30% advance only</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMPARE BAR ══ -->
+<div class="cmp-bar" id="cmpBar">
+  <div class="cmp-bar-items" id="cmpBarItems"></div>
+  <div class="cmp-bar-btns">
+    <button class="btn-do-cmp" id="btnDoCmp" onclick="openCmp()">⚖️ Compare Now</button>
+    <button class="btn-clr-cmp" onclick="clearCompare()">✕ Clear</button>
+  </div>
+</div>
+
+<!-- ══ COMPARE MODAL ══ -->
+<div class="cmp-ov" id="cmpOv">
+  <div class="cmp-box">
+    <div class="cmp-h"><h2>⚖️ Package Comparison</h2><button class="cmp-close" onclick="closeCmp()">✕</button></div>
+    <div class="cmp-table" id="cmpTable"></div>
+  </div>
+</div>
+
+<!-- ══ WHATSAPP FAB ══ -->
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp</div>
+
+
+<!-- ════════════════════════════════
+   PAGE: HOTELS
+════════════════════════════════ -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

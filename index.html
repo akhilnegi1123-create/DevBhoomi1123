@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBhoomi Travels — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="sp"></div>
+
+<div id="ldr">
+  <div class="l-logo">Dev<span>Bhoomi</span> ✨</div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-txt">Loading Your Himalayan Journey…</div>
+</div>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">
+    <span class="logo-icon">🏔️</span>
+    <div class="logo-wrap">
+      <div class="logo-text">Dev<span>Bhoomi</span> Travels</div>
+      <div class="logo-sub">Uttarakhand's Soul</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')" ontouchstart="openAuth('login')" >Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')" ontouchstart="openAuth('signup')" >Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html" class="active">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="drawer-btns">
+    <button class="btn-ln" onclick="openAuth('login')" ontouchstart="openAuth('login')"  ontouchstart="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')" ontouchstart="openAuth('signup')"  ontouchstart="openAuth('signup')">Sign Up ✨</button>
+  </div>
+</div>
+
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-video hidden" id="heroVid"><video autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4" type="video/mp4"/></video></div>
+    <div class="ov-l"></div><div class="ov-b"></div><div class="ov-g"></div>
+    <div class="hero-inner">
+      <div class="badge-hero">🏔️ &nbsp;देवभूमि उत्तराखंड</div>
+      <h1>Discover the<br/><em>Land of Gods</em></h1>
+      <p class="hero-sub">Snow-capped Himalayas, sacred temples, rushing rivers and lush valleys — Uttarakhand awaits with experiences that touch your soul.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="window.location.href='packages.html'">Explore Packages →</button>
+        <button class="btn-ghost" onclick="window.location.href='Destination.html'">📍 All Destinations</button>
+      </div>
+      <div class="hero-search">
+        <div class="hs-field">
+          <label>🏔️ Destination</label>
+          <select>
+            <option>All Uttarakhand</option>
+            <option>Rishikesh</option>
+            <option>Kedarnath</option>
+            <option>Auli</option>
+            <option>Nainital</option>
+            <option>Jim Corbett</option>
+            <option>Valley of Flowers</option>
+            <option>Mussoorie</option>
+            <option>Haridwar</option>
+            <option>Chopta</option>
+          </select>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hs-field">
+          <label>📅 Travel Date</label>
+          <input type="date" id="heroDate"/>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hs-field">
+          <label>👥 Travelers</label>
+          <select>
+            <option>1 Person</option>
+            <option>2 Persons</option>
+            <option>3-5 Persons</option>
+            <option>6+ Group</option>
+          </select>
+        </div>
+        <button class="hs-search-btn" onclick="openSearch()">🔍 Search Trips</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">50+</div><div class="hs-lbl">Destinations</div></div>
+        <div><div class="hs-num">8K+</div><div class="hs-lbl">Happy Travelers</div></div>
+        <div><div class="hs-num">100%</div><div class="hs-lbl">Safe & Trusted</div></div>
+        <div><div class="hs-num">4.9★</div><div class="hs-lbl">Avg Rating</div></div>
+      </div>
+    </div>
+    <button class="vid-toggle" id="vidToggleBtn" onclick="toggleHeroVideo()">🎥 Switch to Video</button>
+  <div class="scroll-hint"><div class="s-dot"></div>scroll</div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee"><div class="mq-track">
+    <span class="mq-item">🕉️ Char Dham Yatra<span class="mq-dot"></span></span>
+    <span class="mq-item">🛶 River Rafting<span class="mq-dot"></span></span>
+    <span class="mq-item">⛷️ Auli Skiing<span class="mq-dot"></span></span>
+    <span class="mq-item">🐯 Jim Corbett<span class="mq-dot"></span></span>
+    <span class="mq-item">🌸 Valley of Flowers<span class="mq-dot"></span></span>
+    <span class="mq-item">🏔️ Kedarnath Trek<span class="mq-dot"></span></span>
+    <span class="mq-item">⛺ Chopta Camping<span class="mq-dot"></span></span>
+    <span class="mq-item">🧘 Yoga Retreat<span class="mq-dot"></span></span>
+    <span class="mq-item">💑 Honeymoon Special<span class="mq-dot"></span></span>
+    <span class="mq-item">🕉️ Char Dham Yatra<span class="mq-dot"></span></span>
+    <span class="mq-item">🛶 River Rafting<span class="mq-dot"></span></span>
+    <span class="mq-item">⛷️ Auli Skiing<span class="mq-dot"></span></span>
+    <span class="mq-item">🐯 Jim Corbett<span class="mq-dot"></span></span>
+    <span class="mq-item">🌸 Valley of Flowers<span class="mq-dot"></span></span>
+    <span class="mq-item">🏔️ Kedarnath Trek<span class="mq-dot"></span></span>
+    <span class="mq-item">⛺ Chopta Camping<span class="mq-dot"></span></span>
+    <span class="mq-item">🧘 Yoga Retreat<span class="mq-dot"></span></span>
+    <span class="mq-item">💑 Honeymoon Special<span class="mq-dot"></span></span>
+  </div></div>
+
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-ico">🏆</span>IATO Registered Tour Operator</div>
+    <div class="trust-item"><span class="trust-ico">🛡️</span>Hassle-Free Refund Policy</div>
+    <div class="trust-item"><span class="trust-ico">📱</span>24/7 Customer Support</div>
+    <div class="trust-item"><span class="trust-ico">🌿</span>Responsible Tourism Partner</div>
+    <div class="trust-item"><span class="trust-ico">❌</span>Zero Hidden Charges</div>
+    <div class="trust-item"><span class="trust-ico">🔒</span>Secure & Encrypted Payments</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="home-stats">
+    <div class="home-stats-grid">
+      <div class="h-sbox"><span class="h-sico">📦</span><span class="h-snum">20+</span><span class="h-slbl">Tour Packages</span></div>
+      <div class="h-sbox"><span class="h-sico">😊</span><span class="h-snum">8K+</span><span class="h-slbl">Happy Travelers</span></div>
+      <div class="h-sbox"><span class="h-sico">⭐</span><span class="h-snum">4.9</span><span class="h-slbl">Avg Rating</span></div>
+      <div class="h-sbox"><span class="h-sico">🆓</span><span class="h-snum">Free</span><span class="h-slbl">Cancellation</span></div>
+    </div>
+  </div>
+
+  <!-- Featured Packages -->
+  <div class="home-pkgs reveal">
+    <div class="sec-head-row">
+      <div><span class="sec-eye">📦 Popular Packages</span><div class="sec-title">Top Picks for <em>Your Journey</em></div></div>
+      <button class="see-all" onclick="window.location.href='packages.html'">View All Packages →</button>
+    </div>
+    <div class="pkg-grid-home">
+      <div class="d-card" onclick="openDetail('chardham')">
+        <div class="d-img"><img src="data:image/jpeg;base64,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" alt="Char Dham"/><div class="d-img-grad"></div><span class="d-badge spr">Spiritual</span><span class="d-rating">⭐ 5.0</span><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="d-body"><div class="d-region">Uttarakhand · 4 Dhams</div><div class="d-name">Char Dham Yatra</div><div class="d-desc">The holiest pilgrimage — Yamunotri, Gangotri, Kedarnath & Badrinath with expert guides.</div><div class="d-foot"><div class="d-price">₹28,999 <small>/person</small></div><button class="btn-bk">Book →</button></div></div>
+      </div>
+      <div class="d-card" onclick="openDetail('rishikesh')">
+        <div class="d-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYuwk5cz7eteCQOcJo677ALlauzgvF6BymDg&s" alt="Rishikesh"/><div class="d-img-grad"></div><span class="d-badge adv">Adventure</span><span class="d-rating">⭐ 4.9</span><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="d-body"><div class="d-region">Rishikesh · Dehradun</div><div class="d-name">Rishikesh Adventure Rush</div><div class="d-desc">Rafting, bungee, camping and sunrise yoga in the adventure capital of India.</div><div class="d-foot"><div class="d-price">₹9,499 <small>/person</small></div><button class="btn-bk">Book →</button></div></div>
+      </div>
+      <div class="d-card" onclick="openDetail('auli')">
+        <div class="d-img"><img src="data:image/jpeg;base64,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" alt="Auli"/><div class="d-img-grad"></div><span class="d-badge ski">Ski</span><span class="d-rating">⭐ 4.8</span><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="d-body"><div class="d-region">Auli · Chamoli</div><div class="d-name">Auli Ski & Snow Getaway</div><div class="d-desc">Asia's longest gondola, certified ski instructors and stunning Nanda Devi views.</div><div class="d-foot"><div class="d-price">₹14,999 <small>/person</small></div><button class="btn-bk">Book →</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activities Preview -->
+  <div class="home-acts reveal">
+    <div class="sec-head-row">
+      <div><span class="sec-eye">🧗 Activities</span><div class="sec-title">What You Can <em>Experience</em></div></div>
+      <button class="see-all" onclick="window.location.href='activities.html'">All Activities →</button>
+    </div>
+    <div class="acts-grid-home">
+      <div class="act-card" onclick="window.location.href='activities.html'"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=400&q=80" alt="Rafting"/><div class="act-ov"></div><div class="act-txt"><h4>River Rafting</h4><span>Rishikesh</span></div></div>
+      <div class="act-card" onclick="window.location.href='activities.html'"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2kZhlSXljIK6Z7WwR4b7ikhdLoLDLvKQ6DQ&s" alt="Skiing"/><div class="act-ov"></div><div class="act-txt"><h4>Snow Skiing</h4><span>Auli</span></div></div>
+      <div class="act-card" onclick="window.location.href='activities.html'"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4mQq5A7VOiUnPyI6BToKOJ6X2gshmsVQBWg&s" alt="Paragliding"/><div class="act-ov"></div><div class="act-txt"><h4>Paragliding</h4><span>Bir Billing</span></div></div>
+      <div class="act-card" onclick="window.location.href='activities.html'"><img src="data:image/jpeg;base64,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" alt="Safari"/><div class="act-ov"></div><div class="act-txt"><h4>Jungle Safari</h4><span>Jim Corbett</span></div></div>
+    </div>
+  </div>
+
+  <!-- Why Us -->
+  <section class="why-sec reveal">
+    <div class="why-grid">
+      <div class="why-img-wrap">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8WcGwpuI6QNoGr9QCo99uaK-95hXxfEiQ6g&s" alt="Guide"/>
+        <div class="why-float">
+          <div class="wf-h">Customer Satisfaction</div>
+          <div class="wf-row"><span style="font-size:.67rem;color:var(--stone);width:50px">Safety</span><div class="wf-bar"><div class="wf-fill" style="width:98%"></div></div><span class="wf-lbl">98%</span></div>
+          <div class="wf-row"><span style="font-size:.67rem;color:var(--stone);width:50px">Value</span><div class="wf-bar"><div class="wf-fill" style="width:95%"></div></div><span class="wf-lbl">95%</span></div>
+          <div class="wf-row"><span style="font-size:.67rem;color:var(--stone);width:50px">Service</span><div class="wf-bar"><div class="wf-fill" style="width:97%"></div></div><span class="wf-lbl">97%</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="sec-eye">💚 Why Choose Us</span>
+        <div class="sec-title">Travel Smarter with <em>DevBhoomi</em></div>
+        <p class="sec-sub">We're locals who've trekked every trail and know every secret spot in Uttarakhand.</p>
+        <div class="why-feats">
+          <div class="why-feat"><div class="wfeat-ico">🏔️</div><div><div class="wfeat-title">Local Expert Guides</div><div class="wfeat-desc">Born in Uttarakhand — we know every hidden waterfall and temple others miss.</div></div></div>
+          <div class="why-feat"><div class="wfeat-ico">💰</div><div><div class="wfeat-title">Best Price Guarantee</div><div class="wfeat-desc">Find it cheaper elsewhere? We'll beat it. No hidden charges, ever.</div></div></div>
+          <div class="why-feat"><div class="wfeat-ico">🛡️</div><div><div class="wfeat-title">Safety First, Always</div><div class="wfeat-desc">Insured trips, certified instructors and 24/7 emergency helpline.</div></div></div>
+          <div class="why-feat"><div class="wfeat-ico">♻️</div><div><div class="wfeat-title">Eco-Responsible Tourism</div><div class="wfeat-desc">5 trees planted per booking. Eco-certified partners only.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testi-sec reveal">
+    <div class="sec-head-row">
+      <div><span class="sec-eye">❤️ Reviews</span><div class="sec-title">What Travelers <em>Say</em></div></div>
+    </div>
+    <div class="testi-grid">
+      <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Char Dham trip was beyond spiritual — every detail was perfect. Our guide Ramesh knew every story."</div><div class="t-person"><img class="t-av" src="https://api.dicebear.com/7.x/initials/svg?seed=Priya%20Sharma&backgroundColor=c0392b&radius=50&size=80" alt=""/><div><div class="t-name">Priya Sharma</div><div class="t-loc">Mumbai</div></div></div></div>
+      <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Rishikesh Adventure Rush was the best 5 days of my life. Grade-4 rafting was both safe and thrilling!"</div><div class="t-person"><img class="t-av" src="https://api.dicebear.com/7.x/initials/svg?seed=Arjun%20Mehta&backgroundColor=27ae60&radius=50&size=80" alt=""/><div><div class="t-name">Arjun Mehta</div><div class="t-loc">Bangalore</div></div></div></div>
+      <div class="t-card"><div class="t-stars">★★★★★</div><div class="t-text">"Valley of Flowers in August — I didn't know India had something this magical. Zero hassle, flawless planning."</div><div class="t-person"><img class="t-av" src="https://api.dicebear.com/7.x/initials/svg?seed=Sneha%20Gupta&backgroundColor=8e44ad&radius=50&size=80" alt=""/><div><div class="t-name">Sneha Gupta</div><div class="t-loc">Delhi</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+
+  <!-- ══ REVIEWS ══ -->
+  <section class="reviews-sec">
+    <div class="sec-head-row"><div><span class="sec-eye">⭐ Traveler Reviews</span><div class="sec-title">Share Your <em>Experience</em></div></div></div>
+    <div class="reviews-layout">
+      <div class="review-form-card">
+        <h3>Write a Review</h3>
+        <p>Rate your DevBhoomi Travels experience</p>
+        <div class="star-input"><input type="radio" name="star" id="s5" value="5"/><label for="s5">★</label><input type="radio" name="star" id="s4" value="4"/><label for="s4">★</label><input type="radio" name="star" id="s3" value="3"/><label for="s3">★</label><input type="radio" name="star" id="s2" value="2"/><label for="s2">★</label><input type="radio" name="star" id="s1" value="1"/><label for="s1">★</label></div>
+        <div class="rf-row"><div class="rf-field"><label>Name</label><input type="text" id="revName" placeholder="Rahul Sharma"/></div><div class="rf-field"><label>City</label><input type="text" id="revCity" placeholder="Delhi"/></div></div>
+        <div class="rf-field"><label>Package Taken</label><select id="revPkg"><option value="">Select…</option><option>Char Dham Yatra</option><option>Rishikesh Adventure</option><option>Auli Ski Getaway</option><option>Jim Corbett Safari</option><option>Valley of Flowers</option><option>Kedarnath Yatra</option><option>Other</option></select></div>
+        <div class="rf-field"><label>Your Review</label><textarea id="revText" placeholder="Tell others about your experience…"></textarea></div>
+        <button class="btn-rev-sub" class="rev-submit-btn" onclick="submitReview()">Submit Review ⭐</button>
+      </div>
+      <div>
+        <div class="rev-summary">
+          <div><div class="rev-big-score" id="revAvgScore">4.9</div><div class="rev-stars-big" id="revAvgStars">★★★★★</div><div class="rev-total" id="revTotalCount">2,500+ reviews</div></div>
+          <div class="rev-bars">
+            <div class="rev-bar-row"><span class="rev-bar-lbl">5★</span><div class="rev-bar-track"><div class="rev-bar-fill" style="width:88%"></div></div><span style="font-size:.7rem;color:var(--stone)">88%</span></div>
+            <div class="rev-bar-row"><span class="rev-bar-lbl">4★</span><div class="rev-bar-track"><div class="rev-bar-fill" style="width:8%"></div></div><span style="font-size:.7rem;color:var(--stone)">8%</span></div>
+            <div class="rev-bar-row"><span class="rev-bar-lbl">3★</span><div class="rev-bar-track"><div class="rev-bar-fill" style="width:3%"></div></div><span style="font-size:.7rem;color:var(--stone)">3%</span></div>
+            <div class="rev-bar-row"><span class="rev-bar-lbl">2★</span><div class="rev-bar-track"><div class="rev-bar-fill" style="width:1%"></div></div><span style="font-size:.7rem;color:var(--stone)">1%</span></div>
+            <div class="rev-bar-row"><span class="rev-bar-lbl">1★</span><div class="rev-bar-track"><div class="rev-bar-fill" style="width:0%"></div></div><span style="font-size:.7rem;color:var(--stone)">0%</span></div>
+          </div>
+        </div>
+        <div class="reviews-list" id="reviewsList">
+          <div class="rev-loading" id="revLoader" style="text-align:center;padding:2rem;color:var(--stone);font-size:.9rem;">⏳ Reviews load ho rahi hain…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Time to Visit -->
+  <section class="bttv-sec reveal">
+    <div class="sec-head-row">
+      <div>
+        <span class="sec-eye">📅 Plan Your Visit</span>
+        <div class="sec-title">Best Time to Visit <em>Uttarakhand</em></div>
+        <p class="sec-sub">Every season paints Uttarakhand in a different shade — pick yours.</p>
+      </div>
+    </div>
+    <div class="season-grid">
+      <div class="season-card spring">
+        <span class="season-ico">🌸</span>
+        <div class="season-name">Spring</div>
+        <div class="season-months">March — May</div>
+        <div class="season-desc">Rhododendrons in bloom, mild temperatures and clear skies. Ideal for trekking and valley exploration.</div>
+        <div class="season-best">
+          <span class="season-tag">Valley of Flowers</span>
+          <span class="season-tag">Chopta</span>
+          <span class="season-tag">Trekking</span>
+        </div>
+      </div>
+      <div class="season-card summer">
+        <span class="season-ico">☀️</span>
+        <div class="season-name">Summer</div>
+        <div class="season-months">June — August</div>
+        <div class="season-desc">Escape the plains heat. Hill stations are cool and beautiful. Char Dham pilgrimage season at peak.</div>
+        <div class="season-best">
+          <span class="season-tag">Char Dham</span>
+          <span class="season-tag">Nainital</span>
+          <span class="season-tag">Mussoorie</span>
+        </div>
+      </div>
+      <div class="season-card monsoon">
+        <span class="season-ico">🌧️</span>
+        <div class="season-name">Monsoon</div>
+        <div class="season-months">July — September</div>
+        <div class="season-desc">Lush green landscapes and dramatic waterfalls. Valley of Flowers UNESCO trek at its finest.</div>
+        <div class="season-best">
+          <span class="season-tag">Valley of Flowers</span>
+          <span class="season-tag">Haridwar Aarti</span>
+          <span class="season-tag">Rafting</span>
+        </div>
+      </div>
+      <div class="season-card winter">
+        <span class="season-ico">❄️</span>
+        <div class="season-name">Winter</div>
+        <div class="season-months">October — February</div>
+        <div class="season-desc">Auli ski slopes, snow-covered peaks and serene pilgrimage towns without crowds.</div>
+        <div class="season-best">
+          <span class="season-tag">Auli Skiing</span>
+          <span class="season-tag">Stargazing</span>
+          <span class="season-tag">Kedarnath</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-sec">
+    <div class="sec-head-row">
+      <div>
+        <span class="sec-eye">❓ Quick Answers</span>
+        <div class="sec-title">Frequently Asked <em>Questions</em></div>
+      </div>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is the best time to visit Uttarakhand?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">Uttarakhand is beautiful year-round. For trekking: March–June and September–November. For skiing at Auli: December–February. For Char Dham pilgrimage: May–June and September–October. Valley of Flowers blooms July–August. Each season offers a unique experience!</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is Uttarakhand safe for solo female travelers?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">Absolutely! Uttarakhand is one of India's safest states. Our packages include female guides on request, group departures for solo travelers, 24/7 helpline support and all our accommodation partners are verified and safe. Thousands of solo women travel with us every year.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is included in your tour packages?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">All our packages include: accommodation (specified in each package), all meals mentioned, expert local guide, AC transport, entry fees to monuments/parks, adventure equipment where applicable, and 24/7 emergency support. What's NOT included: personal expenses, travel insurance (recommended), tips, and anything mentioned as 'optional'.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Can I customize a tour package?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">Yes! All packages are fully customizable. Tell us your dates, budget, interests, and group size and our travel experts will design a personalized itinerary just for you. Call us at +91 90275 91352 or WhatsApp for a free consultation. No booking fee for enquiries.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is your cancellation policy?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">We offer free cancellation up to 15 days before departure — no questions asked, 100% refund. Between 7-15 days: 25% cancellation fee. Between 3-7 days: 50% cancellation fee. Within 3 days: non-refundable. We strongly recommend purchasing travel insurance for peace of mind.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Do you offer helicopter services for Kedarnath?
+          <span class="faq-ico">+</span>
+        </div>
+        <div class="faq-a">Yes! We offer helicopter services for Kedarnath on our premium Char Dham and Kedarnath Yatra packages. Helicopters operate from Phata, Guptkashi or Sirsi helipads. Booking is subject to weather conditions and government approval. We recommend booking at least 2 months in advance during peak season (May-June).</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nl-sec">
+    <span class="nl-eye">📩 Stay Updated</span>
+    <h2>Get Exclusive <em>Travel Deals</em></h2>
+    <p>Seasonal routes, hidden spots, early-bird discounts — straight to your inbox</p>
+    <div class="nl-form">
+      <input type="email" id="nlEmail_home" placeholder="Enter your email…"/>
+      <button onclick="subscribeNewsletter('nlEmail_home','home')">Subscribe Free 🎁</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="ft-grid">
+      <div class="ft-brand"><div class="ft-brand-txt">Dev<span>Bhoomi</span> Travels</div><p>Uttarakhand's trusted travel partner since 2018. We craft journeys that connect you with the soul of the Himalayas.</p><div class="ft-soc" style="margin-top:1.2rem"><a onclick="showToast('Follow us on Facebook!')" title="Facebook">📘</a><a onclick="showToast('Follow us on Instagram!')" title="Instagram">📸</a><a onclick="showToast('Follow us on Twitter!')" title="Twitter">🐦</a><a onclick="openWhatsApp()" title="WhatsApp">💬</a></div><div style="margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.35)">🌿 5 trees planted per booking · Carbon neutral by 2026</div></div>
+      <div class="ft-col"><h4>Packages</h4><ul><li><a onclick="window.location.href='packages.html'">Char Dham Yatra</a></li><li><a onclick="window.location.href='packages.html'">Rishikesh Adventure</a></li><li><a onclick="window.location.href='packages.html'">Auli Ski Getaway</a></li><li><a onclick="window.location.href='packages.html'">Honeymoon Special</a></li></ul></div>
+      <div class="ft-col"><h4>Destinations</h4><ul><li><a onclick="window.location.href='Destination.html'">Rishikesh</a></li><li><a onclick="window.location.href='Destination.html'">Kedarnath</a></li><li><a onclick="window.location.href='Destination.html'">Nainital</a></li><li><a onclick="window.location.href='Destination.html'">Valley of Flowers</a></li></ul></div>
+      <div class="ft-col"><h4>Contact</h4><ul><li><a><a href="tel:+919410582310" style="color:inherit;text-decoration:none">📞 +91 94105 82310</a></a></li><li><a><a href="mailto:info@devbhoomitravels.in" style="color:inherit;text-decoration:none">✉️ info@devbhoomitravels.in</a></a></li><li><a><a href="https://maps.google.com?q=Rishikesh+Uttarakhand" target="_blank" style="color:inherit;text-decoration:none">📍 Tapovan, Rishikesh, Uttarakhand – 249192</a></a></li><li><a onclick="window.location.href='contact.html'">Contact Us</a></li><li><a onclick="window.location.href='admin.html'" style="color:rgba(255,255,255,.3);font-size:.72rem">🔐 Admin</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2025 DevBhoomi Travels · Made with ❤️ for Uttarakhand</span><span>IATO Registered · 🌿 Responsible Tourism</span></div>
+  </footer>
+
+
+<!-- ═══════════════════════════════════════
+   PAGE: DESTINATIONS
+═══════════════════════════════════════ -->
+
+<div class="d-ov" id="detailOv" onclick="if(event.target===this)closeDetail()">
+  <div class="d-box">
+    <button class="dh-close" onclick="closeDetail()">✕</button>
+    <div class="dh"><img id="dImg" src="" alt=""/><div class="dh-grad"></div>
+      <div class="dh-txt"><h2 id="dTitle"></h2><p id="dReg"></p></div></div>
+    <div class="d-body">
+      <div class="d-stats" id="dStats"></div>
+      <p class="d-desc" id="dDesc"></p>
+      <div class="d-ht">✨ Package Highlights</div>
+      <div class="d-hg" id="dHl"></div>
+      <div class="d-brow">
+        <div><div class="d-bp" id="dPrice"></div><div style="font-size:.73rem;color:var(--stone)">per person · All inclusive</div></div>
+        <button class="btn-primary" onclick="closeDetail();openAuth('signup')">Book This Package →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb-ov" id="lbOv" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="m-ov" id="loginMod" onclick="if(event.target===this)closeAuth('loginMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('loginMod')">✕</button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Welcome Back!</h2><p>Log in to manage your bookings</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf"><label>Email</label><input type="email" id="lEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="fgt"><a href="#" onclick="openForgotPassword();return false;">Forgot password?</a></div>
+    <button class="m-sub" id="lSubmitBtn" onclick="loginUser()">Log In →</button>
+    <p class="m-sw">New here? <a onclick="switchAuth('loginMod','signupMod')">Create account</a></p>
+  </div>
+</div>
+
+<!-- ═══════════ SIGNUP MODAL ═══════════ -->
+<div class="m-ov" id="signupMod" onclick="if(event.target===this)closeAuth('signupMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('signupMod')">✕</button>
+    <button class="m-back" onclick="switchAuth('signupMod','loginMod')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Join Us Today</h2><p>Create your free account</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf-row">
+      <div class="mf"><label>First Name</label><input type="text" id="sName" placeholder="Rahul"/></div>
+      <div class="mf"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+    </div>
+    <div class="mf"><label>Email</label><input type="email" id="sEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Mobile</label><input type="tel" id="sPhone" placeholder="+91 94105 82310"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="sPass" placeholder="Min. 8 characters"/></div>
+    <button class="m-sub" id="sSubmitBtn" onclick="doSignup()">Create Account →</button>
+    <p class="m-sw">Already have an account? <a onclick="switchAuth('signupMod','loginMod')">Log In</a></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ FORGOT PASSWORD MODAL ═══════════ -->
+<div class="m-ov" id="forgotMod" onclick="if(event.target===this)closeAuth('forgotMod')" style="display:none">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('forgotMod')">✕</button>
+    <button class="m-back" onclick="closeAuth('forgotMod');openAuth('login')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </button>
+    <div class="m-head">
+      <div class="m-brand">🏔️ DevBhoomi Travels</div>
+      <h2>Reset Password</h2>
+      <p>Enter your email and we'll send a reset link</p>
+    </div>
+    <div class="mf"><label>Registered Email</label><input type="email" id="fpEmail" placeholder="you@example.com"/></div>
+    <button class="m-sub" id="fpBtn" onclick="doForgotPassword()">Send Reset Link →</button>
+    <div id="fpMsg" style="margin-top:12px;font-size:.85rem;text-align:center;display:none"></div>
+    <p class="m-sw">Remember your password? <a onclick="closeAuth('forgotMod');openAuth('login')">Log In</a></p>
+  </div>
+</div>
+
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-ov" id="searchOv">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-wrap">
+    <div class="search-title">Find Your <em>Dream Trip</em></div>
+    <div class="search-input-wrap">
+      <span class="search-ico-wrap">🔍</span>
+      <input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure, Wildlife…" oninput="renderSearchResults(this.value)"/>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="book-ov" id="bookOv">
+  <div class="book-box">
+    <div class="book-head">
+      <h2 id="bookTitle">Book Your Trip</h2>
+      <p id="bookPkgName">Secure your spot today</p>
+      <button class="book-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="book-body">
+      <input type="hidden" id="bookPkgKey" value=""/>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:.85rem;font-weight:700;color:var(--forest)" id="bookPkgName2">Selected Package</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--pine);font-weight:700" id="bookPkgPrice"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Your Full Name *</label><input type="text" id="bookName" placeholder="Rahul Sharma"/></div>
+        <div class="bfield"><label>Mobile Number *</label><input type="tel" id="bookPhone" placeholder="+91 94105 82310"/></div>
+      </div>
+      <div class="bfield" style="margin-bottom:.8rem"><label>Email (optional)</label><input type="email" id="bookEmail" placeholder="you@example.com"/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Travel Date *</label><input type="date" id="bookDate" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),document.getElementById('bookPersons').value)"/></div>
+        <div class="bfield"><label>Number of Persons</label><select id="bookPersons" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/person]/g,''),this.value)"><option value="1">1 Person</option><option value="2" selected>2 Persons</option><option value="3">3 Persons</option><option value="4">4 Persons</option><option value="5">5+ Persons</option></select></div>
+      </div>
+      <div class="bfield"><label>Special Requests (optional)</label><input type="text" id="bookMsg" placeholder="Vegetarian food, wheelchair access, anniversary…"/></div>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.7rem">Booking Summary</div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>Package Price × Persons</span><span id="bsSubtotal">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>GST (5%)</span><span id="bsTax">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--forest);font-size:.95rem;border-top:1px solid rgba(82,169,122,.15);padding-top:.5rem;margin-top:.4rem"><span>Total Amount</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--pine)" id="bsTotal">—</span></div>
+      </div>
+      <button class="btn-book-final" id="bookConfirmBtn" onclick="confirmBooking()">✅ Confirm Booking →</button>
+      <p style="text-align:center;font-size:.73rem;color:var(--stone);margin-top:.7rem">🔒 Secure booking · Free cancellation within 15 days · Pay 30% advance only</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMPARE BAR ══ -->
+<div class="cmp-bar" id="cmpBar">
+  <div class="cmp-bar-items" id="cmpBarItems"></div>
+  <div class="cmp-bar-btns">
+    <button class="btn-do-cmp" id="btnDoCmp" onclick="openCmp()">⚖️ Compare Now</button>
+    <button class="btn-clr-cmp" onclick="clearCompare()">✕ Clear</button>
+  </div>
+</div>
+
+<!-- ══ COMPARE MODAL ══ -->
+<div class="cmp-ov" id="cmpOv">
+  <div class="cmp-box">
+    <div class="cmp-h"><h2>⚖️ Package Comparison</h2><button class="cmp-close" onclick="closeCmp()">✕</button></div>
+    <div class="cmp-table" id="cmpTable"></div>
+  </div>
+</div>
+
+<!-- ══ WHATSAPP FAB ══ -->
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp</div>
+
+
+<!-- ════════════════════════════════
+   PAGE: HOTELS
+════════════════════════════════ -->
+<script src="js/main.js"></script>
+</body>
+</html>

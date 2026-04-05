@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DevBhoomi Travels — Hotels</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="sp"></div>
+
+<div id="ldr">
+  <div class="l-logo">Dev<span>Bhoomi</span> ✨</div>
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-txt">Loading Your Himalayan Journey…</div>
+</div>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">
+    <span class="logo-icon">🏔️</span>
+    <div class="logo-wrap">
+      <div class="logo-text">Dev<span>Bhoomi</span> Travels</div>
+      <div class="logo-sub">Uttarakhand's Soul</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html" class="active">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="user-dashboard.html" id="dashNavLink" style="display:none">👤 Dashboard</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="Destination.html">📍 Destinations</a></li>
+        <li><a href="packages.html">📦 Packages</a></li>
+        <li><a href="activities.html">🧗 Activities</a></li>
+        <li><a href="gallery.html">🖼️ Gallery</a></li>
+        <li><a href="contact.html">📞 Contact</a></li>
+        <li><a href="Hotel.html" class="active">🏨 Hotels</a></li>
+        <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+        <li><a href="user-dashboard.html" id="dashNavLink" style="display:none">👤 Dashboard</a></li>
+        <li><a href="About.html">ℹ️ About</a></li>
+        
+  </ul>
+  <div class="drawer-btns">
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+</div>
+
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="hotel-hero-bg"></div>
+    <div class="ov-l"></div><div class="ov-b"></div>
+    <div class="page-hero-inner">
+      <h1>Stay in <em>Comfort</em><br/>Across Uttarakhand</h1>
+      <p>Hand-picked hotels, resorts, heritage stays & camps — from luxury hilltop retreats to cozy river-side camps.</p>
+    </div>
+  </section>
+
+  <!-- Quick Book Bar -->
+  <div class="hotel-book-bar">
+    <div class="hbb-field"><span class="hbb-label">Destination</span>
+      <select><option>All Uttarakhand</option><option>Rishikesh</option><option>Nainital</option><option>Mussoorie</option><option>Auli</option><option>Haridwar</option><option>Jim Corbett</option><option>Chopta</option></select>
+    </div>
+    <div class="hbb-sep"></div>
+    <div class="hbb-field"><span class="hbb-label">Check-in</span><input type="date" id="hbbCheckin"/></div>
+    <div class="hbb-sep"></div>
+    <div class="hbb-field"><span class="hbb-label">Check-out</span><input type="date" id="hbbCheckout"/></div>
+    <div class="hbb-sep"></div>
+    <div class="hbb-field"><span class="hbb-label">Guests</span>
+      <select><option>1 Adult</option><option>2 Adults</option><option>2 Adults, 1 Child</option><option>2 Adults, 2 Children</option><option>Group (5+)</option></select>
+    </div>
+    <div class="hbb-sep"></div>
+    <div class="hbb-field"><span class="hbb-label">Rooms</span>
+      <select><option>1 Room</option><option>2 Rooms</option><option>3 Rooms</option></select>
+    </div>
+    <button class="btn-hbb-search" onclick="hotelSearch()">🔍 Search Hotels</button>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="hotel-filter-bar">
+    <div class="filter-tabs" id="hotelTabs">
+      <button class="ftab active" onclick="filterHotels(this,'All')">All Hotels</button>
+      <button class="ftab" onclick="filterHotels(this,'Luxury')">⭐ Luxury</button>
+      <button class="ftab" onclick="filterHotels(this,'Boutique')">🌸 Boutique</button>
+      <button class="ftab" onclick="filterHotels(this,'Resort')">🏖️ Resort</button>
+      <button class="ftab" onclick="filterHotels(this,'Heritage')">🏛️ Heritage</button>
+      <button class="ftab" onclick="filterHotels(this,'Camp')">⛺ Camp</button>
+      <button class="ftab" onclick="filterHotels(this,'Budget')">💚 Budget</button>
+    </div>
+    <div class="hf-right">
+      <div class="hotel-search-bar">
+        <input type="text" id="hotelSearchInput" placeholder="Search hotel, location…" oninput="hotelSearchFilter(this.value)"/>
+        <button onclick="hotelSearchFilter(document.getElementById('hotelSearchInput').value)">Go</button>
+      </div>
+      <select class="sort-sel" onchange="sortHotels(this.value)">
+        <option value="">Sort by</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
+      <span class="r-count" id="hotelCount">18 hotels</span>
+    </div>
+  </div>
+
+  <div class="hotel-wrap">
+
+    <!-- Featured Hotel -->
+    <div class="featured-hotel" onclick="openHotelDetail('ananda')">
+      <div class="fh-img">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=85" alt="Ananda in the Himalayas"/>
+        <div class="fh-ribbon">⭐ Featured · Best Luxury</div>
+      </div>
+      <div class="fh-body">
+        <div class="fh-stars">★★★★★</div>
+        <div class="fh-name">Ananda in the <em>Himalayas</em></div>
+        <div class="fh-loc">📍 Narendra Nagar, Rishikesh · 5-Star Luxury Spa Resort</div>
+        <div class="fh-desc">One of Asia's top luxury spa resorts perched above the Ganges. Immerse yourself in Ayurvedic therapies, yoga pavilions, infinity pool with Himalayan panorama and world-class cuisine — an unparalleled retreat for the soul.</div>
+        <div class="fh-amenities">
+          <span class="fh-amen">♾️ Infinity Pool</span><span class="fh-amen">🧘 Yoga Pavilion</span><span class="fh-amen">💆 Ayurvedic Spa</span><span class="fh-amen">🍽️ Fine Dining</span><span class="fh-amen">🏋️ Fitness Center</span><span class="fh-amen">🌅 Himalayan Views</span><span class="fh-amen">🛎️ Butler Service</span>
+        </div>
+        <div class="fh-foot">
+          <div><div class="fh-price">₹22,000<small>/night per couple</small></div></div>
+          <div style="display:flex;gap:.6rem">
+            <button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('ananda')">View Details</button>
+            <button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking('Ananda in the Himalayas','22000')">Book Now →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel Grid -->
+    <div class="hotel-grid" id="hotelGrid">
+
+      <!-- 1 -->
+      <div class="hotel-card" data-cat="Luxury" data-price="18000" data-rating="4.9" onclick="openHotelDetail('glasshouse')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1501117716987-c8c394bb29df?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge luxury">Luxury</span><span class="hc-rating">⭐ 4.9</span><div class="hc-location-tag">📍 Rishikesh</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Glasshouse on the Ganges</div>
+          <div class="hc-location"><a href="https://maps.google.com?q=Rishikesh+Uttarakhand" target="_blank" style="color:inherit;text-decoration:none">📍 Tapovan, Rishikesh, Uttarakhand – 249192</a></div>
+          <div class="hc-amenities"><span class="hc-amen">🌊 River View</span><span class="hc-amen">♾️ Pool</span><span class="hc-amen">🍽️ Restaurant</span><span class="hc-amen">🧘 Yoga</span><span class="hc-amen">🚗 Pickup</span></div>
+          <div class="hc-desc">A hidden gem where colonial architecture meets the sacred Ganges. Cottages nestled in mango groves with private balconies overlooking the river.</div>
+          <div class="hc-foot"><div class="hc-price">₹18,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('glasshouse')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="hotel-card" data-cat="Heritage" data-price="8500" data-rating="4.8" onclick="openHotelDetail('savoy')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge heritage">Heritage</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Mussoorie</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">The Savoy Mussoorie</div>
+          <div class="hc-location">📍 Mussoorie, Uttarakhand</div>
+          <div class="hc-amenities"><span class="hc-amen">🏛️ 1902 Est.</span><span class="hc-amen">🌿 Lush Gardens</span><span class="hc-amen">🍽️ Fine Dining</span><span class="hc-amen">♟️ Billiards</span><span class="hc-amen">🎭 Live Music</span></div>
+          <div class="hc-desc">Uttarakhand's oldest luxury hotel, established 1902. Grand Victorian architecture, manicured lawns and timeless colonial elegance in the Queen of Hills.</div>
+          <div class="hc-foot"><div class="hc-price">₹8,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('savoy')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+        <div class="hotel-card" data-cat="Resort" data-price="12000" data-rating="4.9" onclick="openHotelDetail('corbett_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge resort">Resort</span><span class="hc-rating">⭐ 4.9</span><div class="hc-location-tag">📍 Jim Corbett</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Corbett Jungle Lodge</div>
+          <div class="hc-location">📍 Jim Corbett National Park</div>
+          <div class="hc-amenities"><span class="hc-amen">🐯 Safari</span><span class="hc-amen">♾️ Pool</span><span class="hc-amen">🍽️ Restaurant</span><span class="hc-amen">🔭 Observatory</span><span class="hc-amen">🌿 Nature Walk</span></div>
+          <div class="hc-desc">Luxury jungle lodge surrounded by the buffer zone of Jim Corbett. Wake up to birdsong and elephant sightings before your Dhikala safari.</div>
+          <div class="hc-foot"><div class="hc-price">₹12,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('corbett_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="hotel-card" data-cat="Boutique" data-price="7500" data-rating="4.8" onclick="openHotelDetail('nainital_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge boutique">Boutique</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Nainital</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Naini Retreat</div>
+          <div class="hc-location">📍 Mallital, Nainital</div>
+          <div class="hc-amenities"><span class="hc-amen">⛵ Lake View</span><span class="hc-amen">🌿 Garden</span><span class="hc-amen">☕ Cafe</span><span class="hc-amen">🚡 Cable Car Nearby</span></div>
+          <div class="hc-desc">Charming boutique hotel overlooking the shimmering Naini Lake. Rooms decorated with Kumaoni art, private balconies and homemade Pahari breakfast.</div>
+          <div class="hc-foot"><div class="hc-price">₹7,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('nainital_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="hotel-card" data-cat="Resort" data-price="15000" data-rating="4.7" onclick="openHotelDetail('auli_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge resort">Resort</span><span class="hc-rating">⭐ 4.7</span><div class="hc-location-tag">📍 Auli</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Cliff Top Club Auli</div>
+          <div class="hc-location">📍 Auli, Chamoli, Uttarakhand</div>
+          <div class="hc-amenities"><span class="hc-amen">⛷️ Ski-in/Ski-out</span><span class="hc-amen">🔥 Bonfire</span><span class="hc-amen">🍽️ Restaurant</span><span class="hc-amen">❄️ Snow Views</span></div>
+          <div class="hc-desc">India's most unique ski resort at 2,700m. Log cabins with panoramic views of Nanda Devi. Ski straight from your doorstep onto India's best slopes.</div>
+          <div class="hc-foot"><div class="hc-price">₹15,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('auli_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="hotel-card" data-cat="Camp" data-price="3500" data-rating="4.9" onclick="openHotelDetail('chopta_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge camp">Camp</span><span class="hc-rating">⭐ 4.9</span><div class="hc-location-tag">📍 Chopta</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Chopta Starcamp</div>
+          <div class="hc-location">📍 Chopta, Rudraprayag</div>
+          <div class="hc-amenities"><span class="hc-amen">🔭 Stargazing</span><span class="hc-amen">🔥 Bonfire</span><span class="hc-amen">⛺ Swiss Tents</span><span class="hc-amen">🍳 Campfire Meals</span></div>
+          <div class="hc-desc">Glamping at 2,680m in the meadows of Mini Switzerland. Swiss tents with attached washrooms. Milky Way visible with naked eye. Heaven on Earth.</div>
+          <div class="hc-foot"><div class="hc-price">₹3,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('chopta_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="hotel-card" data-cat="Luxury" data-price="14000" data-rating="4.8" onclick="openHotelDetail('vivanta')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge luxury">Luxury</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Rishikesh</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Vivanta Rishikesh</div>
+          <div class="hc-location">📍 Rishikesh, Dehradun</div>
+          <div class="hc-amenities"><span class="hc-amen">♾️ Infinity Pool</span><span class="hc-amen">🧘 Yoga</span><span class="hc-amen">💆 Spa</span><span class="hc-amen">🍽️ Multi-cuisine</span><span class="hc-amen">🎯 Adventure Desk</span></div>
+          <div class="hc-desc">Taj Group's flagship Rishikesh property. Rooms with floor-to-ceiling Ganges views, rooftop infinity pool and curated yoga & wellness programmes.</div>
+          <div class="hc-foot"><div class="hc-price">₹14,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('vivanta')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="hotel-card" data-cat="Budget" data-price="1800" data-rating="4.6" onclick="openHotelDetail('zostel')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge budget">Budget</span><span class="hc-rating">⭐ 4.6</span><div class="hc-location-tag">📍 Rishikesh</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Zostel Rishikesh</div>
+          <div class="hc-location">📍 Tapovan, Rishikesh</div>
+          <div class="hc-amenities"><span class="hc-amen">🌊 Ganga View</span><span class="hc-amen">☕ Cafe</span><span class="hc-amen">🎸 Community Hall</span><span class="hc-amen">🚲 Cycle Rent</span></div>
+          <div class="hc-desc">India's best hostel with private rooms and dormitories. Rooftop cafe, backpacker community, co-working space and free morning yoga by the Ganga.</div>
+          <div class="hc-foot"><div class="hc-price">₹1,800<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('zostel')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="hotel-card" data-cat="Heritage" data-price="9500" data-rating="4.7" onclick="openHotelDetail('manor')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge heritage">Heritage</span><span class="hc-rating">⭐ 4.7</span><div class="hc-location-tag">📍 Haridwar</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Haveli Hari Ganga</div>
+          <div class="hc-location">📍 Har Ki Pauri, Haridwar</div>
+          <div class="hc-amenities"><span class="hc-amen">🕉️ Ghat View</span><span class="hc-amen">🧘 Yoga</span><span class="hc-amen">🍽️ Sattvic Meals</span><span class="hc-amen">🛕 Temple Walk</span></div>
+          <div class="hc-desc">Stunning heritage haveli right on the Ganga ghats. Watch the evening Aarti from your private balcony. Rooftop restaurant serving pure sattvic food.</div>
+          <div class="hc-foot"><div class="hc-price">₹9,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('manor')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="hotel-card" data-cat="Camp" data-price="4500" data-rating="4.8" onclick="openHotelDetail('bythe')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1445308394109-4ec2920981b1?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge camp">Camp</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Rishikesh</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">By the Ganges Camp</div>
+          <div class="hc-location">📍 Shivpuri, Rishikesh</div>
+          <div class="hc-amenities"><span class="hc-amen">🛶 Rafting</span><span class="hc-amen">🔥 Bonfire</span><span class="hc-amen">⛺ Luxury Tents</span><span class="hc-amen">🍳 Buffet</span><span class="hc-amen">🎵 Music Night</span></div>
+          <div class="hc-desc">Premium river camp on the sandy Ganges banks at Shivpuri. White-water rafting at doorstep, evening bonfire, DJ nights and freshest Pahari meals.</div>
+          <div class="hc-foot"><div class="hc-price">₹4,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('bythe')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="hotel-card" data-cat="Boutique" data-price="6000" data-rating="4.7" onclick="openHotelDetail('devbhoomi_stay')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge boutique">Boutique</span><span class="hc-rating">⭐ 4.7</span><div class="hc-location-tag">📍 Mussoorie</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Cloud9 Mussoorie</div>
+          <div class="hc-location">📍 Landour, Mussoorie</div>
+          <div class="hc-amenities"><span class="hc-amen">☁️ Cloud Views</span><span class="hc-amen">📚 Library</span><span class="hc-amen">☕ All-day Cafe</span><span class="hc-amen">🎨 Art Studio</span></div>
+          <div class="hc-desc">Whimsical boutique property in quiet Landour. When clouds roll through your window, you truly feel on top of the world. Writers' & artists' favourite.</div>
+          <div class="hc-foot"><div class="hc-price">₹6,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('devbhoomi_stay')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="hotel-card" data-cat="Budget" data-price="2200" data-rating="4.5" onclick="openHotelDetail('ganga_inn')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge budget">Budget</span><span class="hc-rating">⭐ 4.5</span><div class="hc-location-tag">📍 Haridwar</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Ganga Kinare Haridwar</div>
+          <div class="hc-location">📍 Swarg Ashram Road, Haridwar</div>
+          <div class="hc-amenities"><span class="hc-amen">🌊 Ganga View</span><span class="hc-amen">🍽️ Veg Restaurant</span><span class="hc-amen">🧘 Yoga Hall</span><span class="hc-amen">🅿️ Free Parking</span></div>
+          <div class="hc-desc">Value-for-money hotel steps away from Har Ki Pauri. Clean rooms with river views, rooftop dining and complimentary yoga. Perfect Haridwar base.</div>
+          <div class="hc-foot"><div class="hc-price">₹2,200<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('ganga_inn')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 13 — Kedarnath Yatra Package -->
+      <div class="hotel-card" data-cat="Heritage" data-price="5500" data-rating="4.8" onclick="openHotelDetail('kedar_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge heritage">Heritage</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Kedarnath</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Hotel Shiv Lok Kedarnath</div>
+          <div class="hc-location">📍 Gaurikund Base, Kedarnath, Rudraprayag</div>
+          <div class="hc-amenities"><span class="hc-amen">⛰️ Himalaya View</span><span class="hc-amen">🕉️ Temple Nearby</span><span class="hc-amen">🍽️ Sattvic Meals</span><span class="hc-amen">🔥 Room Heater</span><span class="hc-amen">🧳 Luggage Store</span></div>
+          <div class="hc-desc">Best-located property for Kedarnath Yatra pilgrims. Warm rooms with direct Himalayan views, hot meals and helicopter booking assistance. Perfect Char Dham base.</div>
+          <div class="hc-foot"><div class="hc-price">₹5,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('kedar_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 14 — Valley of Flowers Trek Package -->
+      <div class="hotel-card" data-cat="Boutique" data-price="4200" data-rating="4.7" onclick="openHotelDetail('vof_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge boutique">Boutique</span><span class="hc-rating">⭐ 4.7</span><div class="hc-location-tag">📍 Joshimath</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Snow Crest Inn Joshimath</div>
+          <div class="hc-location">📍 Joshimath, Chamoli, Uttarakhand</div>
+          <div class="hc-amenities"><span class="hc-amen">🌸 Valley Views</span><span class="hc-amen">🥾 Trek Support</span><span class="hc-amen">🍽️ Restaurant</span><span class="hc-amen">☀️ Terrace</span><span class="hc-amen">🗺️ Guide Desk</span></div>
+          <div class="hc-desc">Gateway hotel for Valley of Flowers & Hemkund Sahib treks. Expert trek guides, route planning, gear rental and freshly cooked Pahari food. UNESCO World Heritage experience starts here.</div>
+          <div class="hc-foot"><div class="hc-price">₹4,200<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('vof_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 15 — Lansdowne / Khirsu Package -->
+      <div class="hotel-card" data-cat="Resort" data-price="6500" data-rating="4.6" onclick="openHotelDetail('lansdowne_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge resort">Resort</span><span class="hc-rating">⭐ 4.6</span><div class="hc-location-tag">📍 Lansdowne</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Trishul Resort Lansdowne</div>
+          <div class="hc-location">📍 Lansdowne, Pauri Garhwal, Uttarakhand</div>
+          <div class="hc-amenities"><span class="hc-amen">🌲 Pine Forest</span><span class="hc-amen">🏔️ Trishul Peak View</span><span class="hc-amen">♾️ Pool</span><span class="hc-amen">🍽️ Restaurant</span><span class="hc-amen">🚶 Nature Trails</span></div>
+          <div class="hc-desc">Hidden gem resort amidst dense oak and pine forests of Lansdowne. Panoramic views of the Trishul and Nanda Devi peaks. Perfect quiet escape from city chaos — only 5 hrs from Delhi.</div>
+          <div class="hc-foot"><div class="hc-price">₹6,500<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('lansdowne_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 16 — Kausani / Pindari Package -->
+      <div class="hotel-card" data-cat="Boutique" data-price="5000" data-rating="4.8" onclick="openHotelDetail('kausani_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge boutique">Boutique</span><span class="hc-rating">⭐ 4.8</span><div class="hc-location-tag">📍 Kausani</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Kausani Tea Estate Resort</div>
+          <div class="hc-location">📍 Kausani, Bageshwar, Uttarakhand</div>
+          <div class="hc-amenities"><span class="hc-amen">🍵 Tea Garden</span><span class="hc-amen">🏔️ Panchachuli View</span><span class="hc-amen">🌅 Sunrise Point</span><span class="hc-amen">🥾 Pindari Trek Base</span><span class="hc-amen">🧘 Yoga</span></div>
+          <div class="hc-desc">India's Switzerland — stunning 300km Himalayan panorama including Trishul, Nanda Devi and Panchachuli from your room. Set amidst lush Kausani tea gardens. Gateway to Pindari Glacier trek.</div>
+          <div class="hc-foot"><div class="hc-price">₹5,000<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('kausani_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 17 — Binsar / Jageshwar Package -->
+      <div class="hotel-card" data-cat="Resort" data-price="7800" data-rating="4.7" onclick="openHotelDetail('binsar_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1586375300773-8384e3e4916f?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge resort">Resort</span><span class="hc-rating">⭐ 4.7</span><div class="hc-location-tag">📍 Binsar</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Binsar Wildlife Retreat</div>
+          <div class="hc-location">📍 Binsar Wildlife Sanctuary, Almora</div>
+          <div class="hc-amenities"><span class="hc-amen">🦅 Birdwatching</span><span class="hc-amen">🌲 Forest Walks</span><span class="hc-amen">🏔️ Zero Point View</span><span class="hc-amen">🍽️ Organic Meals</span><span class="hc-amen">🛕 Jageshwar Nearby</span></div>
+          <div class="hc-desc">Secluded eco-retreat inside Binsar Wildlife Sanctuary at 2,400m. 300km Himalayan view from Zero Point. Ancient Jageshwar temple cluster just 11km away. Birdwatching paradise — 200+ species.</div>
+          <div class="hc-foot"><div class="hc-price">₹7,800<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('binsar_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+      <!-- 18 — Haridwar Ganga Aarti Package -->
+      <div class="hotel-card" data-cat="Heritage" data-price="3800" data-rating="4.6" onclick="openHotelDetail('haridwar_h')">
+        <div class="hc-img-wrap"><img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80" alt=""/><div class="hc-img-grad"></div><span class="hc-badge heritage">Heritage</span><span class="hc-rating">⭐ 4.6</span><div class="hc-location-tag">📍 Haridwar</div><button class="wish-btn" onclick="wishToggle(event,this)">🤍</button></div>
+        <div class="hc-body">
+          <div class="hc-name">Sattvik Ganga Retreat</div>
+          <div class="hc-location">📍 Har Ki Pauri Road, Haridwar</div>
+          <div class="hc-amenities"><span class="hc-amen">🕉️ Aarti View</span><span class="hc-amen">🌊 Ghat Access</span><span class="hc-amen">🧘 Meditation Hall</span><span class="hc-amen">🍃 Ayurvedic Spa</span><span class="hc-amen">🛕 Temple Walks</span></div>
+          <div class="hc-desc">Spiritual haven 2 minutes walk from the sacred Har Ki Pauri ghat. Watch the iconic Ganga Aarti from the hotel rooftop every evening. Pure veg sattvic kitchen, Ayurvedic treatments and daily meditation.</div>
+          <div class="hc-foot"><div class="hc-price">₹3,800<small>/night</small></div><div class="hc-btns"><button class="btn-hdetail" onclick="event.stopPropagation();openHotelDetail('haridwar_h')">Details</button><button class="btn-hbook" onclick="event.stopPropagation();openHotelBooking(this.closest('.hotel-card')?.querySelector('.hc-name')?.textContent||'Selected Hotel', this.closest('.hotel-card')?.dataset?.price)">Book</button></div></div>
+        </div>
+      </div>
+
+    </div><!-- /hotel-grid -->
+  </div><!-- /hotel-wrap -->
+
+  <!-- Why Book With Us -->
+  <div class="hotel-why-strip">
+    <div class="hws-item"><span class="hws-ico">💰</span>Best Price Guarantee</div>
+    <div class="hws-item"><span class="hws-ico">❌</span>Free Cancellation</div>
+    <div class="hws-item"><span class="hws-ico">🔒</span>Secure Payment</div>
+    <div class="hws-item"><span class="hws-ico">💬</span>24/7 Support</div>
+    <div class="hws-item"><span class="hws-ico">🏆</span>Verified Properties</div>
+    <div class="hws-item"><span class="hws-ico">🌿</span>Eco Certified Stays</div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="nl-sec"><span class="nl-eye">🏨 Exclusive Hotel Deals</span><h2>Get <em>Early-Bird</em> Room Discounts</h2><p>Subscribe for flash sales, last-minute deals and seasonal hotel offers</p><div class="nl-form"><input type="email" id="nlEmail_home" placeholder="Enter your email…"/><button onclick="subscribeNewsletter('nlEmail_hotel','hotel')">Subscribe 🎁</button></div></div>
+  <footer><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-txt">Dev<span>Bhoomi</span> Travels</div><p>Uttarakhand's trusted travel partner. We craft journeys that connect you with the soul of the Himalayas.</p><div class="ft-soc" style="margin-top:1rem"><a class="sl" href="https://wa.me/919876543210" target="_blank">💬</a><a class="sl" href="https://facebook.com/devbhoomitravels" target="_blank" title="Facebook">📘</a><a class="sl" href="https://instagram.com/devbhoomitravels" target="_blank" title="Instagram">📸</a><a class="sl" href="https://youtube.com/@devbhoomitravels" target="_blank" title="YouTube">▶️</a></div></div><div class="ft-col"><h4>Hotels</h4><ul><li><a onclick="filterHotels(document.querySelector('#hotelTabs .ftab'),'Luxury')">Luxury Hotels</a></li><li><a onclick="filterHotels(document.querySelectorAll('#hotelTabs .ftab')[4],'Heritage')">Heritage Stays</a></li><li><a onclick="filterHotels(document.querySelectorAll('#hotelTabs .ftab')[5],'Camp')">Camps & Glamping</a></li><li><a onclick="filterHotels(document.querySelectorAll('#hotelTabs .ftab')[6],'Budget')">Budget Stays</a></li></ul></div><div class="ft-col"><h4>Destinations</h4><ul><li><a onclick="window.location.href='Destination.html'">Rishikesh</a></li><li><a onclick="window.location.href='Destination.html'">Nainital</a></li><li><a onclick="window.location.href='Destination.html'">Mussoorie</a></li><li><a onclick="window.location.href='Destination.html'">Jim Corbett</a></li></ul></div><div class="ft-col"><h4>Contact</h4><ul><li><a><a href="tel:+919410582310" style="color:inherit;text-decoration:none">📞 +91 94105 82310</a></a></li><li><a>✉️ <span class="__cf_email__" data-cfemail="036b6c77666f7043676675616b6c6c6e6a77716275666f702d6a6d">[email&#160;protected]</span></a></li><li><a onclick="window.location.href='contact.html'">Send Message</a></li></ul></div></div><div class="ft-bot"><span>© 2025 DevBhoomi Travels · Hotels Division · 🌿 Responsible Tourism Partners</span></div></footer>
+</div>
+
+<!-- ══ HOTEL DETAIL MODAL ══ -->
+<div class="hd-ov" id="hdOv">
+  <div class="hd-box">
+    <div class="hd-gallery">
+      <img id="hdImg1" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=85" alt=""/>
+      <img id="hdImg2" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" alt=""/>
+      <img id="hdImg3" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&q=80" alt=""/>
+      <button class="hd-close" onclick="closeHotelDetail()">✕</button>
+    </div>
+    <div class="hd-body">
+      <div class="hd-top">
+        <div><div class="hd-stars" id="hdStars">★★★★★</div><div class="hd-name" id="hdName">Hotel Name</div><div class="hd-loc-tag" id="hdLoc">📍 Location</div></div>
+        <div class="hd-price-block">
+          <div class="hd-price" id="hdPrice">₹12,000<small>/night</small></div>
+          <div class="hd-rating-pill"><span class="hd-rating-num" id="hdRatingNum">4.9</span><span class="hd-rating-lbl" id="hdRatingLbl">Exceptional</span></div>
+        </div>
+      </div>
+      <!-- Tabs -->
+      <div class="hd-tabs">
+        <button class="hd-tab active" onclick="switchHotelTab(this,'hdOverview')">Overview</button>
+        <button class="hd-tab" onclick="switchHotelTab(this,'hdRooms')">Rooms</button>
+        <button class="hd-tab" onclick="switchHotelTab(this,'hdAmenities')">Amenities</button>
+        <button class="hd-tab" onclick="switchHotelTab(this,'hdReviews')">Reviews</button>
+      </div>
+      <div id="hdOverview" class="hd-tab-panel active">
+        <p id="hdDesc" style="font-size:.9rem;color:var(--stone);line-height:1.74;margin-bottom:1.2rem"></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem" id="hdAmenGrid"></div>
+      </div>
+      <div id="hdRooms" class="hd-tab-panel">
+        <div class="hd-rooms" id="hdRoomsList"></div>
+      </div>
+      <div id="hdAmenities" class="hd-tab-panel">
+        <div class="hd-amen-grid" id="hdFullAmen"></div>
+      </div>
+      <div id="hdReviews" class="hd-tab-panel">
+        <div class="hd-rev-list" id="hdRevList"></div>
+      </div>
+      <div class="hd-book-row">
+        <div><span style="font-size:.8rem;color:var(--stone)">Starting from</span><div class="hd-price" id="hdPriceBottom">₹12,000<small>/night</small></div></div>
+        <div class="hd-book-btns">
+          <button class="btn-hdetail" onclick="openWhatsApp()">💬 Ask on WhatsApp</button>
+          <button class="btn-hbook" style="padding:.65rem 1.6rem;font-size:.88rem" onclick="closeHotelDetail();var _p=(document.getElementById('hdPriceBottom')?.textContent||'').replace(/[₹\u20B9,]/g,'').replace('/night','').trim();openHotelBooking(document.getElementById('hdName')?.textContent,_p)">Book This Hotel →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ EMI SECTION (injected in home page before nl-sec) ══ -->
+<!-- ══ REVIEWS SECTION (injected in home page) ══ -->
+<!-- ══ MAP SECTION (injected in home page) ══ -->
+
+
+
+
+<div class="d-ov" id="detailOv" onclick="if(event.target===this)closeDetail()">
+  <div class="d-box">
+    <button class="dh-close" onclick="closeDetail()">✕</button>
+    <div class="dh"><img id="dImg" src="" alt=""/><div class="dh-grad"></div>
+      <div class="dh-txt"><h2 id="dTitle"></h2><p id="dReg"></p></div></div>
+    <div class="d-body">
+      <div class="d-stats" id="dStats"></div>
+      <p class="d-desc" id="dDesc"></p>
+      <div class="d-ht">✨ Package Highlights</div>
+      <div class="d-hg" id="dHl"></div>
+      <div class="d-brow">
+        <div><div class="d-bp" id="dPrice"></div><div style="font-size:.73rem;color:var(--stone)">per person · All inclusive</div></div>
+        <button class="btn-primary" onclick="closeDetail();openAuth('signup')">Book This Package →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lb-ov" id="lbOv" onclick="if(event.target===this)closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="m-ov" id="loginMod" onclick="if(event.target===this)closeAuth('loginMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('loginMod')">✕</button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Welcome Back!</h2><p>Log in to manage your bookings</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','login')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf"><label>Email</label><input type="email" id="lEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="lPass" placeholder="••••••••"/></div>
+    <div class="fgt"><a href="#">Forgot password?</a></div>
+    <button class="m-sub" id="lSubmitBtn" onclick="doLogin()">Log In →</button>
+    <p class="m-sw">New here? <a onclick="switchAuth('loginMod','signupMod')">Create account</a></p>
+  </div>
+</div>
+
+<!-- ═══════════ SIGNUP MODAL ═══════════ -->
+<div class="m-ov" id="signupMod" onclick="if(event.target===this)closeAuth('signupMod')">
+  <div class="m-box">
+    <button class="m-close" onclick="closeAuth('signupMod')">✕</button>
+    <button class="m-back" onclick="switchAuth('signupMod','loginMod')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back
+    </button>
+    <div class="m-head"><div class="m-brand">🏔️ DevBhoomi Travels</div><h2>Join Us Today</h2><p>Create your free account</p></div>
+    <div class="soc-row">
+      <button class="soc-btn" onclick="socialAuth(this,'google','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Google
+      </button>
+      <button class="soc-btn" onclick="socialAuth(this,'facebook','signup')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </button>
+    </div>
+    <div class="div-line"><span>or with email</span></div>
+    <div class="mf-row">
+      <div class="mf"><label>First Name</label><input type="text" id="sName" placeholder="Rahul"/></div>
+      <div class="mf"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+    </div>
+    <div class="mf"><label>Email</label><input type="email" id="sEmail" placeholder="you@example.com"/></div>
+    <div class="mf"><label>Mobile</label><input type="tel" id="sPhone" placeholder="+91 94105 82310"/></div>
+    <div class="mf"><label>Password</label><input type="password" id="sPass" placeholder="Min. 8 characters"/></div>
+    <button class="m-sub" id="sSubmitBtn" onclick="doSignup()">Create Account →</button>
+    <p class="m-sw">Already have an account? <a onclick="switchAuth('signupMod','loginMod')">Log In</a></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══ SEARCH OVERLAY ══ -->
+<div class="search-ov" id="searchOv">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <div class="search-wrap">
+    <div class="search-title">Find Your <em>Dream Trip</em></div>
+    <div class="search-input-wrap">
+      <span class="search-ico-wrap">🔍</span>
+      <input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure, Wildlife…" oninput="renderSearchResults(this.value)"/>
+    </div>
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="book-ov" id="bookOv" onclick="if(event.target===this)closeBooking()">
+  <div class="book-box">
+    <div class="book-head">
+      <h2 id="bookTitle">🏨 Hotel Booking</h2>
+      <p id="bookPkgName">Secure your stay today</p>
+      <button class="book-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="book-body">
+      <!-- Hidden fields for backend -->
+      <input type="hidden" id="bookTypeHidden" value="Hotel"/>
+      <input type="hidden" id="bookSourceHidden" value="hotel_page"/>
+      <input type="hidden" id="bookPkgKey" value=""/>
+
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:.85rem;font-weight:700;color:var(--forest)" id="bookPkgName2">Selected Hotel</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--pine);font-weight:700" id="bookPkgPrice"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Your Full Name *</label><input type="text" id="bookName" placeholder="Rahul Sharma"/></div>
+        <div class="bfield"><label>Mobile Number *</label><input type="tel" id="bookPhone" placeholder="+91 94105 82310"/></div>
+      </div>
+      <div class="bfield"><label>Email Address</label><input type="email" id="bookEmail" placeholder="you@example.com"/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div class="bfield"><label>Check-in Date *</label><input type="date" id="bookDate" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/night]/g,''),document.getElementById('bookPersons').value)"/></div>
+        <div class="bfield"><label>Number of Guests</label>
+          <select id="bookPersons" onchange="updateBookSummary(document.getElementById('bookPkgPrice').textContent.replace(/[₹,\/night]/g,''),this.value)">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5+ Guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="bfield"><label>Special Requests (optional)</label><input type="text" id="bookMsg" placeholder="Early check-in, extra bed, anniversary decoration…"/></div>
+      <div style="background:var(--mist);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.2rem">
+        <div style="font-size:.75rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.7rem">Booking Summary</div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>Room Rate × Guests</span><span id="bsSubtotal">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.82rem;color:var(--stone);margin-bottom:.3rem"><span>GST (5%)</span><span id="bsTax">—</span></div>
+        <div style="display:flex;justify-content:space-between;font-weight:700;color:var(--forest);font-size:.95rem;border-top:1px solid rgba(82,169,122,.15);padding-top:.5rem;margin-top:.4rem"><span>Total Amount</span><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--pine)" id="bsTotal">—</span></div>
+      </div>
+      <button class="btn-book-final" id="bookConfirmBtn" onclick="confirmHotelBooking()">🏨 Confirm Hotel Booking →</button>
+      <p style="text-align:center;font-size:.73rem;color:var(--stone);margin-top:.7rem">🔒 Secure booking · Free cancellation · Our team will call you within 2 hours</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══ COMPARE MODAL ══ -->
+<div class="cmp-ov" id="cmpOv">
+  <div class="cmp-box">
+    <div class="cmp-h"><h2>⚖️ Package Comparison</h2><button class="cmp-close" onclick="closeCmp()">✕</button></div>
+    <div class="cmp-table" id="cmpTable"></div>
+  </div>
+</div>
+
+<!-- ══ WHATSAPP FAB ══ -->
+<button class="wa-fab" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</button>
+<div class="wa-tooltip">Chat on WhatsApp</div>
+
+
+<!-- ════════════════════════════════
+   PAGE: HOTELS
+═════════════════════════════════════════════════ -->
+<script src="js/main.js"></script>
+<script>
+/* ── HOTEL PAGE: openHotelBooking ── */
+window.openHotelBooking = function(hotelName, priceStr) {
+  var price = String(priceStr||'').replace(/[₹\u20B9,\s]/g,'').replace('/night','').trim();
+  var t=document.getElementById('bookTypeHidden'), s=document.getElementById('bookSourceHidden'), k=document.getElementById('bookPkgKey');
+  if(t) t.value='Hotel'; if(s) s.value='hotel_page';
+  if(k) k.value='hotel_'+(hotelName||'').toLowerCase().replace(/\s+/g,'_').slice(0,20);
+  var n2=document.getElementById('bookPkgName2'), pp=document.getElementById('bookPkgPrice');
+  var bt=document.getElementById('bookTitle'), bpn=document.getElementById('bookPkgName');
+  if(n2)  n2.textContent = hotelName||'Selected Hotel';
+  if(pp)  pp.innerHTML   = price ? '₹'+Number(price).toLocaleString('en-IN')+'<small>/night</small>' : '';
+  if(bt)  bt.textContent = '🏨 Hotel Booking';
+  if(bpn) bpn.textContent= 'Apna stay confirm karein';
+  ['bookName','bookPhone','bookEmail','bookDate','bookMsg'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  var ps=document.getElementById('bookPersons'); if(ps) ps.value='2';
+  ['bsSubtotal','bsTax','bsTotal'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent='—'; });
+  try {
+    var user=JSON.parse(localStorage.getItem('user')||'{}');
+    if(user.name){var el=document.getElementById('bookName');if(el)el.value=user.name;}
+    if(user.phone){var el=document.getElementById('bookPhone');if(el)el.value=user.phone;}
+    if(user.email){var el=document.getElementById('bookEmail');if(el)el.value=user.email;}
+  } catch(e){}
+  var ov=document.getElementById('bookOv');
+  if(ov){ov.style.display='flex';setTimeout(function(){ov.classList.add('show');},10);}
+};
+
+/* ── HOTEL PAGE: confirmHotelBooking ── */
+window.confirmHotelBooking = async function() {
+  var name    = (document.getElementById('bookName')?.value||'').trim();
+  var phone   = (document.getElementById('bookPhone')?.value||'').trim();
+  var email   = (document.getElementById('bookEmail')?.value||'').trim();
+  var date    = document.getElementById('bookDate')?.value||'';
+  var persons = parseInt(document.getElementById('bookPersons')?.value)||1;
+  var notes   = (document.getElementById('bookMsg')?.value||'').trim();
+  var pkgName = (document.getElementById('bookPkgName2')?.textContent||'').trim();
+  var rawPrice= (document.getElementById('bookPkgPrice')?.textContent||'').replace(/[₹\u20B9,]/g,'').replace('/night','').trim();
+  var pkgKey  = document.getElementById('bookPkgKey')?.value||'';
+  var totalEl = document.getElementById('bsTotal');
+  var totalAmt= totalEl ? parseFloat((totalEl.textContent||'').replace(/[₹\u20B9,]/g,''))||0 : 0;
+  var priceNum= parseFloat(rawPrice)||0;
+
+  if(!name){document.getElementById('bookName')?.focus();showToast('👤 Apna naam likhein');return;}
+  if(!phone){document.getElementById('bookPhone')?.focus();showToast('📞 Mobile number likhein');return;}
+  if(!date){document.getElementById('bookDate')?.focus();showToast('📅 Check-in date select karein');return;}
+
+  var btn=document.getElementById('bookConfirmBtn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Booking ho rahi hai…';}
+
+  try {
+    var BASE=(function(){var h=location.hostname;return(!h||h==='localhost'||h==='127.0.0.1')?'http://localhost:5000/api':'https://devbhoomi-travels.onrender.com/api';})();
+    var token=localStorage.getItem('token');
+    var headers={'Content-Type':'application/json'};
+    if(token) headers['Authorization']='Bearer '+token;
+    var sub=totalAmt||(priceNum*persons);
+    var gst=Math.round(sub*0.05);
+    var fin=sub+gst;
+    var res=await fetch(BASE+'/bookings',{method:'POST',headers:headers,body:JSON.stringify({
+      packageKey:pkgKey, packageName:pkgName,
+      packagePrice:rawPrice?'₹'+Number(rawPrice).toLocaleString('en-IN')+'/night':'',
+      name:name, phone:phone, email:email, travelDate:date, persons:persons,
+      totalAmount:sub, gstAmount:gst, finalAmount:fin,
+      specialRequests:notes, source:'hotel_page', bookingType:'Hotel'
+    })});
+    var data=await res.json();
+    if(data.success){
+      var ov=document.getElementById('bookOv');
+      if(ov){ov.classList.remove('show');setTimeout(function(){ov.style.display='none';},300);}
+      showToast('🏨 Hotel booking query submit ho gayi! ID: '+(data.bookingId||'')+' — 2 ghante mein call milega!');
+      if(btn){btn.disabled=false;btn.textContent='🏨 Confirm Hotel Booking →';}
+    } else {
+      showToast('❌ '+(data.message||'Kuch error aaya'));
+      if(btn){btn.disabled=false;btn.textContent='🏨 Confirm Hotel Booking →';}
+    }
+  } catch(err){
+    console.error(err);
+    showToast('❌ Server se connect nahi ho pa raha. Dobara try karein.');
+    if(btn){btn.disabled=false;btn.textContent='🏨 Confirm Hotel Booking →';}
+  }
+};
+</script>
+</body>
+</html>
