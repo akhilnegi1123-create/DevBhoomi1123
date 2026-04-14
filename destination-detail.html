@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title id="pageTitle">DevBhoomi Travels</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+  --ink:#0c1810;--forest:#1a3a2a;--pine:#2d6a4f;--moss:#52a97a;
+  --gold:#c8943a;--amber:#e8b660;--rose:#d4785a;
+  --cream:#faf6ee;--parchment:#f0e8d8;--white:#fff;
+  --stone:#7a7060;--fog:#e2ddd4;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body.dp{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ── SCROLL PROGRESS ── */
+#spb{position:fixed;top:0;left:0;height:2.5px;z-index:9999;
+  background:linear-gradient(90deg,var(--gold),var(--moss),var(--gold));
+  background-size:200%;animation:spAnim 3s linear infinite;width:0;transition:width .08s}
+@keyframes spAnim{0%{background-position:0%}100%{background-position:200%}}
+
+/* ── HERO ── */
+.dp-hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
+.dp-hero-img{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;
+  transform:scale(1.08);animation:heroKen 12s ease-in-out forwards, heroFade 1.4s .2s ease forwards;
+  transform-origin:center top;opacity:0}
+@keyframes heroFade{to{opacity:1}}
+@keyframes heroKen{0%{transform:scale(1.08) translateY(0)}100%{transform:scale(1) translateY(-3%)}}
+.dp-hero-grad{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,14,10,.97) 0%,rgba(6,14,10,.65) 28%,rgba(6,14,10,.2) 60%,transparent 100%)}
+.dp-hero-grad::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(200,148,58,.08) 0%,transparent 70%)}
+.dp-back{position:fixed;top:88px;left:2rem;z-index:300;
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(6,14,10,.65);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.88);
+  padding:.5rem 1.1rem;border-radius:50px;font-size:.76rem;font-weight:600;
+  letter-spacing:.3px;cursor:pointer;text-decoration:none;
+  transition:all .3s var(--ease);opacity:0;animation:fadeSlideDown .6s .9s var(--ease) forwards}
+.dp-back:hover{background:rgba(200,148,58,.2);border-color:rgba(232,182,96,.5);color:var(--amber)}
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.dp-hero-content{position:relative;z-index:2;padding:0 7% 5rem;width:100%}
+@media(max-width:768px){.dp-hero-content{padding:0 5% 3.5rem}}
+.dp-badge{display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(200,148,58,.15);border:1px solid rgba(200,148,58,.45);
+  color:var(--amber);font-size:.65rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:.35rem 1rem;border-radius:50px;margin-bottom:1.1rem;
+  opacity:0;animation:rise .6s .5s var(--ease) forwards}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.dp-title{font-family:'Playfair Display',serif;font-size:clamp(3.8rem,9vw,7rem);font-weight:900;
+  color:#fff;line-height:.95;letter-spacing:-2px;margin-bottom:.9rem;
+  opacity:0;animation:rise .75s .65s var(--ease) forwards}
+.dp-title em{font-style:italic;color:var(--amber);font-weight:400}
+.dp-region{color:rgba(255,255,255,.6);font-size:.93rem;letter-spacing:.2px;
+  display:flex;align-items:center;gap:.5rem;margin-bottom:2.2rem;
+  opacity:0;animation:rise .6s .8s var(--ease) forwards}
+.dp-hero-bar{display:flex;align-items:center;gap:1px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;width:fit-content;backdrop-filter:blur(24px);overflow:hidden;
+  opacity:0;animation:rise .6s .95s var(--ease) forwards}
+.dp-stat{padding:.9rem 2rem;text-align:center;position:relative;transition:background .2s}
+.dp-stat:hover{background:rgba(255,255,255,.06)}
+.dp-stat+.dp-stat::before{content:'';position:absolute;left:0;top:22%;height:56%;width:1px;background:rgba(255,255,255,.12)}
+.dp-stat-v{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--amber);display:block}
+.dp-stat-l{font-size:.58rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.2px;display:block;margin-top:.1rem}
+@media(max-width:600px){.dp-hero-bar{flex-wrap:wrap;border-radius:14px}.dp-stat{flex:1 0 50%;min-width:100px}.dp-stat+.dp-stat::before{display:none}}
+
+/* ── STICKY NAV ── */
+.dp-nav{position:sticky;top:0;z-index:200;
+  background:rgba(250,246,238,.96);backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(42,74,58,.09);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 7%;height:54px;box-shadow:0 2px 24px rgba(0,0,0,.05)}
+.dp-crumb{display:flex;align-items:center;gap:.45rem;font-size:.76rem;color:var(--stone);white-space:nowrap;overflow:hidden}
+.dp-crumb a{color:var(--pine);text-decoration:none;font-weight:600;transition:color .2s}
+.dp-crumb a:hover{color:var(--gold)}
+.dp-crumb span{color:var(--forest);font-weight:700}
+.dp-nav-tabs{display:flex}
+.dp-tab{padding:0 .95rem;height:54px;display:flex;align-items:center;
+  font-size:.76rem;font-weight:600;color:var(--stone);text-decoration:none;
+  border-bottom:2px solid transparent;transition:all .25s;white-space:nowrap}
+.dp-tab:hover,.dp-tab.act{color:var(--forest);border-color:var(--gold)}
+.dp-book-btn{background:var(--forest);color:#fff;border:none;
+  padding:.48rem 1.3rem;border-radius:50px;font-weight:700;font-size:.78rem;
+  cursor:pointer;transition:all .25s;white-space:nowrap;flex-shrink:0}
+.dp-book-btn:hover{background:var(--pine);transform:translateY(-1px)}
+@media(max-width:880px){.dp-nav{padding:0 4%}.dp-nav-tabs{display:none}}
+
+/* ── MAIN LAYOUT ── */
+.dp-wrap{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 390px;align-items:start}
+@media(max-width:1060px){.dp-wrap{grid-template-columns:1fr}}
+.dp-main{padding:4.5rem 4rem 5rem 7%}
+@media(max-width:1060px){.dp-main{padding:3rem 5%}}
+
+/* ── SECTION HEADERS ── */
+.dp-sh{margin-bottom:1.8rem}
+.dp-sh-tag{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.35rem;display:flex;align-items:center;gap:.5rem}
+.dp-sh-tag::before{content:'';display:block;width:20px;height:1.5px;background:var(--gold)}
+.dp-sh-title{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;color:var(--forest);line-height:1.15}
+.dp-divide{height:1px;background:linear-gradient(to right,rgba(42,74,58,.12),transparent);margin:3.5rem 0}
+
+/* ── ABOUT (Magazine drop-cap) ── */
+.dp-about p{font-size:1.02rem;line-height:1.9;color:#2c3c2c;margin-bottom:1.1rem}
+.dp-about p:first-child::first-letter{
+  font-family:'Playfair Display',serif;font-size:4.2rem;font-weight:900;
+  color:var(--forest);float:left;line-height:.72;margin:.05em .15em -.15em 0;padding:.05em 0}
+
+/* ── HIGHLIGHTS CHIP STRIP ── */
+.hl-strip{display:flex;flex-wrap:wrap;gap:.65rem}
+.hl-chip{background:#fff;border:1.5px solid rgba(42,106,79,.12);border-radius:50px;
+  padding:.6rem 1.1rem;font-size:.83rem;font-weight:600;color:var(--forest);
+  display:flex;align-items:center;gap:.45rem;cursor:default;
+  transition:all .28s var(--ease);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.hl-chip:hover{background:var(--forest);color:#fff;border-color:var(--forest);transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,58,42,.22)}
+
+/* ── FEATURE CARDS (Famous / Culture) ── */
+.fc-list{display:flex;flex-direction:column;gap:1rem}
+.fc-item{display:grid;grid-template-columns:3px 1fr;border-radius:16px;overflow:hidden;background:#fff;
+  box-shadow:0 2px 18px rgba(0,0,0,.046);transition:all .3s var(--ease)}
+.fc-item:hover{box-shadow:0 10px 40px rgba(26,58,42,.13);transform:translateY(-2px)}
+.fc-bar{background:linear-gradient(180deg,var(--gold) 0%,var(--pine) 100%)}
+.fc-body{padding:1.25rem 1.4rem}
+.fc-lbl{font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:.4rem}
+.fc-txt{font-size:.9rem;line-height:1.75;color:#384838}
+
+/* ── FOOD MOSAIC ── */
+.food-mosaic{display:flex;flex-wrap:wrap;gap:.55rem}
+.food-pill{display:flex;align-items:center;gap:.38rem;
+  background:#fff;border:1.5px solid rgba(42,106,79,.13);
+  padding:.48rem .95rem;border-radius:50px;font-size:.84rem;color:var(--forest);font-weight:500;
+  cursor:default;transition:all .25s;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.food-pill:hover{background:var(--forest);color:#fff;border-color:var(--forest);transform:translateY(-2px)}
+
+/* ── MASONRY GALLERY ── */
+.dp-gallery{columns:3;column-gap:.7rem}
+@media(max-width:680px){.dp-gallery{columns:2}}
+.dp-gal-item{break-inside:avoid;margin-bottom:.7rem;position:relative;overflow:hidden;border-radius:14px;cursor:pointer}
+.dp-gal-item img{width:100%;display:block;transition:transform .5s var(--ease);object-fit:cover}
+.dp-gal-item:hover img{transform:scale(1.05)}
+.dp-gal-overlay{position:absolute;inset:0;background:rgba(6,14,10,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.dp-gal-item:hover .dp-gal-overlay{background:rgba(6,14,10,.3)}
+.dp-gal-zoom{color:#fff;font-size:1.8rem;opacity:0;transform:scale(.7);transition:all .3s}
+.dp-gal-item:hover .dp-gal-zoom{opacity:1;transform:scale(1)}
+
+/* ── REACH GRID ── */
+.reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:560px){.reach-grid{grid-template-columns:1fr}}
+.reach-card{background:#fff;border-radius:16px;padding:1.2rem;display:flex;align-items:flex-start;gap:.9rem;
+  border:1px solid rgba(42,106,79,.1);box-shadow:0 2px 12px rgba(0,0,0,.04);transition:all .3s var(--ease)}
+.reach-card:hover{box-shadow:0 8px 32px rgba(26,58,42,.11);transform:translateY(-2px)}
+.reach-icon{width:44px;height:44px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(26,58,42,.07),rgba(82,169,122,.13));
+  border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.reach-txt{font-size:.86rem;line-height:1.6;color:#384838}
+.reach-txt strong{color:var(--forest);font-weight:700;display:block;margin-bottom:.15rem}
+
+/* ── INFO GRID ── */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:480px){.info-grid{grid-template-columns:1fr}}
+.info-card{background:linear-gradient(135deg,#fff,var(--parchment));border-radius:14px;
+  padding:1.1rem 1.3rem;border:1px solid var(--fog);transition:all .25s}
+.info-card:hover{box-shadow:0 6px 24px rgba(26,58,42,.1)}
+.info-ico{font-size:1.45rem;margin-bottom:.4rem}
+.info-lbl{font-size:.63rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:.9px;margin-bottom:.2rem}
+.info-val{font-size:.9rem;color:var(--forest);font-weight:600;line-height:1.4}
+
+/* ── SIDEBAR ── */
+.dp-side{padding:4.5rem 6% 4rem 2rem;position:sticky;top:54px;max-height:calc(100vh - 54px);overflow-y:auto;scrollbar-width:thin}
+@media(max-width:1060px){.dp-side{position:static;max-height:none;padding:0 5% 4rem}}
+/* Book card */
+.bk-card{border-radius:24px;overflow:hidden;box-shadow:0 24px 72px rgba(10,20,14,.28);margin-bottom:1.4rem}
+.bk-img-wrap{position:relative;height:190px;overflow:hidden}
+.bk-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.bk-card:hover .bk-img-wrap img{transform:scale(1.06)}
+.bk-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,14,10,.85) 0%,rgba(6,14,10,.1) 60%)}
+.bk-img-badge{position:absolute;bottom:1rem;left:1rem;right:1rem;display:flex;justify-content:space-between;align-items:flex-end}
+.bk-price{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:900;color:var(--amber);line-height:1}
+.bk-per{font-size:.78rem;color:rgba(255,255,255,.55);font-family:'DM Sans',sans-serif}
+.bk-stars{font-size:.82rem;color:var(--amber)}
+.bk-body{background:var(--forest);padding:1.4rem}
+.bk-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,.07);font-size:.82rem}
+.bk-row:last-of-type{border-bottom:none;margin-bottom:1.1rem}
+.bk-row-l{color:rgba(255,255,255,.5)}
+.bk-row-r{color:rgba(255,255,255,.92);font-weight:700}
+.btn-bknow{width:100%;background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--ink);border:none;padding:1rem;border-radius:14px;
+  font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+  cursor:pointer;transition:all .28s var(--ease);display:flex;align-items:center;justify-content:center;gap:.5rem;
+  letter-spacing:.2px;margin-bottom:.7rem}
+.btn-bknow:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(200,148,58,.4)}
+.btn-pkgs{width:100%;background:transparent;color:rgba(255,255,255,.7);
+  border:1.5px solid rgba(255,255,255,.2);padding:.7rem;border-radius:14px;
+  font-weight:600;font-size:.82rem;cursor:pointer;transition:all .25s}
+.btn-pkgs:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.38);color:#fff}
+.bk-trust{text-align:center;font-size:.67rem;color:rgba(255,255,255,.35);margin-top:.75rem;line-height:1.6}
+/* mini cards */
+.mn-card{background:#fff;border-radius:18px;padding:1.25rem 1.4rem;margin-bottom:1.2rem;
+  border:1px solid var(--fog);box-shadow:0 2px 16px rgba(0,0,0,.04)}
+.mn-title{font-size:.68rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.mn-body{font-size:.87rem;line-height:1.8;color:#384838}
+.tip-row{display:flex;gap:.55rem;padding:.38rem 0;border-bottom:1px solid rgba(0,0,0,.04);align-items:flex-start}
+.tip-row:last-child{border:none}
+.tip-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.5rem}
+.tip-t{font-size:.82rem;line-height:1.55;color:#384838}
+
+/* ── LIGHTBOX ── */
+.dp-lb{display:none;position:fixed;inset:0;background:rgba(2,6,4,.97);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.dp-lb.on{display:flex}
+.dp-lb img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 40px 100px rgba(0,0,0,.8)}
+.dp-lb-close{position:fixed;top:1.4rem;right:1.4rem;width:46px;height:46px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:50%;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.dp-lb-close:hover{background:rgba(255,255,255,.2)}
+.dp-lb-nav{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:50%;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.dp-lb-nav:hover{background:rgba(255,255,255,.18)}
+.dp-lb-prev{left:1.2rem}.dp-lb-next{right:1.2rem}
+.dp-lb-count{font-size:.75rem;color:rgba(255,255,255,.45);letter-spacing:1px}
+
+/* ── REVEAL ANIMATION ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+
+/* ── FOOTER ── */
+.dp-footer{background:var(--forest);color:rgba(255,255,255,.55);text-align:center;padding:1.4rem;font-size:.76rem;letter-spacing:.3px}
+.dp-footer a{color:var(--amber);text-decoration:none}
+</style>
+</head>
+<body class="dp">
+<div id="spb"></div>
+
+<!-- NAVBAR (shared) -->
+<nav id="mainNav">
+  <a class="logo" href="index.html"><span class="logo-icon">🏔️</span><div class="logo-wrap"><div class="logo-text">Dev<span>Bhoomi</span> Travels</div><div class="logo-sub">Uttarakhand's Soul</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="Destination.html" class="active">📍 Destinations</a></li>
+    <li><a href="packages.html">📦 Packages</a></li>
+    <li><a href="activities.html">🧗 Activities</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="contact.html">📞 Contact</a></li>
+    <li><a href="Hotel.html">🏨 Hotels</a></li>
+    <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+    <li><a href="About.html">ℹ️ About</a></li>
+  </ul>
+  <div class="nav-btns">
+    <button class="nav-search-btn" onclick="openSearch()" title="Search">🔍</button>
+    <button class="btn-ln" onclick="openAuth('login')">Log In</button>
+    <button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button>
+  </div>
+  <button class="ham" id="hamBtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="Destination.html" class="active">📍 Destinations</a></li>
+    <li><a href="packages.html">📦 Packages</a></li>
+    <li><a href="activities.html">🧗 Activities</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="contact.html">📞 Contact</a></li>
+    <li><a href="Hotel.html">🏨 Hotels</a></li>
+    <li><a href="Vehicle.html">🚗 Vehicles</a></li>
+    <li><a href="About.html">ℹ️ About</a></li>
+  </ul>
+  <div class="drawer-btns"><button class="btn-ln" onclick="openAuth('login')">Log In</button><button class="btn-su" onclick="openAuth('signup')">Sign Up ✨</button></div>
+</div>
+
+<!-- BACK BTN -->
+<a class="dp-back" onclick="history.back()">← All Destinations</a>
+
+<!-- HERO -->
+<section class="dp-hero">
+  <div class="dp-hero-img" id="dpHeroImg" style="background:#0c1810"></div>
+  <div class="dp-hero-grad"></div>
+  <div class="dp-hero-content">
+    <div class="dp-badge" id="dpBadge">🏔️</div>
+    <h1 class="dp-title" id="dpTitle">Loading…</h1>
+    <div class="dp-region" id="dpRegion">📍 Uttarakhand, India</div>
+    <div class="dp-hero-bar" id="dpBar"></div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<div class="dp-nav">
+  <div class="dp-crumb">
+    <a href="index.html">Home</a>
+    <span style="opacity:.35;margin:0 .1rem">›</span>
+    <a href="Destination.html">Destinations</a>
+    <span style="opacity:.35;margin:0 .1rem">›</span>
+    <span id="dpCrumb">—</span>
+  </div>
+  <div class="dp-nav-tabs">
+    <a class="dp-tab act" href="#s-about">About</a>
+    <a class="dp-tab" href="#s-highlights">Highlights</a>
+    <a class="dp-tab" href="#s-culture">Culture</a>
+    <a class="dp-tab" href="#s-food">Food</a>
+    <a class="dp-tab" href="#s-gallery">Gallery</a>
+    <a class="dp-tab" href="#s-reach">Reach</a>
+  </div>
+  <button class="dp-book-btn" onclick="window.location='packages.html'">📦 Book Now</button>
+</div>
+
+<!-- BODY -->
+<div class="dp-wrap">
+  <main class="dp-main">
+
+    <!-- ABOUT -->
+    <section id="s-about" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Destination Overview</div>
+        <h2 class="dp-sh-title">About This Place</h2>
+      </div>
+      <div class="dp-about" id="dpAbout"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- HIGHLIGHTS -->
+    <section id="s-highlights" class="rv rv-d1">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Top Experiences</div>
+        <h2 class="dp-sh-title">Must-Do Highlights</h2>
+      </div>
+      <div class="hl-strip" id="dpHL"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- FAMOUS -->
+    <section id="s-famous" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">What Makes It Special</div>
+        <h2 class="dp-sh-title">Why It's Famous</h2>
+      </div>
+      <div class="fc-list" id="dpFamous"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- CULTURE -->
+    <section id="s-culture" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Traditions & Heritage</div>
+        <h2 class="dp-sh-title">Culture & Festivals</h2>
+      </div>
+      <div class="fc-list" id="dpCulture"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- FOOD -->
+    <section id="s-food" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Local Cuisine</div>
+        <h2 class="dp-sh-title">Food & Delicacies</h2>
+      </div>
+      <div class="food-mosaic" id="dpFood"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- GALLERY -->
+    <section id="s-gallery" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Visual Journey</div>
+        <h2 class="dp-sh-title">Photo Gallery</h2>
+      </div>
+      <div class="dp-gallery" id="dpGallery"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- REACH -->
+    <section id="s-reach" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">Getting There</div>
+        <h2 class="dp-sh-title">How to Reach</h2>
+      </div>
+      <div class="reach-grid" id="dpReach"></div>
+    </section>
+    <div class="dp-divide"></div>
+
+    <!-- INFO -->
+    <section id="s-info" class="rv">
+      <div class="dp-sh">
+        <div class="dp-sh-tag">At a Glance</div>
+        <h2 class="dp-sh-title">Quick Info</h2>
+      </div>
+      <div class="info-grid" id="dpInfo"></div>
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="dp-side">
+    <div class="bk-card rv">
+      <div class="bk-img-wrap">
+        <img id="dpSideImg" src="" alt=""/>
+        <div class="bk-img-overlay"></div>
+        <div class="bk-img-badge">
+          <div><div class="bk-price" id="dpPrice">₹—</div><div class="bk-per">/person onwards</div></div>
+          <div class="bk-stars" id="dpStars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+      <div class="bk-body">
+        <div id="dpBkRows"></div>
+        <button class="btn-bknow" onclick="window.location='packages.html'">📦 &nbsp;Book This Trip</button>
+        <button class="btn-pkgs" onclick="window.location='packages.html'">Explore All Packages →</button>
+        <div class="bk-trust">🔒 Free cancellation within 15 days<br>Pay only 30% advance · Best price guaranteed</div>
+      </div>
+    </div>
+    <div class="mn-card rv rv-d1">
+      <div class="mn-title">🌤️ Best Time to Visit</div>
+      <div class="mn-body" id="dpBestTime"></div>
+    </div>
+    <div class="mn-card rv rv-d2">
+      <div class="mn-title">💡 Travel Tips</div>
+      <div id="dpTips"></div>
+    </div>
+  </aside>
+</div>
+
+<footer class="dp-footer">© 2024 <a href="index.html">DevBhoomi Travels</a> · Uttarakhand's Premier Travel Company &nbsp;·&nbsp; Made with ❤️ in the Himalayas</footer>
+
+<!-- LIGHTBOX -->
+<div class="dp-lb" id="dpLB">
+  <button class="dp-lb-close" onclick="closeLB()">✕</button>
+  <button class="dp-lb-nav dp-lb-prev" onclick="shiftLB(-1)">&#8249;</button>
+  <img id="dpLBImg" src="" alt=""/>
+  <div class="dp-lb-count" id="dpLBCount"></div>
+  <button class="dp-lb-nav dp-lb-next" onclick="shiftLB(1)">&#8250;</button>
+</div>
+
+<!-- AUTH / SEARCH (main.js modals) -->
+<div class="auth-ov" id="loginMod"><div class="auth-box"><button class="auth-close" onclick="closeAuth('loginMod')">✕</button><div class="auth-logo">Dev<span>Bhoomi</span> ✨</div><h2 class="auth-h">Welcome Back</h2><p class="auth-sub">Log in to manage your bookings</p><div class="div-line"><span>or with email</span></div><div class="mf"><label>Email</label><input type="email" id="lEmail" placeholder="you@example.com"/></div><div class="mf"><label>Password</label><input type="password" id="lPass" placeholder="Your password"/></div><button class="m-sub" id="lSubmitBtn" onclick="doLogin()">Log In →</button><p class="m-sw">New here? <a onclick="switchAuth('loginMod','signupMod')">Create Account</a></p></div></div>
+<div class="auth-ov" id="signupMod"><div class="auth-box"><button class="auth-close" onclick="closeAuth('signupMod')">✕</button><div class="auth-logo">Dev<span>Bhoomi</span> ✨</div><h2 class="auth-h">Create Account</h2><p class="auth-sub">Start your Himalayan journey</p><div class="div-line"><span>or with email</span></div><div class="mf-row"><div class="mf"><label>First Name</label><input type="text" id="sName" placeholder="Rahul"/></div><div class="mf"><label>Last Name</label><input type="text" placeholder="Sharma"/></div></div><div class="mf"><label>Email</label><input type="email" id="sEmail" placeholder="you@example.com"/></div><div class="mf"><label>Mobile</label><input type="tel" id="sPhone" placeholder="+91 94105 82310"/></div><div class="mf"><label>Password</label><input type="password" id="sPass" placeholder="Min. 8 characters"/></div><button class="m-sub" id="sSubmitBtn" onclick="doSignup()">Create Account →</button><p class="m-sw">Already have an account? <a onclick="switchAuth('signupMod','loginMod')">Log In</a></p></div></div>
+<div class="toast" id="toast"></div>
+<div class="search-ov" id="searchOv"><button class="search-close" onclick="closeSearch()">✕</button><div class="search-wrap"><div class="search-title">Find Your <em>Dream Trip</em></div><div class="search-input-wrap"><span class="search-ico-wrap">🔍</span><input class="search-input" id="searchInput" type="text" placeholder="Char Dham, Rishikesh, Adventure…" oninput="renderSearchResults(this.value)"/></div><div id="searchResults" class="search-results"></div></div></div>
+<button class="wa-fab" onclick="openWhatsApp()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></button>
+
+<script>
+/* ══ DESTINATION DATA ══ */
+const DD = {
+rishikesh:{name:'Rishikesh',badge:'🧗 Adventure Capital',region:'Dehradun District, Uttarakhand',img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=1400&q=90',price:'₹9,499',nights:'4 Nights / 5 Days',rating:'4.9',reviews:'1,100+',altitude:'372 m',bestFor:'Adventure & Yoga',season:'Oct – June',about:['Rishikesh — the Yoga Capital of the World and Adventure Capital of India — sits on the holy Ganga at the foot of the Himalayas, where ancient spirituality meets adrenaline-pumping thrills.','White-water rafting through Grade 4–5 rapids, India\'s highest bungee jump at 83 meters, cliff jumping, kayaking — all set against lush forests and snow-capped peaks. Then sunset at Triveni Ghat as a thousand diyas float downstream.','Legendary ashrams, the Beatles\' Maharishi Mahesh Yogi Ashram, and the mesmerising Ganga Aarti — Rishikesh offers a depth of experience that draws seekers, thrill-lovers and curious travellers from across the world.'],famous:[{l:'Yoga Capital of the World',t:'Rishikesh hosts hundreds of internationally acclaimed yoga schools. The annual International Yoga Festival draws thousands of practitioners every February from 100+ countries.'},{l:'Grade 4–5 White Water Rafting',t:'The Ganga\'s rapids between Shivpuri and Rishikesh — 16 km of pure adrenaline through forest gorges — are the finest rafting stretch in India, drawing experts and beginners alike.'},{l:'Ganga Aarti at Triveni Ghat',t:'Every evening, hundreds of priests synchronously perform fire rituals as bells ring and thousands of diyas float on the holy current — a spectacle that moves every soul who witnesses it.'}],culture:[{l:'Ashram & Spiritual Legacy',t:'The Beatles stayed at Maharishi Mahesh Yogi\'s ashram in 1968 composing most of the White Album. Now a heritage forest site with striking murals, it remains one of India\'s most unique cultural spaces.'},{l:'Festival Calendar',t:'International Yoga Festival (February), International Raft Race and Geeta Jayanti celebrations draw thousands annually and showcase the city\'s unique blend of sport and spirituality.'},{l:'Pahadi Culture',t:'The surrounding Garhwali villages maintain ancient traditions — folk music, Pandav Nritya dance, and seasonal festivals that have been celebrated unbroken for centuries.'}],foods:['🍚 Aloo Puri','🥣 Choley Bhature','🍵 Masala Chai','🌿 Sattvic Thali','🧆 Kachori','🍛 Kadhi Chawal','🍮 Kheer','🫖 Tulsi Tea','🥗 Sprout Salad','🧈 Makhan Mishri'],highlights:['🛶 Grade 4–5 Rafting','🪂 Bungee 83m High','⛺ River Beach Camping','🧘 Sunrise Yoga','🌅 Ganga Aarti','🎿 Cliff Jumping','🚡 Giant Swing','🏕️ Forest Trekking'],gallery:['https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=900','https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600','https://plus.unsplash.com/premium_photo-1661889971049-6f0a39a3476f?w=600','https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=600','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (35 km). Cab ~1 hour.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar Station (25 km). Shatabdi from Delhi 4.5 hrs.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT Volvo to Rishikesh ~6 hours.'},{i:'🚗',t:'<strong>By Road</strong>243 km from Delhi via NH58. ~5–6 hours.'}],info:[{i:'🌡️',l:'Temperature',v:'10°C – 35°C (summer)'},{i:'📏',l:'Altitude',v:'372 metres above sea level'},{i:'🗺️',l:'District',v:'Dehradun, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'3–5 days'}],bestTime:'🍂 <strong>October–February</strong> for rafting and adventure. <strong>March–May</strong> ideal for yoga retreats. Avoid July–September (monsoon, rafting closed).',tips:['Book rafting in advance during peak season','Carry layered clothes even in summer','No non-veg or alcohol near ashrams','Start Ganga Aarti viewing by 5:30 PM','Laxman Jhula is closed; use Ram Jhula']},
+
+haridwar:{name:'Haridwar',badge:'🙏 Gateway to Gods',region:'Haridwar District, Uttarakhand',img:'https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=1400&q=90',price:'₹4,499',nights:'2 Nights / 3 Days',rating:'4.9',reviews:'1,800+',altitude:'314 m',bestFor:'Spiritual & Family',season:'Oct – April',about:['Haridwar — "Gateway to God" — is one of Hinduism\'s seven holiest cities, where the sacred Ganga descends from the Himalayas to the plains. Pilgrims have sought her blessings here for millennia.','The iconic Har Ki Pauri Ghat witnesses the most spellbinding event daily: the Ganga Aarti at dusk, where thousands of priests perform elaborate rituals with fire and chanting that echoes across the mountains.','Haridwar also hosts the Kumbh Mela — the world\'s single largest human gathering — every 12 years, drawing up to 30 million pilgrims in a single day.'],famous:[{l:'Ganga Aarti at Har Ki Pauri',t:'Every evening hundreds of priests synchronously perform fire rituals, bells ring across the ghats, and diyas float downstream — a spiritual spectacle that transforms even the most skeptical visitor.'},{l:'Kumbh Mela Capital',t:'Haridwar hosts the Maha Kumbh every 12 years — 2021 saw 9 million pilgrims in a single day. The most sacred bathing dates at Brahm Kund are considered the most powerful spiritual moments in Hinduism.'},{l:'Ancient Temples',t:'Mansa Devi (cable car), Chandi Devi, Maya Devi Shakti Peethas — each carries thousands of years of mythology. The cable car to Mansa Devi at dawn offers views that few Indian cities can match.'}],culture:[{l:'Kanwad Yatra',t:'Every Shravan month, millions of kanwariyas — devotees in orange — carry holy Ganga water on foot from Haridwar to their home temples across India. The city becomes a river of devotion.'},{l:'Bhandara Culture',t:'Free community meals (langar/bhandara) are served at almost every major temple. The spirit of seva (selfless service) is the heartbeat of Haridwar\'s daily life.'},{l:'Heritage Ghats',t:'Har Ki Pauri — "Steps of God" — has been a pilgrimage site since the time of King Vikramaditya. The ancient stone steps descend to the Ganga in an architectural drama unlike anywhere else.'}],foods:['🥣 Chole Bhature','🧆 Aloo Tikki','🍵 Lassi','🍛 Puri Sabzi','🍮 Halwa Puri','🌿 Sattvic Thali','🫕 Dal Makhani','🍩 Jalebi','🧈 Rabri Malai','🍵 Masala Chai'],highlights:['🙏 Ganga Aarti','🛕 Har Ki Pauri','🚡 Mansa Devi Cable Car','🌊 Holy Dip','🧘 Dawn Yoga','🏛️ Ancient Temples','🛍️ Moti Bazar','🌳 Rajaji NP Proximity'],gallery:['https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=900','https://images.unsplash.com/photo-1665413791165-b25d42542b80?w=600','https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600','https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (50 km). Regular flights from Delhi, Mumbai.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar Station — Shatabdi from Delhi 4.5 hrs.'},{i:'🚌',t:'<strong>By Bus</strong>Regular Volvo from Delhi ISBT. Journey 5–6 hours.'},{i:'🚗',t:'<strong>By Road</strong>230 km from Delhi via NH58. 4.5–5 hours.'}],info:[{i:'🌡️',l:'Temperature',v:'8°C – 38°C across seasons'},{i:'📏',l:'Altitude',v:'314 metres above sea level'},{i:'🗺️',l:'District',v:'Haridwar, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'2–3 days'}],bestTime:'🌸 <strong>October–April</strong> is perfect — cool weather, all temples open. <strong>Shravan (July–August)</strong> is spiritually significant with massive Kanwar Yatra.',tips:['Reach Har Ki Pauri by 5:45 PM for Aarti','Keep ₹50–200 for boat ride after aarti','No non-veg, no alcohol in the holy city','Lock valuables on crowded ghats','Book cable car early morning to avoid queues']},
+
+kedar:{name:'Kedarnath',badge:'🛕 Shiva\'s Sacred Abode',region:'Rudraprayag District, Uttarakhand',img:'https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=1400&q=90',price:'₹8,499',nights:'5 Nights / 6 Days',rating:'5.0',reviews:'1,200+',altitude:'3,583 m',bestFor:'Spiritual & Trek',season:'May–Jun, Sep–Oct',about:['Kedarnath is one of the most revered shrines in India — one of the 12 Jyotirlingas and the most powerful of the Panch Kedar temples, rising at 3,583 meters amid eternal Himalayan snow peaks.','The 16km trek from Gaurikund passes through stunning Himalayan landscapes — pine forests, waterfalls, glacial moraines — culminating in an ancient stone temple built by Adi Shankaracharya over 1,200 years ago.','The 2013 floods devastated the valley but left the temple miraculously unharmed — a boulder stopped the debris. This only deepened devotees\' faith. The divine footprint on this mountain is unmistakable.'],famous:[{l:'One of 12 Jyotirlingas',t:'Kedarnath is among the holiest Shiva shrines in the world. The Pandavas built this temple to seek Lord Shiva\'s forgiveness after the Kurukshetra war — the spiritual weight of this place is unlike anywhere else.'},{l:'Ancient Stone Temple',t:'Over 1,000 years old, built from massive grey stone slabs without mortar in a style that predates all other Himalayan temples. It has survived centuries of Himalayan winters that would destroy any modern structure.'},{l:'Char Dham & Panch Kedar',t:'Kedarnath anchors both the Char Dham pilgrimage circuit and the Panch Kedar. Completing the yatra is considered one of the most spiritually transformative experiences in Hinduism.'}],culture:[{l:'Akshaya Tritiya Opening',t:'The temple opens each year on Akshaya Tritiya with elaborate Vedic rituals attended by thousands — and closes on Bhai Dooj as snow begins, with the sacred flame transferred to Ukhimath for winter.'},{l:'Rawal Tradition',t:'The head priest (Rawal) must be from the Veerashaiva community of Karnataka — a 1,200-year tradition maintained unbroken since Adi Shankaracharya established this lineage.'},{l:'Garhwali Mountain Culture',t:'Surrounding villages perform Pandav Lila — ancient epic theatre — and traditional Mangal folk songs during festivals. The culture here is woven entirely from devotion, mountain, and story.'}],foods:['🫕 Aloo ke Gutke','🥣 Chainsoo Dal','🍚 Mandua Roti','🌿 Kafal Berries','🍵 Buransh Juice','🧈 Ghee Rice','🥗 Gahat ki Dal','🫖 Tulsi-Ginger Tea','🍮 Bal Mithai','🌾 Jhangora Kheer'],highlights:['🛕 Jyotirlinga Darshan','🏔️ Snow Peak Views','🥾 16km Holy Trek','🚁 Helicopter Option','⛺ High-altitude Stay','🧭 Spiritual Guide','🌟 Bheem Shila','🙏 Panch Kedar'],gallery:['https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=900','https://media.istockphoto.com/id/515855602/photo/kedarnath-in-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=sA9PWiQg2pJCXqLy36bC2MXH05igruwhMHGe5w-LFLk=','https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (250 km). Helicopter services from Phata, Guptkashi.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar/Rishikesh (215–230 km to Gaurikund). Bus/taxi to base.'},{i:'🚁',t:'<strong>Helicopter</strong>Phata → Kedarnath in 7–10 minutes. Book months in advance.'},{i:'🚗',t:'<strong>By Road</strong>Rishikesh to Gaurikund 210 km (~8–9 hrs). Then 16km trek.'}],info:[{i:'🌡️',l:'Temperature',v:'-3°C – 15°C (May–Oct)'},{i:'📏',l:'Altitude',v:'3,583 metres above sea level'},{i:'🗺️',l:'District',v:'Rudraprayag, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'5–7 days'}],bestTime:'🌸 <strong>May–June</strong> and <strong>September–October</strong> — temple is open. Closes in November for winter. Avoid July–August (heavy monsoon, landslides).',tips:['Book helicopter tickets months in advance','Carry warm layers — drops to 0°C at night','Acclimatize at Gaurikund before trek','Horses and palanquins available for 16km trek','Carry altitude medicine (Diamox) as precaution']},
+
+mussoorie:{name:'Mussoorie',badge:'👑 Queen of the Hills',region:'Dehradun District, Uttarakhand',img:'https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=1400&q=90',price:'₹11,999',nights:'4 Nights / 5 Days',rating:'4.9',reviews:'820+',altitude:'2,005 m',bestFor:'Couples & Honeymoon',season:'Mar–Jun, Oct–Dec',about:['Mussoorie — the Queen of the Hills — sits at 2,005m in the Garhwal Himalayas, offering sweeping panoramas of snow-capped peaks and the lush Doon Valley below that have enchanted visitors since 1823.','Established by the British as a summer retreat, Mussoorie carries a unique colonial elegance — heritage hotels, Victorian architecture, and the famous Mall Road that has been a promenade for over two centuries.','Perfect for couples: candlelight dinners with mountain views, cable car rides, rhododendron forest trails, and the spectacular Kempty Falls just 15 km away make it one of India\'s most romantic destinations.'],famous:[{l:'Mall Road',t:'The iconic 3km-long promenade lined with restaurants, shops, and cafes offers the most breathtaking Himalayan panoramas. Horse rides, photography sessions, and evening street food create lifetime memories.'},{l:'Kempty Falls',t:'A magnificent 40-feet-wide waterfall cascading into a natural pool at Kempty — perfect for a refreshing dip surrounded by forested hills. The most photographed spot in Mussoorie and a symbol of the hill station.'},{l:'Lal Tibba Viewpoint',t:'The highest point in Mussoorie at 2,275m. On clear mornings, Badrinath, Kedarnath, Gangotri and Yamunotri are all visible simultaneously. The sunrise here defies description — it must be experienced.'}],culture:[{l:'Colonial Legacy',t:'Mussoorie\'s Landour Cantonment preserves Victorian-era architecture, colonial churches, stone cottages and an old cemetery that together create a cultural landscape unlike any other Indian hill station.'},{l:'Ruskin Bond\'s Mussoorie',t:'India\'s most beloved English-language author Ruskin Bond has lived in Landour for decades. His bookshop on Landour Bazaar Lane is a pilgrimage for readers from around the world.'},{l:'Garhwali Festivals',t:'Basant Panchami (spring festival), Phool Dei (flower festival), and the annual Mussoorie Music Festival fill the hill town with folk music, flower offerings, and mountain traditions.'}],foods:['🍞 Aloo ke Gutke','🥗 Mandua Bread','🍵 Ginger Tea','🍔 Tibetan Momos','🌮 Pahadi Rajma','🍛 Bal Mithai','🧈 Singori','🍮 Chainsoo','🥐 Bakery Pastries','☕ Colonial-style Café Lattes'],highlights:['🌅 Himalayan Sunrise','💧 Kempty Falls','🚡 Gunhill Cable Car','👑 Mall Road','🛕 Jwala Devi Temple','💆 Couples Spa','🌲 Landour Forest Walk','🏨 Heritage Hotel Stay'],gallery:['https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=900','https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (60 km). Cab ~1.5 hours.'},{i:'🚆',t:'<strong>By Train</strong>Dehradun Station (35 km). Shatabdi from Delhi 4.5 hrs.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT to Dehradun. Bus/cab from Dehradun ~1 hour.'},{i:'🚗',t:'<strong>By Road</strong>290 km from Delhi via NH58. ~6 hours drive.'}],info:[{i:'🌡️',l:'Temperature',v:'1°C – 25°C. Snow in Dec–Jan.'},{i:'📏',l:'Altitude',v:'2,005 metres above sea level'},{i:'🗺️',l:'District',v:'Dehradun, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'3–5 days'}],bestTime:'🌸 <strong>March–June</strong> for flowers and views. <strong>October–December</strong> for misty romance and snowfall. Avoid July–August (heavy fog and landslides).',tips:['Book cable car online to skip queues','Walk Landour lane in the morning for best light','Visit Lal Tibba at 5:30 AM for sunrise panorama','Carry rain jacket in shoulder seasons','Ruskin Bond\'s bookshop — a must-visit for book lovers']},
+
+nainital:{name:'Nainital',badge:'⛵ Lake District of India',region:'Nainital District, Kumaon Division',img:'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=1400&q=90',price:'₹7,999',nights:'3 Nights / 4 Days',rating:'4.8',reviews:'1,500+',altitude:'2,084 m',bestFor:'Family & Couples',season:'Mar–Jun, Oct–Nov',about:['Nainital — named after the eye-shaped Naini lake — is the crown jewel of Kumaon. This enchanting hill station wraps around a pristine emerald lake that reflects the surrounding hills and clouds in magical fashion.','At 2,084m, the town offers crisp mountain air, colourful colonial buildings, and views of the Kumaon Himalayas. The Snow View Point cable car reveals a 360° panorama that includes Nepal\'s peaks on clear days.','Perfect for families — boating on Naini Lake, horses on the mall road, Naina Devi temple on the lake\'s shore, and the charming Tibetan Market with handicrafts and woolens make it one of India\'s most beloved destinations.'],famous:[{l:'Naini Lake',t:'The pear-shaped lake is 1.5km long and formed by three hills meeting. Rowing and sailing boats can be hired at sunset, when the hills turn amber — a view that has enchanted artists, poets and lovers for two centuries.'},{l:'Snow View Point',t:'The cable car to Snow View at 2,270m gives panoramic views of Nanda Devi, Trishul, and Nanda Kot on clear winter mornings. The most photographed viewpoint in Nainital.'},{l:'Naina Devi Temple',t:'One of the 64 Shakti Peethas — where Goddess Sati\'s eyes fell according to legend. The ancient temple on the north bank of Naini Lake draws thousands of pilgrims daily.'}],culture:[{l:'Kumaoni Culture',t:'Nainital is in the heart of Kumaon — known for distinct folk music (Jagar), dance, and festivals. Kumaoni language, cuisine and textile craft are unique to this mountainous region.'},{l:'Nanda Devi Festival',t:'The Nanda Devi Mahotsav in August is Nainital\'s grandest festival — five days of processions, folk performances and rituals at Naina Devi Temple celebrating the goddess of the mountains.'},{l:'Colonial Heritage',t:'Nainital served as the summer capital of the United Provinces during British rule. The High Court, Governor\'s House (Raj Bhavan) and St John\'s Church are well-preserved colonial masterpieces.'}],foods:['🥜 Bhaang ki Chutney','🥣 Bhatt ki Churkani','🍚 Aaloo ke Gutke','🫕 Gahat Dal','🌿 Kafal Fruit','🍮 Bal Mithai','🧈 Singori','🫖 Kumaoni Tea','🥐 Mall Road Bakeries','🍵 Buransh Sharbat'],highlights:['⛵ Naini Lake Boating','🚡 Snow View Cable Car','🛕 Naina Devi Temple','🏔️ Nanda Devi Sunrise','🐦 Bird Watching','🛍️ Mall Road','🌳 Kilbury Forest Walk','🐆 Jim Corbett Nearby'],gallery:['https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=900','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Pantnagar Airport (72 km). Cab to Nainital ~2.5 hours.'},{i:'🚆',t:'<strong>By Train</strong>Kathgodam Station (34 km). Shatabdi from Delhi ~5.5 hrs.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT direct buses. Journey ~7–8 hours.'},{i:'🚗',t:'<strong>By Road</strong>310 km from Delhi via NH9 and NH109. ~7–8 hours.'}],info:[{i:'🌡️',l:'Temperature',v:'2°C – 27°C. Snow in Jan–Feb.'},{i:'📏',l:'Altitude',v:'2,084 metres above sea level'},{i:'🗺️',l:'District',v:'Nainital, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'3–4 days'}],bestTime:'🌸 <strong>March–June</strong> for pleasant weather and boating. <strong>October–November</strong> for Himalayan views. <strong>December–January</strong> for snowfall.',tips:['Boat rides best at 7–9 AM (fewer crowds)','Cable car may close in heavy rain','Carry warm clothes even in summer evenings','Tibetan Market for best quality woolens','Book lake-view hotel rooms on the Mallital side']},
+
+auli:{name:'Auli',badge:'⛷️ India\'s Ski Paradise',region:'Chamoli District, Uttarakhand',img:'https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=1400&q=90',price:'₹14,999',nights:'5 Nights / 6 Days',rating:'4.8',reviews:'640+',altitude:'2,519–3,049 m',bestFor:'Adventure & Winter',season:'Jan–Mar (Ski), May–Nov',about:['Auli is India\'s premier ski destination — a pristine Himalayan meadow at 2,519–3,049m, blanketed in deep snow from December to March, with the finest skiing slopes in Asia.','The 4km gondola cable car — Asia\'s longest and among India\'s highest — connects Joshimath to Auli, offering jaw-dropping views of Nanda Devi (7,816m — India\'s second-highest peak), Dronagiri and Chaukhamba throughout the ride.','In summer, Auli transforms into a meadow of wildflowers and launches several legendary Himalayan treks — Kuari Pass, Pangarchulla Peak, and Valley of Flowers routes all pass through this extraordinary landscape.'],famous:[{l:'India\'s Best Ski Slopes',t:'GMVN and private operators offer certified ski instruction for all levels. The slopes receive 3–4 metres of snow annually and have 10+ trails. Auli hosted the South Asian Winter Games in 2011 — Asia\'s recognition of this world-class site.'},{l:'Nanda Devi Panorama',t:'The view of Nanda Devi (7,816m) from Auli is arguably the most magnificent Himalayan panorama accessible without a major expedition. The goddess of mountains stands majestically above the white slopes.'},{l:'Asia\'s Longest Gondola',t:'The 4km gondola from Joshimath to Auli takes 20 minutes of sky travel with panoramic snow peak views. Even visitors who don\'t ski make the journey just for this extraordinary aerial perspective.'}],culture:[{l:'Garhwali Mountain Traditions',t:'Auli is in Chamoli district — home to Badrinath shrine and deeply spiritual Garhwali culture. Local communities practice ancient mountain worship, and seasonal yak herding at 3,000m+ still follows traditions older than written history.'},{l:'Bugyal Culture',t:'Auli is a classic "bugyal" — high-altitude alpine meadow. Shepherds bring flocks here from June–October, camping at 3,000m+ with traditional wooden tools and woolen garments passed down through generations.'},{l:'National Ski Championship',t:'The National Ski Championships held at Auli each February bring athletes from across India. Cultural programs alongside the competition showcase traditional Garhwali music, dance and cuisine.'}],foods:['🫕 Chainsoo (black lentil curry)','🥣 Kafuli (greens curry)','🍚 Mandua ki Roti','🌿 Buransh Juice','🌾 Jhangora Kheer','🧈 Ghee Makhan','🫖 Ginger Tulsi Tea','🍵 Masala Chai','🌱 Kappa (leafy dish)','🥗 Pahadi Raita'],highlights:['⛷️ Skiing All Levels','🚡 Asia\'s Longest Gondola','🏔️ Nanda Devi View','❄️ Snow Sports','🌸 Summer Meadows','🥾 Kuari Pass Trek','⛺ Camping Under Stars','📸 Himalayan Photography'],gallery:['https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=900','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (280 km). Drive via Rishikesh–Joshimath (~9–10 hrs).'},{i:'🚆',t:'<strong>By Train</strong>Haridwar/Rishikesh (260–270 km). Drive to Auli ~9 hours.'},{i:'🚡',t:'<strong>Cable Car</strong>Joshimath to Auli — 4km gondola in 20 minutes. Base town is Joshimath.'},{i:'🚗',t:'<strong>By Road</strong>Rishikesh to Auli ~270 km via Devprayag–Chamoli–Joshimath. ~9 hours.'}],info:[{i:'🌡️',l:'Temperature',v:'-8°C – 15°C. Heavy snow Jan–March.'},{i:'📏',l:'Altitude',v:'2,519 – 3,049 metres'},{i:'🗺️',l:'District',v:'Chamoli, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'4–6 days'}],bestTime:'❄️ <strong>January–March</strong> for skiing. <strong>May–June</strong> for meadow trekking and wildflowers. <strong>October–November</strong> for crystal-clear Himalayan views.',tips:['Book ski lessons with GMVN in advance','Carry full winter gear (rent available locally)','Acclimatize at Joshimath first (spend one night)','Gondola may close on heavy snowfall days','Combine with Badrinath temple visit (70 km)']},
+
+corbett:{name:'Jim Corbett',badge:'🐯 Tiger\'s Kingdom',region:'Nainital District, Uttarakhand',img:'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=1400&q=90',price:'₹12,999',nights:'3 Nights / 4 Days',rating:'4.9',reviews:'870+',altitude:'390–1,100 m',bestFor:'Wildlife & Photography',season:'Nov – June',about:['Jim Corbett National Park — India\'s oldest national park, established in 1936 — spans 520 sq km of stunning sal forests, grasslands and the Ramganga River valley in the Kumaon Himalayan foothills.','Home to the highest density of Bengal Tigers in India, along with 600+ bird species, Asian elephants, leopards, ghariyals and over 50 mammal species — making it a paradise for wildlife photographers and naturalists.','Named after Jim Corbett, the legendary hunter-turned-conservationist who saved countless village lives from man-eating tigers and leopards, then immortalized them in "Man-Eaters of Kumaon" — one of India\'s most beloved books.'],famous:[{l:'Bengal Tiger Capital',t:'Corbett has the highest probability of tiger sightings in India. The Dhikala zone requires an overnight stay at Dhikala Forest Lodge — booked months in advance — but the dawn safari experience justifies every effort.'},{l:'600+ Bird Species',t:'Corbett is one of India\'s top birding destinations. Rare species including the Pallas\'s Fish Eagle, Crested Serpent Eagle, Great Hornbill and Red Junglefowl reward early morning walks with expert guides.'},{l:'Ramganga River',t:'The Ramganga flows through the park\'s heart — its banks are where elephants bathe at dawn, ghariyals bask, and tigers come to drink. Boat safaris at sunset offer some of India\'s most surreal wildlife encounters.'}],culture:[{l:'Jim Corbett\'s Legacy',t:'Corbett\'s books are classics of Indian wildlife literature. The Jim Corbett Museum in Kaladhungi preserves his original home, letters and photographs — offering extraordinary insight into this remarkable man\'s life.'},{l:'Project Tiger Origin',t:'Project Tiger was launched in Corbett in 1973 by Indira Gandhi — India\'s first tiger reserve. Tiger population grew from 40 in the 1970s to 260+ today — one of conservation\'s greatest success stories.'},{l:'Kumaoni Village Culture',t:'Villages around Corbett maintain traditional Kumaoni culture — terrace farming, stone homes, folk music. Local guides weave wildlife encounters with folklore that makes every safari a cultural as well as natural journey.'}],foods:['🥜 Bhang ki Chutney','🫕 Gahat Dal','🥗 Kumaoni Raita','🍚 Aaloo ke Gutke','🌿 Kafal Fruit','🍮 Bal Mithai','🧈 Singori','🫖 Ginger Tea','🥐 Forest Rest House Breakfast','🐟 Fresh River Fish'],highlights:['🐯 Tiger Jeep Safari','🐘 Elephant Safari','🦅 Bird Watching 600+','📸 Wildlife Photography','🚣 Ramganga Boat Safari','🌅 Dawn Forest Walk','🏕️ Jungle Lodge Stay','🐊 Gharial Spotting'],gallery:['https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=900','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Pantnagar Airport (90 km). Flights from Delhi. Cab ~2.5 hours to Ramnagar.'},{i:'🚆',t:'<strong>By Train</strong>Ramnagar Station (2 km from park gate). Direct trains from Delhi ~5.5 hours.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT to Ramnagar — regular AC buses. Journey ~5–6 hours.'},{i:'🚗',t:'<strong>By Road</strong>260 km from Delhi via NH9. ~5–6 hours on well-maintained highway.'}],info:[{i:'🌡️',l:'Temperature',v:'5°C – 40°C (hot in April–May)'},{i:'📏',l:'Altitude',v:'390 – 1,100 metres'},{i:'🗺️',l:'District',v:'Nainital, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'3–4 days'}],bestTime:'🍂 <strong>November–February</strong> for best tiger sightings (dry, sparse foliage). <strong>March–May</strong> for waterhole sightings. Park <strong>closed July–October</strong> (monsoon).',tips:['Dhikala zone needs overnight stay — book months ahead','Book safari permits online at corbettpark.in','Carry binoculars and 300mm+ zoom lens','Guides are mandatory — choose certified naturalists','Wear earthy/muted tones in the jungle']},
+
+vof:{name:'Valley of Flowers',badge:'🌸 UNESCO World Heritage',region:'Chamoli District, Uttarakhand',img:'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1400&q=90',price:'₹9,499',nights:'6 Nights / 7 Days',rating:'5.0',reviews:'530+',altitude:'3,352–3,658 m',bestFor:'Nature & Trekking',season:'July – September',about:['The Valley of Flowers National Park is a UNESCO World Heritage Site — an 87 sq km alpine valley in the high Himalayas that transforms into a carpet of 500+ wildflower species every July to September.','Discovered by Frank Smythe in 1931, this valley is considered one of the most beautiful places on earth — a tapestry of blue poppies, brahmakamal, primulas, geraniums, orchids and a hundred more species against eternal snow peaks.','The trek combines with Hemkund Sahib — a sacred Sikh gurudwara at 4,329m beside a glacial lake surrounded by snow peaks — making it both a natural wonder and a spiritual journey in one extraordinary experience.'],famous:[{l:'500+ Wildflower Species',t:'No place on earth concentrates this many Himalayan wildflower species in one accessible valley. Brahmakamal — the sacred flower of Lord Brahma — blooms here in profusion at dawn, perfuming the entire valley.'},{l:'Hemkund Sahib at 4,329m',t:'One of the world\'s highest gurudwaras, where Guru Gobind Singh meditated in a previous birth according to Sikh tradition. Thousands of pilgrims make the arduous climb each summer across the glacial terrain.'},{l:'Nanda Devi Biosphere Reserve',t:'The valley is part of the Nanda Devi Biosphere Reserve — home to snow leopards, Himalayan brown bears, musk deer and the Himalayan Monal (state bird of Uttarakhand) whose iridescent plumage rivals any bird on earth.'}],culture:[{l:'Ramayana Connection',t:'This valley is believed to be the Gandhamadhan Mountain of the Ramayana — where Hanuman came to collect the Sanjeevani herb to revive Laxman. The valley\'s spiritual significance predates its modern discovery.'},{l:'Strict Conservation Ethos',t:'Valley of Flowers was declared a National Park in 1982 and UNESCO heritage site in 2005. Entry is strictly regulated (500 visitors/day), camping is prohibited, and rangers enforce no-pluck rules with ₹5,000 fines.'},{l:'Frank Smythe\'s Discovery',t:'The mountaineer and botanist Frank Smythe rediscovered this valley in 1931 and wrote a book that brought international attention to this hidden paradise. His botanical records still inform scientific research today.'}],foods:['🌾 Jhangora Kheer','🥣 Chainsoo Dal','🍚 Mandua ki Roti','🫕 Kafuli','🌿 Buransh Squash','🧈 Ghee Roti','🫖 Ginger Tea at Ghangaria','🌱 Pahadi Saag','🍲 Dal Bhat','🏕️ Trek Lunch Boxes'],highlights:['🌸 500+ Wildflowers','🛕 Hemkund Sahib 4329m','🥾 Alpine Trek 8km','⛺ Camp at Ghangaria','🏔️ Snow Peak Views','📸 Macro Photography','🦅 Himalayan Monal Bird','🌙 Stargazing Camp'],gallery:['https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=900','https://media.istockphoto.com/id/2196545732/photo/cosmos-blooming-in-a-park.webp?a=1&b=1&s=612x612&w=0&k=20&c=cUwf4sKUDDFI3UCK-lsmJK9jjqFhtuKvuC5PmuEE9eM=','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (300 km). Drive to Govindghat base.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar/Rishikesh. Drive to Govindghat (~9 hrs). Then 14km trek to Ghangaria.'},{i:'🥾',t:'<strong>Trek Route</strong>Govindghat → Ghangaria (14 km) → Valley of Flowers (4 km). 2 days from base.'},{i:'🚁',t:'<strong>Helicopter</strong>Govindghat to Ghangaria helipad (7 minutes) — available for physically challenged pilgrims.'}],info:[{i:'🌡️',l:'Temperature',v:'5°C – 18°C in July–Sept season'},{i:'📏',l:'Altitude',v:'3,352 – 3,658 metres'},{i:'🗺️',l:'District',v:'Chamoli, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'6–8 days'}],bestTime:'🌺 <strong>Mid-July to mid-August</strong> for maximum flower species. <strong>Late August–September</strong> for brahmakamal blooms. Valley is <strong>closed October–June</strong> (snow).',tips:['Peak bloom is last week of July to mid-August','Start trek early (6 AM) from Govindghat','Never pluck any flowers — strict ₹5,000 fine','Carry Diamox; altitude sickness is possible','Book basic guesthouses in Ghangaria in advance']},
+
+chardham:{name:'Char Dham Yatra',badge:'🙏 Holiest Pilgrimage',region:'Uttarakhand — 4 Sacred Sites',img:'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1400&q=90',price:'₹28,999',nights:'11 Nights / 12 Days',rating:'5.0',reviews:'2,100+',altitude:'1,372–3,583 m',bestFor:'Spiritual, All Ages',season:'May–Jun, Sep–Oct',about:['The Char Dham Yatra — Yamunotri, Gangotri, Kedarnath and Badrinath — is the most sacred pilgrimage in Hinduism, believed to cleanse a lifetime of sins and grant moksha (liberation from the cycle of birth and death).','Spread across the high Himalayas between 1,372m and 3,583m altitude, these four shrines are connected by dramatic mountain roads, river valleys and ancient trekking paths through pristine Himalayan wilderness.','Completing all four dhams in a single journey — traditionally done west to east (Yamunotri → Gangotri → Kedarnath → Badrinath) — is a deeply transformative experience that combines extreme natural beauty with profound spiritual awakening.'],famous:[{l:'Yamunotri — Source of Yamuna',t:'At 3,293m, a 6km trek from Janki Chatti reaches the temple. The hot spring (Surya Kund) where devotees cook rice wrapped in cloth is the most unique pilgrimage ritual in Indian culture — the rice becomes temple prasad.'},{l:'Gangotri — Source of Ganga',t:'At 3,048m, the temple sits by the roaring Bhagirathi river near Gaumukh glacier. The crystal mountain air, thundering river, and encircling snow peaks make this the most dramatically beautiful of the four dhams.'},{l:'Badrinath — Vishnu\'s Abode',t:'At 3,133m between Nar and Narayan peaks, Badrinath is one of the 108 Divya Desams. The hot spring at Tapt Kund outside the temple — where pilgrims bathe before entering — has been flowing for millennia.'}],culture:[{l:'Sacred Seasonal Cycle',t:'All four dhams open on auspicious dates in April–May with elaborate Vedic ceremonies, and close in October–November as snow begins. Sacred flames are ceremonially transferred to winter temples — an unbroken tradition for 1,200+ years.'},{l:'Helicopter Revolution',t:'Helicopter services to Kedarnath and Badrinath have transformed the yatra, making it accessible to the elderly and physically challenged for the first time in history — while traditional trekkers still walk the ancient paths.'},{l:'Ancient Gateway Culture',t:'Haridwar is the traditional starting point for the yatra. Millions of kanwariyas — devotees carrying Ganga water — create a river of orange every Shravan month, filling the roads with devotion for hundreds of kilometres.'}],foods:['🌿 Sattvic Thali','🫕 Aloo ke Gutke','🥣 Chainsoo Dal','🍚 Mandua Roti','🧈 Ghee Bhaat','🫖 Tulsi Tea','🌾 Jhangora Kheer','🍵 Kadha (herbal tea)','🥗 Kaddu ki Sabzi','🌱 Temple Prasad'],highlights:['🛕 Yamunotri Temple','🏔️ Gangotri Source','🚁 Kedarnath Helicopter','🛕 Badrinath Darshan','🌊 Triveni Ghats','⛺ Mountain Stays','🧭 Spiritual Guide','🆘 Medical Support'],gallery:['https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=900','https://images.unsplash.com/photo-1605537964076-47cda6c1e20e?w=600','https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=600','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun — gateway to all four dhams. Helicopter to Kedarnath & Badrinath.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar/Rishikesh stations are the traditional starting points for the yatra.'},{i:'🚁',t:'<strong>Helicopter Routes</strong>Phata → Kedarnath (7 min), Govindghat → Badrinath (15 min). Book months ahead.'},{i:'🚗',t:'<strong>By Road</strong>Traditional circuit: Haridwar → Barkot → Uttarkashi → Gaurikund → Badrinath. ~700 km total.'}],info:[{i:'🌡️',l:'Temperature',v:'5°C – 25°C (peak season)'},{i:'📏',l:'Altitude',v:'1,372m – 3,583m range'},{i:'🗺️',l:'Region',v:'Uttarkashi, Rudraprayag, Chamoli'},{i:'⏱️',l:'Best Duration',v:'11–14 days'}],bestTime:'🌸 <strong>May–June</strong> is main season. <strong>September–October</strong> is quieter and equally beautiful. All shrines <strong>closed November–April</strong> due to snow.',tips:['Register on Uttarakhand Devasthanam Board website','Book helicopter months in advance — sells out fastest','Keep buffer days for weather delays (very common)','Altitude medicine (Diamox) from Kedarnath onward','Travel west to east: Yamunotri → Gangotri → Kedar → Badri']},
+
+chopta:{name:'Chopta & Tungnath',badge:'🏔️ Mini Switzerland of India',region:'Rudraprayag District, Uttarakhand',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=90',price:'₹5,999',nights:'3 Nights / 4 Days',rating:'4.9',reviews:'410+',altitude:'2,680–4,130 m',bestFor:'Trek, Nature, Couples',season:'Apr–Jun, Oct–Nov',about:['Chopta is a tiny hamlet at 2,680m in Rudraprayag district — so picturesque with its rolling meadows and thick rhododendron and pine forests that it\'s earned the nickname "Mini Switzerland of India."','A 3.5km trail leads to Tungnath — the world\'s highest Shiva temple at 3,680m — continuing 1.5km to Chandrashila Peak at 4,130m, where a 360° panorama reveals Nanda Devi, Trishul, Kedarnath, Chaukhamba and Bandarpunch simultaneously.','In winter, Chopta transforms into a snow-blanketed wonderland and is considered one of India\'s finest places to experience natural snowfall without the crowds of more famous destinations.'],famous:[{l:'World\'s Highest Shiva Temple',t:'Tungnath at 3,680m holds the forearms of Lord Shiva — the third of the five Panch Kedar temples. The stone structure is over 1,000 years old, and the trek to reach it through rhododendron forest is itself a spiritual journey.'},{l:'Chandrashila Summit — 4,130m',t:'Chandrashila (Moon Rock) regularly appears in top 10 Indian treks lists. The 360° Himalayan panorama at sunrise — reached after a 2 AM start — is described by everyone who witnesses it as otherworldly.'},{l:'Rhododendron Forest',t:'The April–May trek to Tungnath passes through India\'s finest rhododendron forest — a tunnel of crimson buransh in full bloom, golden where sunlight breaks through the high canopy.'}],culture:[{l:'Panch Kedar Legend',t:'The Pandavas built five temples across the Garhwal Himalayas to atone for killing their Kaurava cousins — five body parts of Lord Shiva are enshrined across these sites. Tungnath is the third and most scenic.'},{l:'Kedarnath Wildlife Sanctuary',t:'Chopta lies within the Kedarnath Wildlife Sanctuary — home to bharal (blue sheep), Himalayan black bear, and the Himalayan Monal pheasant, Uttarakhand\'s state bird whose iridescent feathers seem painted by a divine hand.'},{l:'Astronomical Stargazing',t:'At 2,680m with zero light pollution, Chopta offers one of India\'s finest stargazing experiences. The Milky Way core is visible with naked eyes on moonless nights, and several astronomy camps operate here seasonally.'}],foods:['🫕 Aloo ke Gutke','🥣 Chainsoo Dal','🍚 Mandua Roti','🌿 Buransh Juice','🌾 Jhangora Kheer','🧈 Ghee Paranthe','🫖 Rhododendron Tea','🍵 Masala Chai','🥗 Pahadi Raita','🌱 Kafuli'],highlights:['⛪ Tungnath Temple 3680m','🏔️ Chandrashila 4130m','🌸 Rhododendron Forest','⛺ Glamping Meadows','🔭 Milky Way Stargazing','🦅 Himalayan Monal','🥾 Easy Family Trek','❄️ Winter Snow Camp'],gallery:['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600','https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (230 km). Drive via Rishikesh–Ukhimath–Chopta (~7–8 hrs).'},{i:'🚆',t:'<strong>By Train</strong>Rishikesh (210 km). Drive to Chopta via Rudraprayag ~7 hours.'},{i:'🚌',t:'<strong>By Bus</strong>Rishikesh to Ukhimath (GMOU). Share jeep from Ukhimath to Chopta (20 km).'},{i:'🚗',t:'<strong>By Road</strong>220 km from Rishikesh via Devprayag–Rudraprayag–Augustmuni–Ukhimath.'}],info:[{i:'🌡️',l:'Temperature',v:'-5°C – 15°C. Heavy snow Dec–March.'},{i:'📏',l:'Altitude',v:'2,680m (Chopta) – 4,130m (Chandrashila)'},{i:'🗺️',l:'District',v:'Rudraprayag, Uttarakhand'},{i:'⏱️',l:'Best Duration',v:'3–4 days'}],bestTime:'🌸 <strong>April–June</strong> for rhododendron bloom and clear skies. <strong>October–November</strong> for crisp Himalayan views. <strong>December–January</strong> for snow trekking.',tips:['Start Chandrashila at 3:30–4 AM for sunrise','Trek is beginner-friendly — 5 km, 3–4 hours','Carry warm layers (drops to -5°C at night)','Tungnath temple open May–October only','Binoculars essential for Himalayan Monal spotting']},
+
+bungee:{name:'Bungee & Zipline',badge:'🎢 India\'s Highest Bungee',region:'Rishikesh, Dehradun District',img:'https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=1400&q=90',price:'₹3,499',nights:'1 Night / 2 Days',rating:'4.8',reviews:'920+',altitude:'372 m',bestFor:'Thrill Seekers',season:'Oct – June',about:['At 83 meters over the Ganges gorge, the Jumpin Heights bungee jump in Rishikesh is India\'s highest and ranks among Asia\'s most thrilling. Internationally certified, operated by New Zealand-trained professionals with European equipment.','Every jump is video-recorded from multiple angles, and a GoPro captures the free-fall in cinematic detail. The Giant Swing, Flying Fox zipline across the gorge, and cliff jumping complete the ultimate adrenaline day.','What makes Rishikesh uniquely extraordinary is the coexistence of spirituality and adventure. A 6 AM yoga session by the Ganga, an 83m jump at noon, and Ganga Aarti at sunset — all in the same extraordinary day.'],famous:[{l:'India\'s Highest Bungee — 83m',t:'83 meters (272 feet) of pure free-fall over a rocky Ganga gorge — three full seconds of weightlessness. Jumpin Heights is certified by the New Zealand Safety Council, with the highest international standards.'},{l:'Giant Swing',t:'A 55m pendulum swing from the same cliff — the arc takes you over the gorge at 160 km/h G-force equivalent. The view of the river canyon mid-swing is the most surreal experience in Rishikesh adventure sports.'},{l:'Flying Fox River Zipline',t:'The 1,000-foot Flying Fox crosses the Ganges gorge at 60+ km/h — starting from the cliff and ending across the river. Thirty seconds of adrenaline over holy water.'}],culture:[{l:'Adventure Tourism Pioneer',t:'Rishikesh pioneered adventure tourism in India in the 1990s. Today it\'s India\'s undisputed adventure capital — hosting India\'s first certified bungee, first Grade 5 rafting and first internationally sanctioned kayaking competitions.'},{l:'International Adventure Community',t:'Rishikesh attracts adventure travelers from 60+ countries. The annual International Yoga Festival and Adventure Sports Festival create a cosmopolitan community around this deeply spiritual Indian city.'},{l:'Spiritual + Adrenaline Balance',t:'No other destination in the world offers this combination: morning Vedic yoga, midday bungee jumping, evening temple rituals. Rishikesh proves that the sacred and the extreme can not only coexist but amplify each other.'}],foods:['🛶 Riverside Café Breakfast','🍵 Masala Chai','🥙 Wraps & Sandwiches','🍕 Café Culture','🥣 Israeli Breakfast','🧃 Fresh Juices','🌮 Post-Jump Feast','🍦 Bania Market Chaat','🫖 Blue Chai','🌿 Organic Salads'],highlights:['🪂 83m Bungee Jump','🎢 Giant Swing','🏄 River Zipline','🌊 Cliff Jumping','🎥 GoPro Video Package','🛶 White Water Rafting','📜 Thrill Certificate','⛺ River Camp Night'],gallery:['https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=900','https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600','https://plus.unsplash.com/premium_photo-1661889971049-6f0a39a3476f?w=600','https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Jolly Grant Airport, Dehradun (35 km). Cab ~1 hour to Rishikesh.'},{i:'🚆',t:'<strong>By Train</strong>Haridwar Station (25 km). Cab/bus to Rishikesh.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT Volvo to Rishikesh ~6 hours. Auto to Jumpin Heights.'},{i:'🚗',t:'<strong>By Road</strong>243 km from Delhi via NH58. Bungee site at Mohanchatti, 16 km from town.'}],info:[{i:'⚖️',l:'Weight Limit',v:'40 kg min, 110 kg max'},{i:'📏',l:'Jump Height',v:'83 metres above gorge'},{i:'🎓',l:'Certification',v:'NZ Safety Council certified'},{i:'⏱️',l:'Duration',v:'1–2 days (day trip possible)'}],bestTime:'🍂 <strong>October–June</strong> — best weather for all activities. <strong>November–February</strong> is peak season. Activities <strong>suspended July–September</strong> (monsoon, high water).',tips:['Book online to avoid queues (fills fast on weekends)','Wear comfortable clothing, no loose items','Remove shoes, jewellery, spectacles before jump','Minimum age 18 (parental consent 14–18)','Keep morning slot — less anxiety waiting']},
+
+para:{name:'Paragliding — Bir Billing',badge:'🪂 Asia\'s Top Paragliding',region:'Bir Billing, Kangra Valley, HP',img:'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1400&q=90',price:'₹4,999',nights:'2 Nights / 3 Days',rating:'4.7',reviews:'560+',altitude:'1,525–2,430 m',bestFor:'Adventure & Views',season:'Mar–Jun, Sep–Nov',about:['Bir Billing is Asia\'s premier paragliding destination and the 2015 Paragliding World Cup venue — with the world\'s most consistent thermal currents allowing flights of 30–75 minutes at 2,400m altitude.','Tandem flights take off from Billing (2,430m) and land at Bir village (1,525m) — a 14km aerial journey over tea gardens, cedar forests, Tibetan monasteries and the distant Dhauladhar snow range.','Bir is also a remarkable Tibetan refugee settlement with authentic Tibetan culture, handicraft markets, and the Deer Park Institute (a Buddhist learning center) — making it uniquely compelling beyond the adventure alone.'],famous:[{l:'Paragliding World Cup 2015',t:'Bir Billing hosted the FAI Paragliding World Cup in 2015 — pilots from 50 countries chose this site above all others for its extraordinary thermal conditions. It\'s considered the world\'s second-best site after Pokhara.'},{l:'World-Class Thermal Quality',t:'The valley\'s geography creates powerful thermal currents from morning to midday — sufficient for 1–2 hour flights. Expert pilots regularly achieve 5,000m+ altitude and 60+ km cross-country flights from here.'},{l:'Tibetan Buddhist Colony',t:'Bir is home to the largest Tibetan settlement outside Tibet — a genuine community with authentic food, handmade rugs, thangka painting studios, and ancient monasteries with active monk communities.'}],culture:[{l:'Tibetan Buddhist Monasteries',t:'Chokling Monastery and Sherab Ling Monastery are active Tibetan Buddhist centres. The Kagyu order monastic school trains hundreds of monks in traditional texts, debates and arts — visitors are warmly welcomed.'},{l:'Kangra Tea Heritage',t:'The Kangra Valley below Bir contains India\'s oldest tea estates — cultivated since 1849. The spring flush (March–April) fills the valley with the intoxicating aroma of first flush tea.'},{l:'Adventure & Nomad Community',t:'Bir has attracted an international community of adventure travelers and digital nomads. Vibrant café culture, yoga studios and meditation retreats coexist alongside Tibetan traditions and tea estate landscapes.'}],foods:['🥟 Tibetan Momos','🍜 Thukpa (noodle soup)','🍵 Butter Tea (Po Cha)','🫓 Tsampa Flatbread','🧃 Sweet Lassi','☕ Mountain Café Coffee','🫕 Himachali Dham','🌮 Siddu (stuffed bread)','🥐 Apple Cake','🫖 Kangra Green Tea'],highlights:['🪂 Tandem Paragliding 30min','🎥 GoPro HD Video','🏔️ Dhauladhar Range View','🛕 Tibetan Monastery','⛺ Valley Camping','🌸 Tea Garden Walk','🧘 Meditation Retreat','📜 Flight Certificate'],gallery:['https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=900','https://images.unsplash.com/photo-1516692296811-9b28e9eb9a87?w=600','https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600','https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600','https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600','https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600'],reach:[{i:'✈️',t:'<strong>By Air</strong>Gaggal Airport, Dharamshala (70 km). Flights from Delhi, Mumbai. Cab ~2 hours.'},{i:'🚆',t:'<strong>By Train</strong>Pathankot Station (110 km). Cab or bus to Bir/Billing.'},{i:'🚌',t:'<strong>By Bus</strong>Delhi ISBT to Bir ~12 hours overnight. HRTC and private AC buses.'},{i:'🚗',t:'<strong>By Road</strong>500 km from Delhi via NH1 – Pathankot – Palampur – Bir. ~10–11 hours.'}],info:[{i:'🌡️',l:'Temperature',v:'8°C – 28°C in flying season'},{i:'📏',l:'Altitude',v:'Take-off 2,430m / Landing 1,525m'},{i:'🗺️',l:'Location',v:'Bir, Kangra, Himachal Pradesh'},{i:'⏱️',l:'Best Duration',v:'2–3 days'}],bestTime:'🌸 <strong>March–June</strong> and <strong>September–November</strong> — best thermals and clearest views. Avoid Dec–Feb (cold, minimal thermals) and July–August (monsoon, flights suspended).',tips:['Book with APPI-certified operators only','Morning slots (9 AM–12 PM) have best thermals','Weight limit: 30–110 kg for tandem flights','Loose comfortable clothing — no flip flops','Morning flights cancel on foggy/rainy days']}
+};
+
+/* ══ LIGHTBOX ══ */
+let lbImgs=[], lbIdx=0;
+function openLB(imgs, i){lbImgs=imgs;lbIdx=i;document.getElementById('dpLBImg').src=imgs[i];document.getElementById('dpLBCount').textContent=(i+1)+' / '+imgs.length;document.getElementById('dpLB').classList.add('on')}
+function closeLB(){document.getElementById('dpLB').classList.remove('on')}
+function shiftLB(d){lbIdx=(lbIdx+d+lbImgs.length)%lbImgs.length;document.getElementById('dpLBImg').src=lbImgs[lbIdx];document.getElementById('dpLBCount').textContent=(lbIdx+1)+' / '+lbImgs.length}
+document.getElementById('dpLB').addEventListener('click',function(e){if(e.target===this)closeLB()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('dpLB').classList.contains('on'))return;if(e.key==='ArrowRight')shiftLB(1);if(e.key==='ArrowLeft')shiftLB(-1);if(e.key==='Escape')closeLB()});
+
+/* ══ RENDER ══ */
+function render(key){
+  const d=DD[key]; if(!d){document.getElementById('dpTitle').textContent='Not Found';return}
+  document.title=d.name+' — DevBhoomi Travels';
+  document.getElementById('dpCrumb').textContent=d.name;
+  // Hero
+  document.getElementById('dpHeroImg').style.cssText='position:absolute;inset:0;width:100%;height:115%;object-fit:cover;transform:scale(1.08);animation:heroKen 12s ease-in-out forwards,heroFade 1.4s .2s ease forwards;transform-origin:center top;opacity:0;background:#0c1810';
+  document.getElementById('dpHeroImg').innerHTML='<img src="'+d.img+'" style="width:100%;height:100%;object-fit:cover" alt="'+d.name+'"/>';
+  document.getElementById('dpBadge').textContent=d.badge;
+  document.getElementById('dpTitle').innerHTML=d.name;
+  document.getElementById('dpRegion').innerHTML='📍 '+d.region;
+  document.getElementById('dpBar').innerHTML=
+    '<div class="dp-stat"><span class="dp-stat-v">'+d.price+'</span><span class="dp-stat-l">From</span></div>'+
+    '<div class="dp-stat"><span class="dp-stat-v">⭐ '+d.rating+'</span><span class="dp-stat-l">Rating</span></div>'+
+    '<div class="dp-stat"><span class="dp-stat-v">'+d.reviews+'</span><span class="dp-stat-l">Reviews</span></div>'+
+    '<div class="dp-stat"><span class="dp-stat-v">'+d.altitude+'</span><span class="dp-stat-l">Altitude</span></div>';
+  // Sidebar
+  document.getElementById('dpSideImg').src=d.img;
+  document.getElementById('dpPrice').textContent=d.price;
+  document.getElementById('dpStars').textContent='⭐ '+d.rating+' ('+d.reviews+' reviews)';
+  document.getElementById('dpBkRows').innerHTML=
+    mkrow('Duration',d.nights)+mkrow('Best For',d.bestFor)+mkrow('Season',d.season)+mkrow('Altitude',d.altitude);
+  document.getElementById('dpBestTime').innerHTML=d.bestTime;
+  document.getElementById('dpTips').innerHTML=d.tips.map(t=>'<div class="tip-row"><div class="tip-dot"></div><div class="tip-t">'+t+'</div></div>').join('');
+  // About
+  document.getElementById('dpAbout').innerHTML=d.about.map(p=>'<p>'+p+'</p>').join('');
+  // Highlights
+  document.getElementById('dpHL').innerHTML=d.highlights.map(h=>'<div class="hl-chip">'+h+'</div>').join('');
+  // Famous
+  document.getElementById('dpFamous').innerHTML=d.famous.map(f=>fcItem(f.l,f.t)).join('');
+  // Culture
+  document.getElementById('dpCulture').innerHTML=d.culture.map(c=>fcItem(c.l,c.t)).join('');
+  // Food
+  document.getElementById('dpFood').innerHTML=d.foods.map(f=>'<div class="food-pill">'+f+'</div>').join('');
+  // Gallery
+  document.getElementById('dpGallery').innerHTML=d.gallery.map((img,i)=>
+    '<div class="dp-gal-item" onclick="openLB(imgs'+key+','+i+')">'+
+    '<img src="'+img+'" loading="'+(i<3?'eager':'lazy')+'" alt="'+d.name+' '+(i+1)+'"/>'+
+    '<div class="dp-gal-overlay"><div class="dp-gal-zoom">⊕</div></div></div>').join('');
+  window['imgs'+key]=d.gallery;
+  // Reach
+  document.getElementById('dpReach').innerHTML=d.reach.map(r=>
+    '<div class="reach-card"><div class="reach-icon">'+r.i+'</div><div class="reach-txt">'+r.t+'</div></div>').join('');
+  // Info
+  document.getElementById('dpInfo').innerHTML=d.info.map(i=>
+    '<div class="info-card"><div class="info-ico">'+i.i+'</div><div class="info-lbl">'+i.l+'</div><div class="info-val">'+i.v+'</div></div>').join('');
+}
+function mkrow(l,v){return'<div class="bk-row"><span class="bk-row-l">'+l+'</span><span class="bk-row-r">'+v+'</span></div>'}
+function fcItem(l,t){return'<div class="fc-item"><div class="fc-bar"></div><div class="fc-body"><div class="fc-lbl">'+l+'</div><div class="fc-txt">'+t+'</div></div></div>'}
+
+/* ══ SCROLL BAR ══ */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement,b=document.body;
+  const p=(s.scrollTop||b.scrollTop)/((s.scrollHeight||b.scrollHeight)-s.clientHeight)*100;
+  document.getElementById('spb').style.width=p+'%';
+});
+
+/* ══ REVEAL ANIMATIONS ══ */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ══ ACTIVE TAB ON SCROLL ══ */
+const secs=['s-about','s-highlights','s-famous','s-culture','s-food','s-gallery','s-reach','s-info'];
+const tabs=document.querySelectorAll('.dp-tab');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<100)cur=id});
+  tabs.forEach(t=>{t.classList.toggle('act',t.getAttribute('href')==='#'+cur)});
+},true);
+
+/* ══ INIT ══ */
+const key=new URLSearchParams(location.search).get('dest')||'rishikesh';
+render(key);
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

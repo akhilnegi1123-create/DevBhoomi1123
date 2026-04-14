@@ -312,6 +312,12 @@
    PAGE: HOTELS
 ════════════════════════════════ -->
 <script src="js/main.js"></script>
+<script>
+// Override openDetail for Destination page - redirect to detail page
+function openDetail(key) {
+  window.location.href = 'destination-detail.html?dest=' + key;
+}
+</script>
 
 </body>
 </html>
